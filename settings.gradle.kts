@@ -1,0 +1,1 @@
+rootProject.name = "algo-2025"
