@@ -1,6 +1,9 @@
-package com.algo.programmers.prog_0626_002;
+package com.algo.programmers.prog_06.prog_0626_002;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Collectors;
 
 //[PCCE 기출문제] 10번 / 데이터 분석

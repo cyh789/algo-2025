@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0627_001;
+package com.algo.programmers.prog_06.prog_0627_001;
 
 import java.util.Arrays;
 

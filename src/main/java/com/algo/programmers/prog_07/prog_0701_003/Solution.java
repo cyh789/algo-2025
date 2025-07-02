@@ -1,7 +1,4 @@
-package com.algo.programmers.prog_0701_003;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.algo.programmers.prog_07.prog_0701_003;
 
 //[PCCE 기출문제] 9번 / 이웃한 칸
 public class Solution {

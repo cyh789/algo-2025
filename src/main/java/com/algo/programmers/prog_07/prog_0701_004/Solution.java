@@ -1,10 +1,9 @@
-package com.algo.programmers.prog_0701_004;
+package com.algo.programmers.prog_07.prog_0701_004;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 //[PCCE 기출문제] 10번 / 데이터 분석
 public class Solution {

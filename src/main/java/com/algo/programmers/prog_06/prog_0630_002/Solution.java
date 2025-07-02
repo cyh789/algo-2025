@@ -1,7 +1,6 @@
-package com.algo.programmers.prog_0630_002;
+package com.algo.programmers.prog_06.prog_0630_002;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 //[PCCE 기출문제] 10번 / 공원
 public class Solution {
