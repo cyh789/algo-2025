@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0702_003;
+package com.algo.programmers.prog_07.prog_0702_003;
 
 //[PCCE 기출문제] 9번 / 이웃한 칸
 public class Solution {

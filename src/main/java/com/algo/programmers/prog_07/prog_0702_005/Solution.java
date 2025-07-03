@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0702_005;
+package com.algo.programmers.prog_07.prog_0702_005;
 
 //[PCCP 기출문제] 1번 / 동영상 재생기
 public class Solution {

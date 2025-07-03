@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0702_006;
+package com.algo.programmers.prog_07.prog_0702_006;
 
 import java.util.HashMap;
 import java.util.Map;
