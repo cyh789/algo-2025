@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0703_004;
+package com.algo.programmers.prog_07.prog_0703_004;
 
 import java.util.ArrayList;
 import java.util.List;
