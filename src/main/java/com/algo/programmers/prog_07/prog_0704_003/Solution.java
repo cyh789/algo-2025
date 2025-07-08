@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0704_003;
+package com.algo.programmers.prog_07.prog_0704_003;
 
 //2025 프로그래머스 코드챌린지 1차 예선
 //유연근무제
