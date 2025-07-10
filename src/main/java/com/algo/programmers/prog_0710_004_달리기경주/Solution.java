@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0710_004_;
+package com.algo.programmers.prog_0710_004_달리기경주;
 
 import java.util.Arrays;
 import java.util.HashMap;
