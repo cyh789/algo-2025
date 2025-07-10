@@ -54,7 +54,7 @@ public class Solution {
                 } else {
                     if (giftScore[i] > giftScore[j]) {
                         nextMonthGifts[i]++;
-                    } else {
+                    } else if (giftScore[i] < giftScore[j]) {
                         nextMonthGifts[j]++;
                     }
                 }
