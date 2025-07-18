@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0711_005_바탕화면정리;
+package com.algo.backup.programmers.prog_07.prog_0711_005_바탕화면정리;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0717_001_바탕화면정리;
+package com.algo.backup.programmers.prog_07.prog_0718_002_바탕화면정리;
 
 import java.util.Arrays;
 
@@ -14,6 +14,7 @@ public class Solution {
         for (String[] wallpaper : examples) {
             int[] answer = solution(wallpaper);
             System.out.println(Arrays.toString(answer));
+            System.out.println("=======");
         }
         //{0, 1, 3, 4}
         //{1, 3, 5, 8}
@@ -22,25 +23,30 @@ public class Solution {
     }
 
     public static int[] solution(String[] wallpaper) {
-        //sudo
-        //int lux, luy = Integer.MAX_VALUE;
-        //int rdx, rdy = Integer.MIN_VALUE;
-        //for i wallpaper.length
-        // wallpaper[i] => char[] wallpaperTemp
-        // for j wallpaperTemp.length
-        //  if '#' == wallpaperTemp[j]
-        //  lux = Math.min(lux, i)
-        //  luy = Math.min(luy, j)
-        //  rdx = Math.max(rdx, i + 1)
-        //  rdy = Math.max(rdy, j + 1)
-        //return new int[]{lux, luy, rdx, rdy}
-
-        int lux = Integer.MAX_VALUE, luy = Integer.MAX_VALUE;
-        int rdx = Integer.MIN_VALUE, rdy = Integer.MIN_VALUE;
+        //String[] wallpaper => String[][] wallpaperTable
+        int wallpaperH = wallpaper.length;
+        int wallpaperW = wallpaper[0].length();
+        String[][] wallpaperTable = new String[wallpaperH][wallpaperW];
         for (int i = 0; i < wallpaper.length; i++) {
             char[] wallpaperTemp = wallpaper[i].toCharArray();
             for (int j = 0; j < wallpaperTemp.length; j++) {
-                if ('#' == wallpaperTemp[j]) {
+                wallpaperTable[i][j] = String.valueOf(wallpaperTemp[j]);
+            }
+        }
+
+        int wallpaperTableH = wallpaperTable.length;
+        int wallpaperTableW = wallpaperTable[0].length;
+        //lux, luy = Integer.min, rdx, rdy = Integer.max
+        int lux = Integer.MAX_VALUE, luy = Integer.MAX_VALUE;
+        int rdx = Integer.MIN_VALUE, rdy = Integer.MIN_VALUE;
+
+        //for i wallpaperTableH => for j wallpaperTableW
+        //selected = wallpaperTable[i][j]  =>  if "#"==selected  =>  Math.min::lux, luy / Math.max::rdx, rdy
+        //점 S(lux, luy)에서 점 E(rdx, rdy)
+        for (int i = 0; i < wallpaperTableH; i++) {
+            for (int j = 0; j < wallpaperTableW; j++) {
+                String selected = wallpaperTable[i][j];
+                if ("#".equals(selected)) {
                     lux = Math.min(lux, i);
                     luy = Math.min(luy, j);
                     rdx = Math.max(rdx, i + 1);
@@ -48,6 +54,7 @@ public class Solution {
                 }
             }
         }
+
         return new int[]{lux, luy, rdx, rdy};
     }
 }

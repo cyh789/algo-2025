@@ -1,19 +1,28 @@
 package com.algo.programmers;
 
-import java.util.Arrays;
-
-//
+//덧칠하기
 public class Solution {
 
     public static void main(String[] args) {
-        String[][] examples = new String[4][];
-        examples[0] = new String[]{".#...", "..#..", "...#."};
-        examples[1] = new String[]{"..........", ".....#....", "......##..", "...##.....", "....#....."};
-        examples[2] = new String[]{".##...##.", "#..#.#..#", "#...#...#", ".#.....#.", "..#...#..", "...#.#...", "....#...."};
-        examples[3] = new String[]{"..", "#."};
-        for (String[] wallpaper : examples) {
-            int[] answer = solution(wallpaper);
-            System.out.println(Arrays.toString(answer));
+        int index = 0;
+        int[] n = new int[3];
+        n[index++] = 8;
+        n[index++] = 5;
+        n[index++] = 4;
+        index = 0;
+        int[] m = new int[3];
+        m[index++] = 4;
+        m[index++] = 4;
+        m[index++] = 1;
+        index = 0;
+        int[][] section = new int[3][];
+        section[index++] = new int[]{2, 3, 6}   ;
+        section[index++] = new int[]{1, 3}      ;
+        section[index++] = new int[]{1, 2, 3, 4};
+        for (int i = 0; i < n.length; i++) {
+            int answer = solution(n[i], m[i], section[i]);
+            System.out.println(answer);
+            System.out.println("==========");
         }
         //{0, 1, 3, 4}
         //{1, 3, 5, 8}
@@ -21,7 +30,8 @@ public class Solution {
         //{1, 0, 2, 1}
     }
 
-    public static int[] solution(String[] wallpaper) {
-        return new int[0];
+    public static int solution(int n, int m, int[] section) {
+        int answer = 0;
+        return answer;
     }
 }

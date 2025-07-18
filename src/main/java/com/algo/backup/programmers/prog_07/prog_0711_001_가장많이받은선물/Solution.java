@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0711_001_가장많이받은선물;
+package com.algo.backup.programmers.prog_07.prog_0711_001_가장많이받은선물;
 
 import java.util.HashMap;
 import java.util.Map;
