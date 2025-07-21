@@ -1,37 +1,36 @@
 package com.algo.programmers;
 
-//덧칠하기
+//카드뭉치
 public class Solution {
 
     public static void main(String[] args) {
         int index = 0;
-        int[] n = new int[3];
-        n[index++] = 8;
-        n[index++] = 5;
-        n[index++] = 4;
+        String[][] n = new String[2][];
+        n[index++] = new String[]{"i", "drink", "water"};
+        n[index++] = new String[]{"i", "water", "drink"};
         index = 0;
-        int[] m = new int[3];
-        m[index++] = 4;
-        m[index++] = 4;
-        m[index++] = 1;
+
+        String[][] m = new String[2][];
+        m[index++] = new String[]{"want", "to"};
+        m[index++] = new String[]{"want", "to"};
         index = 0;
-        int[][] section = new int[3][];
-        section[index++] = new int[]{2, 3, 6}   ;
-        section[index++] = new int[]{1, 3}      ;
-        section[index++] = new int[]{1, 2, 3, 4};
+
+        String[][] l = new String[2][];
+        l[index++] = new String[]{"i", "want", "to", "drink", "water"};
+        l[index++] = new String[]{"i", "want", "to", "drink", "water"};
+        index = 0;
+
         for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i], m[i], section[i]);
+            String answer = solution(n[i], m[i], l[i]);
             System.out.println(answer);
-            System.out.println("==========");
+            System.out.println("=============");
         }
-        //{0, 1, 3, 4}
-        //{1, 3, 5, 8}
-        //{0, 0, 7, 9}
-        //{1, 0, 2, 1}
+        //"Yes"
+        //"No"
     }
 
-    public static int solution(int n, int m, int[] section) {
-        int answer = 0;
+    public static String solution(String[] cards1, String[] cards2, String[] goal) {
+        String answer = "";
         return answer;
     }
 }
