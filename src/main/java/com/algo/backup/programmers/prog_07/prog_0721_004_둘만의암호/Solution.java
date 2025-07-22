@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0721_004_둘만의암호;
+package com.algo.backup.programmers.prog_07.prog_0721_004_둘만의암호;
 
 //둘만의암호
 public class Solution {

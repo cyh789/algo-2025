@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0721_005_개인정보수집유효기간;
+package com.algo.backup.programmers.prog_07.prog_0721_005_개인정보수집유효기간;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0721_002_대충만든자판;
+package com.algo.backup.programmers.prog_07.prog_0718_007_대충만든자판;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -30,41 +30,31 @@ public class Solution {
 
     public static int[] solution(String[] keymap, String[] targets) {
 
-        //mapping keymap
-        //for i keymap
-        //  String => char[] keymapTemp
-        //      for j keymapTemp
-        //          if map.contain(keymapTemp[i])  =>  continue
-        //          map.put(keymapTemp[i], i+1)
-        Map<Character, Integer> map = new HashMap<>();
+
+        //map keymap<char, Integer>  => Integer는 1부터 시작
+        Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < keymap.length; i++) {
             char[] keymapTemp = keymap[i].toCharArray();
             for (int j = 0; j < keymapTemp.length; j++) {
-                if (map.containsKey(keymapTemp[j])) {
-                    map.put(keymapTemp[j], Math.min(j + 1, map.get(keymapTemp[j])));
-                } else {
-                    map.put(keymapTemp[j], j + 1);
-                }
+                String selected = String.valueOf(keymapTemp[j]);
+                int value = map.getOrDefault(selected, j + 1);
+                map.put(selected, Math.min(value, j + 1));
             }
         }
 
-        //for i target
-        //  String => char[] targetTemp
-        //  for j targetTemp
-        //      !map.containsKey(targetTemp[i]  =>  count = -1  =>  break
-        //      count += map.get(targetTemp[i])
         int[] answer = new int[targets.length];
         for (int i = 0; i < targets.length; i++) {
-            int count = 0;
-            char[] targetTemp = targets[i].toCharArray();
-            for (int j = 0; j < targetTemp.length; j++) {
-                if (!map.containsKey(targetTemp[j])) {
-                    count = -1;
+            int sum = 0;
+            char[] targetsTemp = targets[i].toCharArray();
+            for (int j = 0; j < targetsTemp.length; j++) {
+                String selected = String.valueOf(targetsTemp[j]);
+                if (!map.containsKey(selected)) {
+                    sum = -1;
                     break;
                 }
-                count += map.get(targetTemp[j]);
+                sum += map.get(selected);
             }
-            answer[i] = count;
+            answer[i] = sum;
         }
 
         return answer;

@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0721_006_크기가작은부분문자열;
+package com.algo.backup.programmers.prog_07.prog_0721_006_크기가작은부분문자열;
 
 //크기가작은부분문자열
 public class Solution {
