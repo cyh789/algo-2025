@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0722_003_명예의전당_1;
+package com.algo.backup.programmers.prog_0722_003_명예의전당_1;
 
 import java.util.Arrays;
 

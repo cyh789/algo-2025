@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0722_001_가장가까운같은글자;
+package com.algo.backup.programmers.prog_0722_001_가장가까운같은글자;
 
 import java.util.Arrays;
 import java.util.HashMap;

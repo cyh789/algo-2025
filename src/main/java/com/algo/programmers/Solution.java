@@ -1,6 +1,5 @@
 package com.algo.programmers;
 
-//카드뭉치
 public class Solution {
 
     public static void main(String[] args) {
@@ -26,8 +25,8 @@ public class Solution {
             System.out.println(answer);
             System.out.println("=============");
         }
-        //"Yes"
-        //"No"
+        //
+        //
     }
 
     public static String solution(String[] cards1, String cards2, String[] goal) {

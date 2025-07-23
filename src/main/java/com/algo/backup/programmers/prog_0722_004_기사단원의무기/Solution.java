@@ -1,7 +1,4 @@
-package com.algo.programmers.prog_0722_004_기사단원의무기;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.algo.backup.programmers.prog_0722_004_기사단원의무기;
 
 //기사단원의무기
 public class Solution {
