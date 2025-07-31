@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0723_004_삼총사;
+package com.algo.backup.programmers.prog_07.prog_0723_004_삼총사;
 
 public class Solution {
 

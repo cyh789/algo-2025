@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0723_005_숫자짝꿍;
+package com.algo.backup.programmers.prog_07.prog_0723_005_숫자짝꿍;
 
 public class Solution {
 

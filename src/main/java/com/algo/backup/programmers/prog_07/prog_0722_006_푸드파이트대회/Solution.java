@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_0722_006_푸드파이트대회;
+package com.algo.backup.programmers.prog_07.prog_0722_006_푸드파이트대회;
 
 //카드뭉치
 public class Solution {

@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_0722_005_과일장수;
+package com.algo.backup.programmers.prog_07.prog_0722_005_과일장수;
 
 import java.util.Arrays;
 

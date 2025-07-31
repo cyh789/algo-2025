@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0723_003_콜라문제;
+package com.algo.backup.programmers.prog_07.prog_0723_003_콜라문제;
 
 //콜라문제
 public class Solution {

@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0723_002_옹알이_2;
+package com.algo.backup.programmers.prog_07.prog_0723_002_옹알이_2;
 
 import java.util.Arrays;
 

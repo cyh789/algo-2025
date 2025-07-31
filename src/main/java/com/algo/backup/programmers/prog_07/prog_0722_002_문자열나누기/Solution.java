@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_0722_002_문자열나누기;
+package com.algo.backup.programmers.prog_07.prog_0722_002_문자열나누기;
 
 import java.util.ArrayList;
 import java.util.List;
