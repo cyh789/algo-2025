@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0731_002_유연근무제;
+package com.algo.backup.programmers.prog_08.prog_0731_002_유연근무제;
 
 //유연근무제
 public class Solution {

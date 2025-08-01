@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0731_001_택배_상자_꺼내기;
+package com.algo.backup.programmers.prog_08.prog_0731_001_택배_상자_꺼내기;
 
 import java.util.ArrayList;
 import java.util.Arrays;

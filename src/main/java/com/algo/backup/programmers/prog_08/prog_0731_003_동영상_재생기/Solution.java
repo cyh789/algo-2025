@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0731_003_동영상_재생기;
+package com.algo.backup.programmers.prog_08.prog_0731_003_동영상_재생기;
 
 //동영상 재생기
 public class Solution {
