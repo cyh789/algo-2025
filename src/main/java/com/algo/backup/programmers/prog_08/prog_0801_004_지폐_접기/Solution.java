@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0801_004_지폐_접기;
+package com.algo.backup.programmers.prog_08.prog_0801_004_지폐_접기;
 
 import java.util.Arrays;
 
