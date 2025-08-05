@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0804_007_붕대_감기;
+package com.algo.backup.programmers.prog_08.prog_0804_007_붕대_감기;
 
 import java.util.ArrayList;
 import java.util.List;

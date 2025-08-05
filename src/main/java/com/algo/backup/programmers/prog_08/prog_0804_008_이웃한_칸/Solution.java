@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0804_008_이웃한_칸;
+package com.algo.backup.programmers.prog_08.prog_0804_008_이웃한_칸;
 
 //이웃한 칸
 public class Solution {
