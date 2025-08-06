@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0805_011_추억_점수;
+package com.algo.backup.programmers.prog_08.prog_0805_011_추억_점수;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0805_012_공원_산책;
+package com.algo.backup.programmers.prog_08.prog_0805_012_공원_산책;
 
 import java.util.Arrays;
 
