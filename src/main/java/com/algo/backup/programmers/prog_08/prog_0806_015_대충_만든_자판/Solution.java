@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0806_015_대충_만든_자판;
+package com.algo.backup.programmers.prog_08.prog_0806_015_대충_만든_자판;
 
 import java.util.Arrays;
 import java.util.HashMap;

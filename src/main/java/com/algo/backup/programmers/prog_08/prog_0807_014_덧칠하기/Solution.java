@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0806_014_덧칠하기;
+package com.algo.backup.programmers.prog_08.prog_0807_014_덧칠하기;
 
 //덧칠하기
 public class Solution {
@@ -36,12 +36,14 @@ public class Solution {
         //각 구역에 왼쪽부터 순서대로 1번부터 n번까지 번호
         //페인트를 다시 칠해야 할 구역들을 정했습니다.
 
-        int rollerEnd = 0;
+        int currentEnd = 0;
         int count = 0;
         for (int i = 0; i < section.length; i++) {
-            if (rollerEnd >= n) break;
-            if (rollerEnd < section[i]) {
-                rollerEnd = section[i] - 1 + m;
+            if (currentEnd - 1 > n) break;
+
+            int selected = section[i];  //1~n
+            if (currentEnd < selected) {
+                currentEnd = selected  - 1 + m;
                 count++;
             }
         }
