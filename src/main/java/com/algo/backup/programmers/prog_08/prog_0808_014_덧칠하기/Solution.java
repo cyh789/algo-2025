@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0808_014_덧칠하기;
+package com.algo.backup.programmers.prog_08.prog_0808_014_덧칠하기;
 
 //덧칠하기
 public class Solution {

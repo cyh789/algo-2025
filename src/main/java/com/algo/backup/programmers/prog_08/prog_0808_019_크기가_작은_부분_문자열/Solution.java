@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0808_019_크기가_작은_부분_문자열;
+package com.algo.backup.programmers.prog_08.prog_0808_019_크기가_작은_부분_문자열;
 
 import java.util.ArrayList;
 import java.util.List;

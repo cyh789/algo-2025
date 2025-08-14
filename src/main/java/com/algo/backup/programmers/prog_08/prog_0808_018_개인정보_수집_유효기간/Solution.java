@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0808_018_개인정보_수집_유효기간;
+package com.algo.backup.programmers.prog_08.prog_0808_018_개인정보_수집_유효기간;
 
 import java.util.*;
 
