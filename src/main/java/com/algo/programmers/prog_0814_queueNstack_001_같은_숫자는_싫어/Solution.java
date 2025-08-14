@@ -1,8 +1,7 @@
-package com.algo.backup.programmers.prog_08.prog_0813_queueNstack_001_같은_숫자는_싫어;
+package com.algo.programmers.prog_0814_queueNstack_001_같은_숫자는_싫어;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Stack;
 
 class Solution {
     public static void main(String[] args) {
@@ -23,18 +22,17 @@ class Solution {
     }
 
     public static int[] solution(int[] arr) {
-
-        List<Integer> answer = new ArrayList<>();
-        int current = arr[0];
-        answer.add(current);
-        for (int i = 0; i < arr.length - 1; i++) {
-            int next = arr[i+1];
-            if (current != next) {
-                current = next;
-                answer.add(current);
-            }
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < arr.length; i++) {
+            int selected = arr[i];
+            if (stack.isEmpty() || stack.peek() != selected) stack.push(selected);
         }
 
-        return answer.stream().mapToInt(i -> i).toArray();
+        int[] answer = new int[stack.size()];
+        for (int i = 0; i < stack.size(); i++) {
+            answer[i] = stack.get(i);
+        }
+
+        return answer;
     }
 }

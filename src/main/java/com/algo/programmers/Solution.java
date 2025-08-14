@@ -26,7 +26,6 @@ public class Solution {
             System.out.println("=============");
         }
         //
-        //
     }
 
     public static String solution(String[] cards1, String cards2, String[] goal) {
