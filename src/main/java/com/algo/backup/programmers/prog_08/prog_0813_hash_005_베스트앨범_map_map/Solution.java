@@ -44,15 +44,11 @@ class Solution {
         for (int i = 0; i < genres.length; i++) {
             String name = genres[i];
             int count = plays[i];
-            if (!musicMap.containsKey(name)) {
-                Map<Integer, Integer> music = new HashMap<>();
-                music.put(i, count);
-                musicMap.put(name, music);
-            } else {
-                Map<Integer, Integer> music = musicMap.get(name);
-                music.put(i, count);
-                musicMap.put(name, music);
-            }
+
+            Map<Integer, Integer> music = new HashMap<>();
+            if (musicMap.containsKey(name)) music = musicMap.get(name);
+            music.put(i, count);
+            musicMap.put(name, music);
         }
 
         List<Integer> answer = new ArrayList<>();
