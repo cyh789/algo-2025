@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0818_hash_004_의상_999999999;
+package com.algo.backup.programmers.prog_08.prog_0819_hash_004_의상_999999999;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,15 +52,16 @@ public class Solution {
         //모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
 
         Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < clothes.length; i++) {
-            map.put(clothes[i][1], map.getOrDefault(clothes[i][1], 1) + 1); //없는 경우를 생각해서, 1부터 시작
+        for (String[] name : clothes) {
+            map.put(name[1], map.getOrDefault(name[1], 1) + 1);   //없는 경우도 포함해서 0말고 1부터 시작
         }
 
         int sum = 1;
-        for (Integer value : map.values()) {
-            sum = value * sum;
+        for (Integer count : map.values()) {
+            sum = count * sum;
         }
-        sum = sum - 1;  //1개는 있어야 하므로, 전부 없는 경우는 제외
+
+        sum -= 1;   //전부 없는 경우 1은 제외
 
         return sum;
     }

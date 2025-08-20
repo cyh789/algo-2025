@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0818_hash_001_완주하지_못한_선수;
+package com.algo.backup.programmers.prog_08.prog_0819_hash_001_완주하지_못한_선수;
 
 import java.util.Arrays;
 
@@ -44,10 +44,11 @@ public class Solution {
         Arrays.sort(participant);
         Arrays.sort(completion);
 
-        for (int i = 0; i < completion.length; i++) {
+        int i;
+        for (i = 0; i < completion.length; i++) {
             if (!participant[i].equals(completion[i])) return participant[i];
         }
 
-        return participant[participant.length - 1];
+        return participant[i];
     }
 }
