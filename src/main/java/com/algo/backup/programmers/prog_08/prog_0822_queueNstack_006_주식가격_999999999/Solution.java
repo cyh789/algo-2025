@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0822_queueNstack_006_주식가격_999999999;
+package com.algo.backup.programmers.prog_08.prog_0822_queueNstack_006_주식가격_999999999;
 
 import java.util.Arrays;
 import java.util.LinkedList;

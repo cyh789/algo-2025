@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0822_hash_004_의상_999999999;
+package com.algo.backup.programmers.prog_08.prog_0825_hash_004_의상_999999999;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,13 +51,13 @@ public class Solution {
     //모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 '_' 로만 이루어져 있습니다.
     public static int solution(String[][] clothes) {
         Map<String, Integer> map = new HashMap<>();
-        for (String[] s : clothes) {
-            map.put(s[1], map.getOrDefault(s[1], 1) + 1);
+        for (int i = 0; i < clothes.length; i++) {
+            map.put(clothes[i][1], map.getOrDefault(clothes[i][1], 1) + 1);
         }
 
         int sum = 1;
-        for (int i : map.values()) {
-            sum *= i;
+        for (String key : map.keySet()) {
+            sum *= map.get(key);
         }
 
         return sum - 1;

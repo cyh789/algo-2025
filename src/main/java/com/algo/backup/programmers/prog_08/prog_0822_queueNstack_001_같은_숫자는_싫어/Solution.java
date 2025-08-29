@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0822_queueNstack_001_같은_숫자는_싫어;
+package com.algo.backup.programmers.prog_08.prog_0822_queueNstack_001_같은_숫자는_싫어;
 
 import java.util.ArrayList;
 import java.util.Arrays;

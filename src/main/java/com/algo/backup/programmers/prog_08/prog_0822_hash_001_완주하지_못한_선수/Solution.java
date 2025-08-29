@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0822_hash_001_완주하지_못한_선수;
+package com.algo.backup.programmers.prog_08.prog_0822_hash_001_완주하지_못한_선수;
 
 import java.util.Arrays;
 
