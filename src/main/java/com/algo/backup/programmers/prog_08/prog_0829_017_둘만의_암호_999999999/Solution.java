@@ -1,6 +1,4 @@
-package com.algo.backup.programmers.prog_08.prog_0825_017_둘만의_암호_999999999;
-
-import java.util.Arrays;
+package com.algo.backup.programmers.prog_08.prog_0829_017_둘만의_암호_999999999;
 
 //둘만의암호
 public class Solution {
@@ -36,17 +34,16 @@ public class Solution {
     // 따라서 'b', 'd'를 제외하고 'a'에서 5만큼 뒤에 있는 알파벳은 [c, e, f, g, h] 순서에 의해 'h'가 됩니다.
     // 나머지 "ukks" 또한 위 규칙대로 바꾸면 "appy"가 되며 결과는 "happy"가 됩니다.
     public static String solution(String s, String skip, int index) {
-
         char[] sTemp = s.toCharArray();
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char selected = sTemp[i];
 
-            int sTempIdx = 0;
-            while (index > sTempIdx) {
+            int count = 0;
+            while (index > count) {
                 selected++;
                 if (selected > 'z') selected = 'a';
-                if (!skip.contains(String.valueOf(selected))) sTempIdx++;
+                if (!skip.contains(String.valueOf(selected))) count++;
             }
             answer.append(selected);
         }
