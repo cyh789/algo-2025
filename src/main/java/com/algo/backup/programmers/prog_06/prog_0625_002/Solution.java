@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 //[PCCE 기출문제] 9번 / 지폐 접기
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(int[] args) {
         int[] wallet = {30, 15};
         int[] bill = {26, 17};
         int answer = solution(wallet, bill);
