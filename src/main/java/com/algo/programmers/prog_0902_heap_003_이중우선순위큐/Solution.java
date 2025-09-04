@@ -1,8 +1,8 @@
-package com.algo.programmers.prog_0901_heap_003_이중우선순위큐;
+package com.algo.programmers.prog_0902_heap_003_이중우선순위큐;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class Solution {
 
@@ -39,15 +39,16 @@ public class Solution {
     //원소는 “명령어 데이터” 형식으로 주어집니다.- 최댓값/최솟값을 삭제하는 연산에서 최댓값/최솟값이 둘 이상인 경우, 하나만 삭제합니다.
     //빈 큐에 데이터를 삭제하라는 연산이 주어질 경우, 해당 연산은 무시합니다.
     public static int[] solution(String[] operations) {
-        Queue<Integer> maxQueue = new PriorityQueue<>((i1, i2) -> i2 - i1);
-        Queue<Integer> minQueue = new PriorityQueue<>();
 
-        for(int i = 0; i < operations.length; i++) {
-            String[] selected = operations[i].split(" ");
-            if ("I".equals(selected[0])) {
-                maxQueue.offer(Integer.parseInt(selected[1]));
-                minQueue.offer(Integer.parseInt(selected[1]));
-            } else if ("D".equals(selected[0]) && "1".equals(selected[1])) {
+        PriorityQueue<Integer> maxQueue = new PriorityQueue<>((o1, o2) -> o2 - o1);
+        PriorityQueue<Integer> minQueue = new PriorityQueue<>();
+
+        for (String s : operations) {
+            if (s.startsWith("I ")) {
+                int selected = Integer.parseInt(s.replace("I ", ""));
+                maxQueue.offer(selected);
+                minQueue.offer(selected);
+            } else if ("D 1".equals(s)) {
                 minQueue.remove(maxQueue.poll());
             } else {
                 maxQueue.remove(minQueue.poll());
