@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0905_BruteForce_001_최소직사각형;
+package com.algo.backup.programmers.prog_09.prog_0905_BruteForce_001_최소직사각형;
 
 import java.util.Arrays;
 
