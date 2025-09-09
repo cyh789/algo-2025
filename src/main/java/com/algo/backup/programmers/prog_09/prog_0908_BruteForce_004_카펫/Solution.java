@@ -51,12 +51,20 @@ public class Solution {
     //8	1	[3, 3]
     //24	24	[8, 6]
     public static int[] solution(int brown, int yellow) {
-        for (int i = 0; i <= yellow; i++) {
-            if (yellow % i == 0 && (yellow / i + i) * 2 + 4 == brown) {
-                return new int[]{yellow / i + 2, i + 2};
+        int[] answer = new int[2];
+        int xy = brown + yellow;
+        for (int y = 3; y <= xy; y++) {
+            int x = xy / y;
+
+            if (x < 3) continue;
+            if (x < y) continue;
+
+            if ((x * 2) + (y * 2) - 4 == brown && (x - 2) * (y - 2) == yellow) {
+                answer = new int[]{x, y};
+                break;
             }
         }
 
-        return null;
+        return answer;
     }
 }
