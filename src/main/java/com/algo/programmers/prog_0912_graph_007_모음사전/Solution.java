@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0909_BruteForce_007_모음사전;
+package com.algo.programmers.prog_0912_graph_007_모음사전;
 
 public class Solution {
 

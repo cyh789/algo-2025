@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_09.prog_0908_BruteForce_003_소수_찾기;
+package com.algo.backup.programmers.prog_09.prog_0908_graph_003_소수_찾기;
 
 import java.util.HashSet;
 import java.util.Set;

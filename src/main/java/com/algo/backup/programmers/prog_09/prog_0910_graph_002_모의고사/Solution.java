@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_09.prog_0908_BruteForce_002_모의고사;
+package com.algo.backup.programmers.prog_09.prog_0910_graph_002_모의고사;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,59 +52,23 @@ public class Solution {
     //입출력 예 #2
     //모든 사람이 2문제씩을 맞췄습니다.
     public static int[] solution(int[] answers) {
+        int[] supoA = new int[]{1, 2, 3, 4, 5};
+        int[] supoB = new int[]{2, 1, 2, 3, 2, 4, 2, 5};
+        int[] supoC = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
-        int[] arr = new int[3];
+        int[] cntArr = new int[3];
+        for (int i = 0; i < answers.length; i++) {
+            if (answers[i] == supoA[i % supoA.length]) cntArr[0]++;
+            if (answers[i] == supoB[i % supoB.length]) cntArr[1]++;
+            if (answers[i] == supoC[i % supoC.length]) cntArr[2]++;
+        }
+
+        int max = Math.max(cntArr[0], Math.max(cntArr[1], cntArr[2]));
+
         List<Integer> answer = new ArrayList<>();
-
-        int[] condition_1 = new int[]{1, 2, 3, 4, 5};
-        int count_1 = 0;
-        int idx_1 = 0;
-        for (int i = 0; i < answers.length; i++) {
-            if (idx_1 >= condition_1.length) idx_1 = 0;
-            if (answers[i] == condition_1[idx_1]) {
-                count_1++;
-            }
-            idx_1++;
+        for (int i = 0; i < cntArr.length; i++) {
+            if (cntArr[i] == max) answer.add(i + 1);
         }
-        arr[0] = count_1;
-
-
-        int condition_2A = 2;
-        int[] condition_2B = new int[]{1, 3, 4, 5};
-        int count_2 = 0;
-        int idx_2 = 0;
-        for (int i = 0; i < answers.length; i++) {
-            if (idx_2 >= condition_2B.length) idx_2 = 0;
-            //짝수
-            if ((i+1) % 2 == 0) {
-                if (answers[i] == condition_2B[idx_2]) {
-                    count_2++;
-                }
-                idx_2++;
-            } else {
-                if (answers[i] == condition_2A) {
-                    count_2++;
-                }
-            }
-        }
-        arr[1] = count_2;
-
-        int[] condition_3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
-        int count_3 = 0;
-        int idx_3 = 0;
-        for (int i = 0; i < answers.length; i++) {
-            if (idx_3 >= condition_3.length) idx_3 = 0;
-            if (answers[i] == condition_3[idx_3]) {
-                count_3++;
-            }
-            idx_3++;
-        }
-        arr[2] = count_3;
-
-        int max = Math.max(arr[0], Math.max(arr[1], arr[2]));
-        if (max == arr[0]) answer.add(1);
-        if (max == arr[1]) answer.add(2);
-        if (max == arr[2]) answer.add(3);
 
         return answer.stream().mapToInt(Integer::intValue).toArray();
     }

@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_09.prog_0908_BruteForce_001_최소직사각형;
+package com.algo.backup.programmers.prog_09.prog_0910_graph_001_최소직사각형;
 
 import java.util.Arrays;
 
@@ -75,6 +75,6 @@ public class Solution {
             h = Math.max(h, sizes[i][1]);
         }
 
-        return w*h;
+        return w * h;
     }
 }

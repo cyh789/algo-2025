@@ -1,6 +1,4 @@
-package com.algo.programmers.prog_0909_BruteForce_006_전력망을_둘로_나누기;
-
-import java.util.*;
+package com.algo.programmers.prog_0912_graph_006_전력망을_둘로_나누기;
 
 public class Solution {
 
@@ -67,54 +65,7 @@ public class Solution {
     //입출력 예 #3
     //3번과 7번을 연결하는 전선을 끊으면
     // 두 전력망이 각각 4개와 3개의 송전탑을 가지게 되며, 이 방법이 최선입니다.
-
     public static int solution(int n, int[][] wires) {
-        int answer = n;
-        // 인접 리스트로 그래프 초기화
-        List<List<Integer>> graph = new ArrayList<>();
-
-        // 전선 연결 정보 저장
-        for (int[] wire : wires) {
-            graph.get(wire[0]).add(wire[1]);
-            graph.get(wire[1]).add(wire[0]);
-        }
-
-        int minDiff = Integer.MAX_VALUE;
-
-
-        // 전선 하나씩 끊어보며 탐색
-        for (int[] wire : wires) {
-            // 전선 제거
-            graph.get(wire[0]).remove(Integer.valueOf(wire[1]));
-            graph.get(wire[1]).remove(Integer.valueOf(wire[0]));
-
-            // DFS로 한쪽 전력망의 송전탑 개수 계산
-            boolean[] visited = new boolean[n + 1];
-            int count = dfs(graph, wire[0], visited);
-
-            // 두 전력망의 송전탑 개수 차이 계산
-            int diff = Math.abs(n - count - count);
-            minDiff = Math.min(minDiff, diff);
-
-            // 전선 복구
-            graph.get(wire[0]).add(wire[1]);
-            graph.get(wire[1]).add(wire[0]);
-        }
-
-        return minDiff;
-    }
-
-    // DFS 탐색으로 연결된 송전탑 개수 세기
-    private static int dfs(List<List<Integer>> graph, int node, boolean[] visited) {
-        visited[node] = true;
-        int count = 1;
-
-        for (int next : graph.get(node)) {
-            if (!visited[next]) {
-                count += dfs(graph, next, visited);
-            }
-        }
-
-        return count;
+        return 0;
     }
 }

@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_09.prog_0905_BruteForce_002_모의고사;
+package com.algo.backup.programmers.prog_09.prog_0908_graph_002_모의고사;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,54 +53,59 @@ public class Solution {
     //모든 사람이 2문제씩을 맞췄습니다.
     public static int[] solution(int[] answers) {
 
-        int countA = 0;
-        int[] conditonA = new int[]{1,2,3,4,5};
-        int idx = 0;
-        for (int i = 0; i < answers.length; i++) {
-            if (idx >= conditonA.length) idx = 0;
+        int[] arr = new int[3];
+        List<Integer> answer = new ArrayList<>();
 
-            if (conditonA[idx] == answers[i]) countA++;
-            idx++;
+        int[] condition_1 = new int[]{1, 2, 3, 4, 5};
+        int count_1 = 0;
+        int idx_1 = 0;
+        for (int i = 0; i < answers.length; i++) {
+            if (idx_1 >= condition_1.length) idx_1 = 0;
+            if (answers[i] == condition_1[idx_1]) {
+                count_1++;
+            }
+            idx_1++;
         }
-        System.out.println("countA=" + countA);
+        arr[0] = count_1;
 
-        int countB = 0;
-        int conditonB1 = 2;
-        int[] conditonB2 = new int[]{1,3,4,5};
-        idx = 0;
+
+        int condition_2A = 2;
+        int[] condition_2B = new int[]{1, 3, 4, 5};
+        int count_2 = 0;
+        int idx_2 = 0;
         for (int i = 0; i < answers.length; i++) {
-            if (idx >= conditonB2.length) idx = 0;
-
-            //짝수면
-            if ((i + 1) % 2 == 0) {
-                if (conditonB2[idx] == answers[i]) countB++;
-                idx++;
+            if (idx_2 >= condition_2B.length) idx_2 = 0;
+            //짝수
+            if ((i+1) % 2 == 0) {
+                if (answers[i] == condition_2B[idx_2]) {
+                    count_2++;
+                }
+                idx_2++;
             } else {
-                //홀수면
-                if (conditonB1 == answers[i]) countB++;
+                if (answers[i] == condition_2A) {
+                    count_2++;
+                }
             }
         }
-        System.out.println("countB=" + countB);
+        arr[1] = count_2;
 
-        int countC = 0;
-        int[] conditonC = new int[]{3,3,1,1,2,2,4,4,5,5};
-        idx = 0;
+        int[] condition_3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+        int count_3 = 0;
+        int idx_3 = 0;
         for (int i = 0; i < answers.length; i++) {
-            if (idx >= conditonC.length) idx = 0;
-
-            if (conditonC[idx] == answers[i]) countC++;
-            idx++;
+            if (idx_3 >= condition_3.length) idx_3 = 0;
+            if (answers[i] == condition_3[idx_3]) {
+                count_3++;
+            }
+            idx_3++;
         }
-        System.out.println("countC=" + countC);
+        arr[2] = count_3;
 
-        int max = Math.max(countA, countB);
-        max = Math.max(max, countC);
+        int max = Math.max(arr[0], Math.max(arr[1], arr[2]));
+        if (max == arr[0]) answer.add(1);
+        if (max == arr[1]) answer.add(2);
+        if (max == arr[2]) answer.add(3);
 
-        List<Integer> answer = new ArrayList<>();
-        if (max == countA) answer.add(1);
-        if (max == countB) answer.add(2);
-        if (max == countC) answer.add(3);
-
-        return answer.stream().mapToInt(i -> i).sorted().toArray();
+        return answer.stream().mapToInt(Integer::intValue).toArray();
     }
 }

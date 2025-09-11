@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0909_BruteForce_005_피로도;
+package com.algo.backup.programmers.prog_09.prog_0910_graph_005_피로도;
 
 public class Solution {
 
@@ -62,32 +62,33 @@ public class Solution {
     //남은 피로도는 60이며, 세 번째 던전을 돌기위해 필요한 "최소 필요 피로도"는 30이므로, 세 번째 던전을 탐험할 수 있습니다. 세 번째 던전의 "소모 피로도"는 10이므로, 던전을 탐험한 후 남은 피로도는 50입니다.
     //남은 피로도는 50이며, 두 번째 던전을 돌기위해 필요한 "최소 필요 피로도"는 50이므로, 두 번째 던전을 탐험할 수 있습니다. 두 번째 던전의 "소모 피로도"는 40이므로, 던전을 탐험한 후 남은 피로도는 10입니다.
     //따라서 이 경우 세 던전을 모두 탐험할 수 있으며, 유저가 탐험할 수 있는 최대 던전 수는 3입니다.
-
-    static boolean[] visited;
-    static int answer;
+    static int count;
     public static int solution(int k, int[][] dungeons) {
-        visited = new boolean[dungeons.length];
+        boolean[] visited = new boolean[dungeons.length];
+        int depth = 0;
         int curr = k;
-        dfs(dungeons, curr, 0);
+        count = 0;
+        dfs(dungeons, visited, curr, depth);
 
-        return answer;
+        return count;
     }
 
-    private static void dfs(int[][] dungeons, int curr, int depth) {
+    private static void dfs(int[][] dungeons, boolean[] visited, int curr, int depth) {
         if (depth > dungeons.length) return;
 
         for (int i = 0; i < dungeons.length; i++) {
-            int conditions = dungeons[i][0];
-            int used = dungeons[i][1];
+            int start = dungeons[i][0];
+            int end = dungeons[i][1];
+            int next = curr - end;
 
-            if (!visited[i]) {
-                if (curr < conditions) continue;
-                visited[i] = true;
-                dfs(dungeons, curr - used, depth + 1);
-                visited[i] = false;
-            }
+            if (visited[i]) continue;
+            if (curr < start) continue;
+
+            visited[i] = true;
+            dfs(dungeons, visited, next, depth + 1);
+            visited[i] = false;
         }
 
-        answer = Math.max(answer, depth);
+        count = Math.max(count, depth);
     }
 }

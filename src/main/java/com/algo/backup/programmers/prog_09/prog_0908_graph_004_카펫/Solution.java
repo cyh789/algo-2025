@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_09.prog_0908_BruteForce_004_카펫;
+package com.algo.backup.programmers.prog_09.prog_0908_graph_004_카펫;
 
 import java.util.Arrays;
 
