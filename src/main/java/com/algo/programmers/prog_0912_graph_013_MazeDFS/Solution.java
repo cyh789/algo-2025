@@ -1,6 +1,4 @@
-package com.algo.programmers.prog_0911_graph_003_MazeDFS;
-
-import java.util.Arrays;
+package com.algo.programmers.prog_0912_graph_013_MazeDFS;
 
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
@@ -10,7 +8,7 @@ public class Solution {
             {1, 0, 0, 0, 1},
             {1, 0, 1, 0, 1},
             {1, 0, 1, 0, 1},
-            {1, 1, 1, 0, 1}
+            {1, 1, 1, 1, 1}
     };
     static boolean[][] visited = new boolean[5][5];
     static int[] dx = {-1, 1, 0, 0}; // 상하좌우
@@ -22,28 +20,30 @@ public class Solution {
     public static void main(String[] args) {
         dfs(1, 1); // 시작점 (1,1)
     }
+    //출구 도착! count=4
 
     static int count = 0;
     private static void dfs(int x, int y) {
-        if (x == 3 && y == 3) {
+        // 출구 조건: (3,3)에 도달하면 종료
+        if (x >= 3 && y >= 3) {
             System.out.println("출구 도착! count=" + count);
             return;
         }
 
+        // 처음 시작을 고정
         visited[x][y] = true;
 
-        for (int i = 0; i <= 3; i++) {
-            int nx = x + dx[i];
-            int ny = y + dy[i];
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
 
-            if (visited[nx][ny]) continue;
-            if (maze[nx][ny] == 1) continue;
+            if (visited[nextX][nextY]) continue;
+            if (maze[nextX][nextY] == 1) continue;
 
             count++;
-            dfs(nx, ny);
+            dfs(nextX, nextY);
             count--;
         }
-
     }
 
 }

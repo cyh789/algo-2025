@@ -72,6 +72,9 @@ public class Solution {
         int answer = n;
         // 인접 리스트로 그래프 초기화
         List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i <= n; i++) {
+            graph.add(new ArrayList<>());
+        }
 
         // 전선 연결 정보 저장
         for (int[] wire : wires) {

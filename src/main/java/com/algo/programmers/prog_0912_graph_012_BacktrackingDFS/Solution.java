@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0911_graph_002_BacktrackingDFS;
+package com.algo.programmers.prog_0912_graph_012_BacktrackingDFS;
 
 import java.util.Arrays;
 
@@ -15,22 +15,27 @@ public class Solution {
     //dfs(depth + 1)로 깊이 있게 탐색하다가,
     //조건을 만족하면 출력하고 되돌아와 다른 경우를 탐색합니다.
     public static void main(String[] args) {
-        dfs(0);
+        int depth = 0;
+        dfs(depth);
+
     }
 
     private static void dfs(int depth) {
-        if (depth == M) {
+        if (depth >= M) {
             System.out.println(Arrays.toString(result));
             return;
         }
 
         for (int i = 1; i <= N; i++) {
             if (visited[i]) continue;
+
             visited[i] = true;
             result[depth] = i;
             dfs(depth + 1);
             visited[i] = false;
         }
+
+        //System.out.println(Arrays.toString(result));
     }
 
 }
