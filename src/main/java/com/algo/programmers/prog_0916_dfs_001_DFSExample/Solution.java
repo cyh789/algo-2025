@@ -1,11 +1,12 @@
-package com.algo.programmers.prog_0911_graph_011_DFSExample;
+package com.algo.programmers.prog_0916_dfs_001_DFSExample;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 
     public static void main(String[] args) {
-        int nodeCount = 5;  //노드 수
+        int nodeCount = 8;  //노드 수
         boolean[] visited = new boolean[nodeCount];
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 
@@ -15,10 +16,10 @@ public class Solution {
         }
 
         // 간선 추가 (무방향 그래프)
-        graph.get(0).add(1);
-        graph.get(0).add(2);
-        graph.get(1).add(3);
-        graph.get(1).add(4);
+        graph.get(0).addAll(List.of(1, 2));
+        graph.get(1).addAll(List.of(3, 4));
+        graph.get(4).addAll(List.of(5, 6));
+        graph.get(2).add(7);
 
         // DFS 시작
         System.out.println("DFS 탐색 결과:");
@@ -26,19 +27,19 @@ public class Solution {
         dfs(graph, depth, visited);
     }
     //DFS 탐색 결과:
-    //0 1 3 4 2
+    //0 1 3 4 5 6 2 7
 
     private static void dfs(ArrayList<ArrayList<Integer>> graph, int depth, boolean[] visited) {
-        if (depth > graph.size()) return;
+        if (visited[depth]) return;
 
-        visited[depth] = true;
         System.out.print(depth + " ");
+        visited[depth] = true;
 
-        ArrayList<Integer> node = graph.get(depth);
-
-        for (int curr : node) {
-            if (visited[curr]) continue;
-            dfs(graph, curr, visited);
+        for (Integer next : graph.get(depth)) {
+            if (visited[next]) continue;
+            dfs(graph, next, visited);
         }
     }
+
+     
 }

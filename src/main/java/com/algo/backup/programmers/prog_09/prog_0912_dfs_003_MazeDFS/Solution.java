@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0912_graph_013_MazeDFS;
+package com.algo.backup.programmers.prog_09.prog_0912_dfs_003_MazeDFS;
 
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
@@ -25,7 +25,7 @@ public class Solution {
     static int count = 0;
     private static void dfs(int x, int y) {
         // 출구 조건: (3,3)에 도달하면 종료
-        if (x >= 3 && y >= 3) {
+        if (x == 3 && y == 3) {
             System.out.println("출구 도착! count=" + count);
             return;
         }

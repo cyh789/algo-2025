@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0912_graph_011_DFSExample;
+package com.algo.backup.programmers.prog_09.prog_0912_dfs_001_DFSExample;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Solution {
     //0 1 3 4 5 6 2 7
 
     private static void dfs(ArrayList<ArrayList<Integer>> graph, int depth, boolean[] visited) {
-        if (depth >= graph.size()) return;
+        if (visited[depth]) return;
 
         visited[depth] = true;
         System.out.print(depth + " ");

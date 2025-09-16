@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0911_graph_013_MazeDFS;
+package com.algo.backup.programmers.prog_09.prog_0911_dfs_003_MazeDFS;
 
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
