@@ -1,6 +1,4 @@
-package com.algo.programmers.prog_0918_dfs_003_MazeDFS;
-
-import java.util.Arrays;
+package com.algo.programmers.prog_0919_dfs_003_MazeDFS;
 
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
@@ -23,42 +21,43 @@ public class Solution {
         int[] start = {1, 1}; // 시작점 (1,1)
         int[] end = {3, 3}; // 종료지점 (1,1)
         int[] curr = start;
-        dfs(maze, 1, 1, dx, dy, visited);
+        dfs(maze, curr, end, dx, dy, visited);
+        System.out.println("출발점으로 복귀! totalMove=" + totalMove);
     }
     static int totalMove = 0;
     static int move = 0;
 
-    private static void dfs(int[][] maze, int x, int y, int[] dx, int[] dy, boolean[][] visited) {
-        visited[x][y] = true;
+    private static void dfs(int[][] maze, int[] curr, int[] end, int[] dx, int[] dy, boolean[][] visited) {
         totalMove++;
-        System.out.println("이동: (" + y + ", " + x + ")");
+        visited[curr[0]][curr[1]] = true;
+        System.out.println("이동: (" + curr[1] + ", " + curr[0] + ")");
 
-        if (x == 3 && y == 3) {
-            System.out.println("출구 도착!");
-            System.out.println("totalMove=" + totalMove + " / move=" + move);
+        if (curr[0] == end[0] && curr[1] == end[1]) {
+            totalMove--;
+            visited[curr[0]][curr[1]] = false;
 
-            //여기서는 필요없긴한데, 백트래킹 할 경우에는 중복 방지를 위해 필수
-            visited[x][y] = false;
+            System.out.println("출구 도착! totalMove=" + totalMove + " / move=" + move);
             return;
         }
 
         for (int i = 0; i < dx.length; i++) {
-            int nextX = x + dx[i];
-            int nextY = y + dy[i];
+            int nextX = curr[0] + dx[i];
+            int nextY = curr[1] + dy[i];
 
-            if (nextX < 0 || nextX >= maze.length) continue;
-            if (nextY < 0 || nextY >= maze[0].length) continue;
+            if (nextX < 0 || nextX > maze.length) continue;
+            if (nextY < 0 || nextY > maze[0].length) continue;
 
             if (visited[nextX][nextY]) continue;
             if (maze[nextX][nextY] == 1) continue;
 
             move++;
-            dfs(maze, nextX, nextY, dx, dy, visited);
+            dfs(maze, new int[]{nextX, nextY}, end, dx, dy, visited);
             move--;
         }
 
         // 백트래킹 (선택적으로 표시)
-        System.out.println("되돌아감: (" + y + ", " + x + ")");
+        totalMove++;
+        System.out.println("되돌아감: (" + curr[1] + ", " + curr[0] + ")");
     }
     //이동: (1, 1)
     //이동: (1, 2)
