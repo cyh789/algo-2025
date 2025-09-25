@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0922_hash_001_완주하지_못한_선수;
+package com.algo.backup.programmers.prog_09.prog_0924_hash_001_완주하지_못한_선수;
 
 import java.util.Arrays;
 
@@ -40,11 +40,14 @@ public class Solution {
     //참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
     //참가자 중에는 동명이인이 있을 수 있습니다.
     public static String solution(String[] participant, String[] completion) {
-        Arrays.sort(participant);   //3
-        Arrays.sort(completion);    //2
+        //participant : n
+        //completion : n - 1
+        Arrays.sort(participant);
+        Arrays.sort(completion);
         for (int i = 0; i < completion.length; i++) {
             if (!participant[i].equals(completion[i])) return participant[i];
         }
+
         return participant[participant.length - 1];
     }
 }

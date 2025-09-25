@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0923_hash_005_베스트앨범_999999999;
+package com.algo.backup.programmers.prog_09.prog_0924_hash_005_베스트앨범_999999999;
 
 import java.util.*;
 
@@ -42,36 +42,41 @@ class Solution {
     //장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
     //모든 장르는 재생된 횟수가 다릅니다.
     public static int[] solution(String[] genres, int[] plays) {
-        //속한 노래가 많이 재생된 장르를 먼저 수록합니다.
-        //장르 내에서 많이 재생된 노래를 먼저 수록합니다.
-        //장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
+        Map<String, Integer> genreTotalCountMap = new HashMap<>(); //string genreName, int totalCount
+        //Map<Integer, Integer> songCountMap = new HashMap<>(); //string songName, int count
+        Map<String, Map<Integer, Integer>> genreSongCountMap = new HashMap<>(); //string genreName, entry songCountMap
 
-        Map<String, Integer> genreMap = new HashMap<>();
-        Map<String, Map<Integer, Integer>> songMap = new HashMap<>();
+        // cal totalCount
         for (int i = 0; i < genres.length; i++) {
-            String name = genres[i];
+            String genreName = genres[i];
             int count = plays[i];
-            genreMap.put(name, genreMap.getOrDefault(name, 0) + count);
-
-            Map<Integer, Integer> song = new HashMap<>();
-            if (songMap.containsKey(name)) song = songMap.get(name);
-            song.put(i, count);
-            songMap.put(name, song);
+            genreTotalCountMap.put(genreName, genreTotalCountMap.getOrDefault(genreName, 0) + count);
         }
 
-        ArrayList<Map.Entry<String, Integer>> genreList = new ArrayList(genreMap.entrySet());
-        genreList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+        List<String> genreList = new ArrayList(genreTotalCountMap.keySet());
+        genreList.sort((o1, o2) -> genreTotalCountMap.get(o2) - genreTotalCountMap.get(o1));
+
+        // cal count
+        for (int i = 0; i < genres.length; i++) {
+            String genreName =  genres[i];
+            int count = plays[i];
+
+            Map<Integer, Integer> songCountMap = new HashMap<>();
+            if (genreSongCountMap.containsKey(genreName)) {
+                songCountMap = genreSongCountMap.get(genreName);
+            }
+            songCountMap.put(i, count);
+            genreSongCountMap.put(genreName, songCountMap);
+        }
 
         List<Integer> answer = new ArrayList<>();
-        for (Map.Entry<String, Integer> map : genreList) {
-            String name = map.getKey();
+        for (String name : genreList) {
+            Map<Integer, Integer> songCountMap = genreSongCountMap.get(name);
+            List<Integer> songList = new ArrayList(songCountMap.keySet());
+            songList.sort((o1, o2) -> songCountMap.get(o2) - songCountMap.get(o1));
 
-            Map<Integer, Integer> musicMap = songMap.get(name);
-            ArrayList<Map.Entry<Integer, Integer>> musicList = new ArrayList(musicMap.entrySet());
-            musicList.sort((o1, o2) -> o2.getValue() - o1.getValue());
-
-            if (!musicList.isEmpty()) answer.add(musicList.get(0).getKey());
-            if (musicList.size() > 1) answer.add(musicList.get(1).getKey());
+            answer.add(songList.get(0));
+            if (songList.size() > 1) answer.add(songList.get(1));
         }
 
         return answer.stream().mapToInt(Integer::intValue).toArray();

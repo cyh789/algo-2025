@@ -1,0 +1,79 @@
+package com.algo.backup.programmers.prog_09.prog_0923_hash_005_베스트앨범_999999999;
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        int arrIndex = 1;
+        int index = 0;
+        String[][] n = new String[arrIndex][];
+        n[index++] = new String[]{"classic", "pop", "classic", "classic", "pop"}	;
+        index = 0;
+
+        int[][] m = new int[arrIndex][];
+        m[index++] = new int[]{500, 600, 150, 800, 2500}	;
+        index = 0;
+
+        for (int i = 0; i < n.length; i++) {
+            int[] answer = solution(n[i], m[i]);
+            System.out.println(Arrays.toString(answer));
+            System.out.println("=============");
+        }
+        //4, 1, 3, 0
+    }
+
+    //스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다.
+    // 노래는 고유 번호로 구분하며,
+    // 노래를 수록하는 기준은 다음과 같습니다.
+    //
+    //속한 노래가 많이 재생된 장르를 먼저 수록합니다.
+    //  ㄴ장르 내에서 많이 재생된 노래를 먼저 수록합니다.
+    //  ㄴ장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
+
+    //노래의 장르를 나타내는 문자열 배열 genres와
+    // 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때,
+    // 베스트 앨범에 들어갈 노래의 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.
+    //
+    //제한사항
+    //genres[i]는 고유번호가 i인 노래의 장르입니다.
+    //plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.
+    //genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.
+    //장르 종류는 100개 미만입니다.
+    //장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.
+    //모든 장르는 재생된 횟수가 다릅니다.
+    public static int[] solution(String[] genres, int[] plays) {
+        //속한 노래가 많이 재생된 장르를 먼저 수록합니다.
+        //장르 내에서 많이 재생된 노래를 먼저 수록합니다.
+        //장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.
+
+        Map<String, Integer> genreMap = new HashMap<>();
+        Map<String, Map<Integer, Integer>> songMap = new HashMap<>();
+        for (int i = 0; i < genres.length; i++) {
+            String name = genres[i];
+            int count = plays[i];
+            genreMap.put(name, genreMap.getOrDefault(name, 0) + count);
+
+            Map<Integer, Integer> song = new HashMap<>();
+            if (songMap.containsKey(name)) song = songMap.get(name);
+            song.put(i, count);
+            songMap.put(name, song);
+        }
+
+        ArrayList<Map.Entry<String, Integer>> genreList = new ArrayList(genreMap.entrySet());
+        genreList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
+        List<Integer> answer = new ArrayList<>();
+        for (Map.Entry<String, Integer> map : genreList) {
+            String name = map.getKey();
+
+            Map<Integer, Integer> musicMap = songMap.get(name);
+            ArrayList<Map.Entry<Integer, Integer>> musicList = new ArrayList(musicMap.entrySet());
+            musicList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
+            if (!musicList.isEmpty()) answer.add(musicList.get(0).getKey());
+            if (musicList.size() > 1) answer.add(musicList.get(1).getKey());
+        }
+
+        return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
