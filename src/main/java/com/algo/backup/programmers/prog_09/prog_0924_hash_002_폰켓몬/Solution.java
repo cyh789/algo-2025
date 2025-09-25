@@ -64,6 +64,7 @@ public class Solution {
         int size = set.size();
 
         if (half < size) return half;
+
         return size;
     }
 }

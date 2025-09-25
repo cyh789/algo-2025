@@ -50,6 +50,7 @@ class Solution {
         for (int i = 0; i < genres.length; i++) {
             String genreName = genres[i];
             int count = plays[i];
+
             genreTotalCountMap.put(genreName, genreTotalCountMap.getOrDefault(genreName, 0) + count);
         }
 

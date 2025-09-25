@@ -53,6 +53,7 @@ public class Solution {
         Map<String, Integer> map = new HashMap<>(); //string part, int count
         for (String[] s : clothes) {
             String part = s[1];
+
             map.put(part, map.getOrDefault(part, 1) + 1);
         }
 

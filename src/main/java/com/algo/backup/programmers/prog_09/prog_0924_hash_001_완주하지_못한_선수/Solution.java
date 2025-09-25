@@ -42,6 +42,7 @@ public class Solution {
     public static String solution(String[] participant, String[] completion) {
         //participant : n
         //completion : n - 1
+
         Arrays.sort(participant);
         Arrays.sort(completion);
         for (int i = 0; i < completion.length; i++) {
