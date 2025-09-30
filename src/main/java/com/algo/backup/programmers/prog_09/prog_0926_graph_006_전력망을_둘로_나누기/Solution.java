@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0926_graph_006_전력망을_둘로_나누기;
+package com.algo.backup.programmers.prog_09.prog_0926_graph_006_전력망을_둘로_나누기;
 
 import java.util.ArrayList;
 

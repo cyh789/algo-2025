@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0926_queueNstack_001_같은_숫자는_싫어;
+package com.algo.programmers.prog_0930_queueNstack_001_같은_숫자는_싫어;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,13 +35,19 @@ class Solution {
     //배열 arr의 크기 : 1,000,000 이하의 자연수
     //배열 arr의 원소의 크기 : 0보다 크거나 같고 9보다 작거나 같은 정수
     public static int[] solution(int[] arr) {
-        int curr = Integer.MAX_VALUE;
+
         List<Integer> answer = new ArrayList<>();
-        for (int next : arr) {
-            if (curr != next) {
-                curr = next;
-                answer.add(curr);
-            }
+
+        // 0
+        int prev = arr[0];
+        answer.add(prev);
+
+        //1~
+        for (int i = 1; i < arr.length; i++) {
+            int curr = arr[i];
+            if (prev == curr) continue;
+            answer.add(curr);
+            prev = curr;
         }
 
         return answer.stream().mapToInt(Integer::intValue).toArray();

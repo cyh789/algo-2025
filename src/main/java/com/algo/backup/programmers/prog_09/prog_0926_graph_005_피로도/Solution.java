@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0926_graph_005_피로도;
+package com.algo.backup.programmers.prog_09.prog_0926_graph_005_피로도;
 
 public class Solution {
 
