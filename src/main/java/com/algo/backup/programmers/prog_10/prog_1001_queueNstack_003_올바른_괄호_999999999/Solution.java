@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_0930_queueNstack_003_올바른_괄호_999999999;
+package com.algo.backup.programmers.prog_10.prog_1001_queueNstack_003_올바른_괄호_999999999;
 
 import java.util.Stack;
 
@@ -29,18 +29,21 @@ public class Solution {
     //
     //"()()" 또는 "(())()" 는 올바른 괄호입니다.
     //")()(" 또는 "(()(" 는 올바르지 않은 괄호입니다.
-    //'(' 또는 ')' 로만 이루어진 문자열 s가 주어졌을 때, 문자열 s가 올바른 괄호이면 true를 return 하고, 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.
+    //'(' 또는 ')' 로만 이루어진 문자열 s가 주어졌을 때,
+    // 문자열 s가 올바른 괄호이면 true를 return 하고,
+    // 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.
     //
     //제한사항
     //문자열 s의 길이 : 100,000 이하의 자연수
     //문자열 s는 '(' 또는 ')' 로만 이루어져 있습니다.
     public static boolean solution(String s) {
+
         Stack<Character> stack = new Stack<>();
         char[] arr = s.toCharArray();
         for (char c : arr) {
             if (c == '(') {
                 stack.add(c);
-            } else {
+            } else if (c == ')') {
                 if (stack.isEmpty()) return false;
                 stack.pop();
             }
