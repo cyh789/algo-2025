@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0829_queueNstack_005_다리를_
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 public class Solution {
 
     public static void main(String[] args) {

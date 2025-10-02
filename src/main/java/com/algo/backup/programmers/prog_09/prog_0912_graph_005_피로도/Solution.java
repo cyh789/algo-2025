@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_09.prog_0912_graph_005_피로도;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -65,10 +66,9 @@ public class Solution {
     static int maxExplored;
     public static int solution(int k, int[][] dungeons) {
         boolean[] visited = new boolean[dungeons.length];
-        int curr = k;
         int depth = 0;
         maxExplored = 0;
-        dfs(dungeons, curr, depth, visited);
+        dfs(dungeons, k, depth, visited);
 
         return maxExplored;
     }

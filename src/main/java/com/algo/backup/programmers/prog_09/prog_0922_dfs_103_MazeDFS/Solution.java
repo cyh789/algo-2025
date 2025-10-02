@@ -20,8 +20,7 @@ public class Solution {
         int[] dy = {0, 0, -1, 1}; // 좌우
         int[] start = {1, 1}; // 시작점 (1,1)
         int[] end = {3, 3}; // 종료지점 (1,1)
-        int[] curr = start;
-        dfs(maze, dx, dy, end, curr, visited);
+        dfs(maze, dx, dy, end, start, visited);
         System.out.println("출발점으로 복귀! totalMove=" + totalMove);
     }
     static int totalMove = 0;

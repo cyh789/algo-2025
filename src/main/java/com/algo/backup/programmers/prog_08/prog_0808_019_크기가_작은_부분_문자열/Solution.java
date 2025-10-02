@@ -1,9 +1,7 @@
 package com.algo.backup.programmers.prog_08.prog_0808_019_크기가_작은_부분_문자열;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //크기가작은부분문자열
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

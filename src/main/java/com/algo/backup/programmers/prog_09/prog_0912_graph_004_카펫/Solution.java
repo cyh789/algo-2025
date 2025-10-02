@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0912_graph_004_카펫;
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -55,16 +56,15 @@ public class Solution {
         int carpet = brown + yellow;
 
         for (int i = 3; i <= carpet; i++) {
-            int x = i;
-            int y = carpet / x;
+            int y = carpet / i;
 
-            if (carpet % x != 0) continue;
-            if (x * y != carpet) continue;
-            if (x < y) continue;
+            if (carpet % i != 0) continue;
+            if (i * y != carpet) continue;
+            if (i < y) continue;
             if (y < 3) continue;
-            if (2*x + 2*y - 4 != brown) continue;
+            if (2* i + 2*y - 4 != brown) continue;
 
-            return new int[]{x, y};
+            return new int[]{i, y};
         }
 
         return null;

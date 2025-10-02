@@ -2,7 +2,6 @@ package com.algo.backup.programmers.prog_08.prog_0829_009_데이터_분석_99999
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 //데이터 분석
@@ -64,15 +63,14 @@ public class Solution {
 
         int dataH = data.length;
         List<int[]> answer = new ArrayList<>();
-        for (int i = 0; i < dataH; i++) {
-            int[] selected = data[i];
+        for (int[] selected : data) {
             if (selected[extIdx] < valExt) answer.add(selected);
         }
 
         int answerIdx = sortByIdx;
-        Collections.sort(answer, (o1, o2) -> o1[answerIdx] - o2[answerIdx]);
+        answer.sort((o1, o2) -> o1[answerIdx] - o2[answerIdx]);
 
-        return answer.stream().toArray(int[][]::new);
+        return answer.toArray(int[][]::new);
     }
 
 

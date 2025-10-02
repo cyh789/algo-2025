@@ -26,8 +26,7 @@ public class Solution {
             map.put(players[i], i);
         }
 
-        for (int i = 0; i < callings.length; i++) {
-            String backPlayer = callings[i];
+        for (String backPlayer : callings) {
             int backIndex = map.get(backPlayer);
             int frontIndex = backIndex - 1;
             String frontPlayer = players[frontIndex];

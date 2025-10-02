@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0924_hash_001_완주하지_못�
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

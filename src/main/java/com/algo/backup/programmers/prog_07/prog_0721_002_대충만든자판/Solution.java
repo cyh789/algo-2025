@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //대충만든자판
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -37,8 +38,8 @@ public class Solution {
         //          if map.contain(keymapTemp[i])  =>  continue
         //          map.put(keymapTemp[i], i+1)
         Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < keymap.length; i++) {
-            char[] keymapTemp = keymap[i].toCharArray();
+        for (String s : keymap) {
+            char[] keymapTemp = s.toCharArray();
             for (int j = 0; j < keymapTemp.length; j++) {
                 if (map.containsKey(keymapTemp[j])) {
                     map.put(keymapTemp[j], Math.min(j + 1, map.get(keymapTemp[j])));
@@ -57,12 +58,12 @@ public class Solution {
         for (int i = 0; i < targets.length; i++) {
             int count = 0;
             char[] targetTemp = targets[i].toCharArray();
-            for (int j = 0; j < targetTemp.length; j++) {
-                if (!map.containsKey(targetTemp[j])) {
+            for (char c : targetTemp) {
+                if (!map.containsKey(c)) {
                     count = -1;
                     break;
                 }
-                count += map.get(targetTemp[j]);
+                count += map.get(c);
             }
             answer[i] = count;
         }

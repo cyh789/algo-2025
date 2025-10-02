@@ -36,8 +36,8 @@ public class Solution {
             friendIndex.put(friends[i], i);
         }
         // 선물 기록 분석
-        for (int i = 0; i < gifts.length; i++) {
-            String[] parts = gifts[i].split(" ");
+        for (String gift : gifts) {
+            String[] parts = gift.split(" ");
             int giverIndex = friendIndex.get(parts[0]);
             int receiverIndex = friendIndex.get(parts[1]);
             giftTable[giverIndex][receiverIndex]++;

@@ -36,16 +36,16 @@ public class Solution {
         //오프닝 건너뛰기
         if (current >= opStartTemp && current <= opEndTemp) current = opEndTemp;
 
-        for (int i = 0; i < commands.length; i++) {
+        for (String command : commands) {
 
-            if ("prev".equals(commands[i])) {
+            if ("prev".equals(command)) {
                 if (current - 10 < 0) {
                     current = 0;
                 } else {
                     current -= 10;
                 }
             }
-            if ("next".equals(commands[i])) {
+            if ("next".equals(command)) {
                 if (current + 10 > videoLenTemp) {
                     current = videoLenTemp;
                 } else {

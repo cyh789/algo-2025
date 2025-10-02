@@ -52,11 +52,11 @@ public class Solution {
 //        }
 
         int selectedRow = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (num == list.get(i).getId()) {
-                selectedRow = list.get(i).getRow();
+        for (Box box : list) {
+            if (num == box.getId()) {
+                selectedRow = box.getRow();
             }
-            if (selectedRow == list.get(i).getRow()) {
+            if (selectedRow == box.getRow()) {
                 answer++;
             }
         }
@@ -64,9 +64,9 @@ public class Solution {
     }
 
     static class Box {
-        private int id;
-        private int row;
-        private int column;
+        private final int id;
+        private final int row;
+        private final int column;
 
         public Box(int id, int x, int y) {
             this.id = id;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{1,3,2,4,2};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (int[] ints : n) {
+            int[] answer = solution(ints);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -59,9 +60,9 @@ public class Solution {
         int[] condition_1 = new int[]{1, 2, 3, 4, 5};
         int count_1 = 0;
         int idx_1 = 0;
-        for (int i = 0; i < answers.length; i++) {
+        for (int k : answers) {
             if (idx_1 >= condition_1.length) idx_1 = 0;
-            if (answers[i] == condition_1[idx_1]) {
+            if (k == condition_1[idx_1]) {
                 count_1++;
             }
             idx_1++;
@@ -92,9 +93,9 @@ public class Solution {
         int[] condition_3 = new int[]{3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
         int count_3 = 0;
         int idx_3 = 0;
-        for (int i = 0; i < answers.length; i++) {
+        for (int j : answers) {
             if (idx_3 >= condition_3.length) idx_3 = 0;
-            if (answers[i] == condition_3[idx_3]) {
+            if (j == condition_3[idx_3]) {
                 count_3++;
             }
             idx_3++;

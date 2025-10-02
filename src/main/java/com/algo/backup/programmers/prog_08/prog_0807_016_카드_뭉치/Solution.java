@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -69,8 +70,7 @@ public class Solution {
 
         int idx1 = 0;
         int idx2 = 0;
-        for (int i = 0; i < goal.length; i++) {
-            String selected = goal[i];
+        for (String selected : goal) {
             if (map1.containsKey(selected) && map1.get(selected) == idx1) {
                 idx1++;
             } else if (map2.containsKey(selected) && map2.get(selected) == idx2) {

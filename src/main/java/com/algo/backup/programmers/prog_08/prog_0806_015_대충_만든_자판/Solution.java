@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //대충만든자판
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -39,8 +40,8 @@ public class Solution {
         //문자열과 count를 저장하는 map
         // map에는 더 작은 값을 담는다 math.min
         Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < keymap.length; i++) {
-            char[] keymapTemp = keymap[i].toCharArray();
+        for (String s : keymap) {
+            char[] keymapTemp = s.toCharArray();
             for (int j = 0; j < keymapTemp.length; j++) {
                 String selected = String.valueOf(keymapTemp[j]);
                 map.put(selected, Math.min(map.getOrDefault(selected, j + 1), j + 1));
@@ -52,8 +53,8 @@ public class Solution {
         for (int i = 0; i < targets.length; i++) {
             int sum = 0;
             char[] targetsTemp = targets[i].toCharArray();
-            for (int j = 0; j < targetsTemp.length; j++) {
-                String selected = String.valueOf(targetsTemp[j]);
+            for (char c : targetsTemp) {
+                String selected = String.valueOf(c);
                 int selectedTemp = map.getOrDefault(selected, 0);
                 if (selectedTemp == 0) {
                     sum = -1;

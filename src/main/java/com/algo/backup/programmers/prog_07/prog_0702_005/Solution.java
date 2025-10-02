@@ -25,19 +25,17 @@ public class Solution {
         //  현재 재생위치가 오프닝 구간인 경우, 오프닝이 끝나는 위치로 이동
         if (current >= op_start_sec_total && current <= op_end_sec_total) current = op_end_sec_total;
 
-        for (int i = 0; i < commands.length; i++) {
-            String command = commands[i];
-
+        for (String command : commands) {
             //prev : 10초 전
             //  현재 위치가 00:10초 미만인 경우, 처음위치로 이동 => 00:00
             if (command.equals("prev")) {
-                current = current < 10 ? 0 : current -10;
+                current = current < 10 ? 0 : current - 10;
                 //current = Math.max(current -10, 0);
             }
             //next : 10초 후
             //  동영상의 남은 시간이 00:10초 미만인 경우. 마지막 위치로 이동 => 동영상의길이
             else if (command.equals("next")) {
-                current = video_len_sec_total - current < 10 ? video_len_sec_total : current +10;
+                current = video_len_sec_total - current < 10 ? video_len_sec_total : current + 10;
                 //current = Math.min(current +10, video_len_sec_total);
             }
 
@@ -48,11 +46,9 @@ public class Solution {
         long answer_min = current / 60;
         long answer_sec = current % 60;
 
-        String answer = String.format("%02d", answer_min)
+        return String.format("%02d", answer_min)
                 + ":"
                 + String.format("%02d", answer_sec);
-
-        return answer;
     }
 
     private static long transSec(String pos) {

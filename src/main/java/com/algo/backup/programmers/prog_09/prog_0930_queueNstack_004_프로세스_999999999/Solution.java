@@ -2,9 +2,10 @@ package com.algo.backup.programmers.prog_09.prog_0930_queueNstack_004_프로세�
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         int arrIndex = 2;
         int index = 0;
         int[][] n = new int[arrIndex][];
@@ -47,7 +48,7 @@ public class Solution {
     //priorities의 원소는 우선순위를 나타내며 숫자가 클 수록 우선순위가 높습니다.
     //location은 0 이상 (대기 큐에 있는 프로세스 수 - 1) 이하의 값을 가집니다.
     //priorities의 가장 앞에 있으면 0, 두 번째에 있으면 1 … 과 같이 표현합니다.
-    public static int solution(int[] priorities, int location) throws InterruptedException {
+    public static int solution(int[] priorities, int location) {
         Queue<int[]> queue = new LinkedList<>();
         for (int i = 0; i < priorities.length; i++) {
             queue.add(new int[]{i, priorities[i]}); // {index, priority}

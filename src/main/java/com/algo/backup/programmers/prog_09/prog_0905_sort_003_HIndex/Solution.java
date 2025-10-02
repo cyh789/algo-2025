@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_09.prog_0905_sort_003_HIndex;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -15,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{3, 6, 5};
         n[index++] = new int[]{6, 5};
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

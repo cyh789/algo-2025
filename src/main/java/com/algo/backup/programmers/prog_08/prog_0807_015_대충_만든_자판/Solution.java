@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //대충만든자판
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -40,8 +41,8 @@ public class Solution {
         //string to char[] => fori
         //int는 최소값 => math.min => get 해서 확인 후 다시 put
         Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < keymap.length; i++) {
-            char[] c = keymap[i].toCharArray();
+        for (String s : keymap) {
+            char[] c = s.toCharArray();
             for (int j = 0; j < c.length; j++) {
                 String selected = String.valueOf(c[j]);
                 map.put(selected, Math.min(map.getOrDefault(selected, j + 1), j + 1));
@@ -56,8 +57,8 @@ public class Solution {
         for (int i = 0; i < targets.length; i++) {
             int sum = 0;
             char[] c = targets[i].toCharArray();
-            for (int j = 0; j < c.length; j++) {
-                String selected = String.valueOf(c[j]);
+            for (char item : c) {
+                String selected = String.valueOf(item);
                 int value = map.getOrDefault(selected, -1);
 
                 //단, 목표 문자열을 작성할 수 없을 때는 -1을 저장합니다.

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{1,3,2,4,2};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (int[] ints : n) {
+            int[] answer = solution(ints);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -56,10 +57,10 @@ public class Solution {
         int countA = 0;
         int[] conditonA = new int[]{1,2,3,4,5};
         int idx = 0;
-        for (int i = 0; i < answers.length; i++) {
+        for (int k : answers) {
             if (idx >= conditonA.length) idx = 0;
 
-            if (conditonA[idx] == answers[i]) countA++;
+            if (conditonA[idx] == k) countA++;
             idx++;
         }
         System.out.println("countA=" + countA);
@@ -85,10 +86,10 @@ public class Solution {
         int countC = 0;
         int[] conditonC = new int[]{3,3,1,1,2,2,4,4,5,5};
         idx = 0;
-        for (int i = 0; i < answers.length; i++) {
+        for (int j : answers) {
             if (idx >= conditonC.length) idx = 0;
 
-            if (conditonC[idx] == answers[i]) countC++;
+            if (conditonC[idx] == j) countC++;
             idx++;
         }
         System.out.println("countC=" + countC);

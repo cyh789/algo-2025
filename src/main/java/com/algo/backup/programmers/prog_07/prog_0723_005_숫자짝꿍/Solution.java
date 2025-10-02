@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_07.prog_0723_005_숫자짝꿍;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

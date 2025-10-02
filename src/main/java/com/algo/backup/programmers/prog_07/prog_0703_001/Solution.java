@@ -13,7 +13,7 @@ public class Solution {
     }
 
     public static String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
-        String answer = "";
+        String answer;
         long video_len_sec = transFunc(video_len);  //동영상의 총 길이
         long pos_sec = transFunc(pos);  //동영상의 현재위치
         long op_start_sec = transFunc(op_start);

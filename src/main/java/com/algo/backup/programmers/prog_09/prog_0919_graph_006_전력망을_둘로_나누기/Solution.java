@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0919_graph_006_전력망을_둘
 
 import java.util.ArrayList;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

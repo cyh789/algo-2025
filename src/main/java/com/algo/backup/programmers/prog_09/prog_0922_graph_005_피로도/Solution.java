@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_09.prog_0922_graph_005_피로도;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -64,8 +65,7 @@ public class Solution {
     //따라서 이 경우 세 던전을 모두 탐험할 수 있으며, 유저가 탐험할 수 있는 최대 던전 수는 3입니다.
     public static int solution(int k, int[][] dungeons) {
         boolean[] visited = new boolean[dungeons.length];
-        int curr = k;
-        dfs(dungeons, curr, visited);
+        dfs(dungeons, k, visited);
 
         return maxCount;
     }

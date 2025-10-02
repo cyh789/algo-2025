@@ -1,8 +1,5 @@
 package com.algo.backup.programmers.prog_08.prog_0804_007_붕대_감기;
 
-import java.util.ArrayList;
-import java.util.List;
-
 //붕대 감기
 public class Solution {
     public static void main(String[] args) {
@@ -55,7 +52,7 @@ public class Solution {
         int time = 1;
         int attackIndex = 0;
 
-        int answer = -1;
+        int answer;
         int bonusHealCount = 0;
         while (true) {
             System.out.print("time=" + time);

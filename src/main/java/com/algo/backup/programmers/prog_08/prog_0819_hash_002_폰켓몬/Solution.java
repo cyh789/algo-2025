@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0819_hash_002_폰켓몬;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{3,3,3,2,2,2}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -59,12 +60,11 @@ public class Solution {
         //가장 많은 종류의 폰켓몬을 선택하는 방법이 여러 가지인 경우에도, 선택할 수 있는 폰켓몬 종류 개수의 최댓값 하나만 return 하면 됩니다.
 
         Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            set.add(nums[i]);
+        for (int num : nums) {
+            set.add(num);
         }
 
-        if (set.size() < nums.length / 2) return set.size();
+        return Math.min(set.size(), nums.length / 2);
 
-        return nums.length / 2;
     }
 }

@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_10.prog_1001_queueNstack_006_주식가�
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -11,8 +12,8 @@ public class Solution {
         n[index++] = new int[]{1, 2, 3, 2, 3};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (int[] ints : n) {
+            int[] answer = solution(ints);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -37,8 +38,8 @@ public class Solution {
     //5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
     public static int[] solution(int[] prices) {
         Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < prices.length; i++) {
-            queue.add(prices[i]);
+        for (int price : prices) {
+            queue.add(price);
         }
 
         int[] answer = new int[prices.length];

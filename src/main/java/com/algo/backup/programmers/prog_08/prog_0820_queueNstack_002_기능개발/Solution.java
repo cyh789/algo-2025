@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -58,9 +59,7 @@ class Solution {
         List<Integer> answer = new ArrayList<>();
 
         int count = 0;
-        for (int i = 0; i < days.length; i++) {
-            int selected = days[i];
-
+        for (int selected : days) {
             if (stack.isEmpty()) {
                 stack.add(selected);
             } else {

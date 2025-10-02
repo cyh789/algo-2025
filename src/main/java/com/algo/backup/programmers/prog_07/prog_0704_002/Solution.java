@@ -15,7 +15,7 @@ public class Solution {
     }
 
     public static int solution(int[] bandage, int health, int[][] attacks) {
-        int answer = 0;
+        int answer;
         int endTime = 0;
         List<Monster> list = new ArrayList<>();
         for (int[] attack : attacks) {

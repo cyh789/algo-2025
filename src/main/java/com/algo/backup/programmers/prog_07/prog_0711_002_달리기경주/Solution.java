@@ -29,8 +29,7 @@ public class Solution {
         }
 
         //해설진이 부른 이름을 담은 문자열 배열 callings
-        for (int i = 0; i < callings.length; i++) {
-            String currentPlayer = callings[i];
+        for (String currentPlayer : callings) {
             int currentPlayerIndex = map.get(currentPlayer);
 
             int frontPlayerIndex = currentPlayerIndex - 1;

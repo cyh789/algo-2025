@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_10.prog_1002_graph_003_소수_찾기;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Solution {
         n[index++] = new String("17");
         n[index++] = new String("011");
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (String s : n) {
+            int answer = solution(s);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -79,7 +80,7 @@ public class Solution {
         char[] arr = numbers.toCharArray();
         for (int i = 0; i < numbers.length(); i++) {
             if (visited[i]) continue;
-            String next = curr + String.valueOf(arr[i]);
+            String next = curr + arr[i];
             result.add(Integer.valueOf(next));
             visited[i] = true;
             dfs(numbers, next, depth + 1, result, visited);

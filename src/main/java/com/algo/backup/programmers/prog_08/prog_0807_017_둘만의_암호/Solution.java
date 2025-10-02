@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_08.prog_0807_017_둘만의_암호;
 
 //둘만의암호
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -38,8 +39,8 @@ public class Solution {
 
         StringBuilder answer = new StringBuilder();
         char[] c = s.toCharArray();
-        for (int i = 0; i < c.length; i++) {
-            char selected = c[i];
+        for (char value : c) {
+            char selected = value;
             for (int j = 0; j < index; j++) {
                 selected++;
                 if (selected > 'z') {

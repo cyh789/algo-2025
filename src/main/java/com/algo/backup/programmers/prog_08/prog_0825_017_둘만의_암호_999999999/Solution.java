@@ -1,8 +1,7 @@
 package com.algo.backup.programmers.prog_08.prog_0825_017_둘만의_암호_999999999;
 
-import java.util.Arrays;
-
 //둘만의암호
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

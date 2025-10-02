@@ -1,8 +1,6 @@
 package com.algo.backup.programmers.prog_08.prog_0731_001_택배_상자_꺼내기;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 //택배 상자 꺼내기
 public class Solution {
@@ -21,7 +19,6 @@ public class Solution {
 
     public static int solution(int n, int w, int num) {
         int boxH = n / w + 1;
-        int boxW = w;
         int boxNumber = 1;
         boolean reverse = false;
         int selectedBoxNumH = 0;
@@ -29,7 +26,7 @@ public class Solution {
         int[][] boxTable = new int[boxH][w];
         for (int i = 0; i < boxH; i++) {
             if (reverse) {
-                for (int j = boxW - 1; j >= 0; j--) {
+                for (int j = w - 1; j >= 0; j--) {
                     if (boxNumber == num) {
                         selectedBoxNumH = i;
                         selectedBoxNumW = j;
@@ -39,7 +36,7 @@ public class Solution {
                 }
                 reverse = false;
             } else {
-                for (int j = 0; j < boxW; j++) {
+                for (int j = 0; j < w; j++) {
                     if (boxNumber == num) {
                         selectedBoxNumH = i;
                         selectedBoxNumW = j;
@@ -53,8 +50,8 @@ public class Solution {
 
         System.out.println("selectedBoxNumH=" + selectedBoxNumH);
         System.out.println("selectedBoxNumW=" + selectedBoxNumW);
-        for (int i = 0; i < boxTable.length; i++) {
-            System.out.println(Arrays.toString(boxTable[i]));
+        for (int[] ints : boxTable) {
+            System.out.println(Arrays.toString(ints));
         }
 
         int sum = 0;

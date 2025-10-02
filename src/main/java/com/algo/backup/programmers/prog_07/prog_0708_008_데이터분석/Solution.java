@@ -2,7 +2,6 @@ package com.algo.backup.programmers.prog_07.prog_0708_008_데이터분석;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 //데이터 분석
@@ -27,16 +26,10 @@ public class Solution {
             }
         }
 
-        int[][] answer = list.stream()
-                .toArray(int[][]::new);
+        int[][] answer = list.toArray(int[][]::new);
 
         int sortByTemp = Data.valueOf(sortBy).getIndex();
-        Arrays.sort(answer, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[sortByTemp] - o2[sortByTemp];
-            }
-        });
+        Arrays.sort(answer, (o1, o2) -> o1[sortByTemp] - o2[sortByTemp]);
 
         return answer;
     }

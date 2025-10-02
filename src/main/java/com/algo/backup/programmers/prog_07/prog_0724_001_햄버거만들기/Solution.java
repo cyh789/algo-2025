@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class Solution {
         n[index++] = new int[]{2, 1, 1, 2, 3, 1, 2, 3, 1};
         n[index++] = new int[]{1, 3, 2, 1, 2, 1, 3, 1, 2};
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

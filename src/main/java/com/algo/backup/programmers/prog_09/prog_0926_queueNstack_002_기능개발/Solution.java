@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0926_queueNstack_002_기능개�
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;

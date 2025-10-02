@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0821_queueNstack_105_다리를_
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -78,8 +79,7 @@ public class Solution {
         int timeOfferCount = 0;
         int truckIndex = 0;
         int currentBridgeWeight = 0;
-        while (true) {
-            if (truckIndex == truck_weights.length) break;
+        while (truckIndex != truck_weights.length) {
             int selected = truck_weights[truckIndex];
 
             if (bridgeQueue.isEmpty()) {

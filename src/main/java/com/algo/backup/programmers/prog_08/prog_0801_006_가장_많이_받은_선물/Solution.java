@@ -51,8 +51,8 @@ public class Solution {
 
         int[][] friendsTable = new int[friends.length][friends.length];
         int[] giftScore = new int[friends.length];
-        for (int i = 0; i < gifts.length; i++) {
-            String[] giftsTemp = gifts[i].split(" ");
+        for (String gift : gifts) {
+            String[] giftsTemp = gift.split(" ");
             String giver = giftsTemp[0];
             String receiver = giftsTemp[1];
 

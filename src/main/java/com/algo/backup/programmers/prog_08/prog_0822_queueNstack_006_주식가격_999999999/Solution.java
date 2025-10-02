@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class Solution {
         n[index++] = new int[]{1, 2, 3, 2, 3};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (int[] ints : n) {
+            int[] answer = solution(ints);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -40,8 +41,8 @@ public class Solution {
     public static int[] solution(int[] prices) {
         Queue<Integer> queue = new LinkedList<>();
         int n = prices.length;
-        for (int i = 0; i < n; i++) {
-            queue.offer(prices[i]);
+        for (int price : prices) {
+            queue.offer(price);
         }
 
         int[] answer = new int[n];

@@ -23,20 +23,19 @@ public class Solution {
             rankingMap.put(players[i], i);
         }
 
-        for (int i = 0; i < callings.length; i++) {
-            String key = callings[i];
+        for (String key : callings) {
             int ranking = rankingMap.get(key);
 
-            String frontPlayer = players[ranking-1];
+            String frontPlayer = players[ranking - 1];
             String currentPlayer = players[ranking];
 
             //등수 바꾸기
             players[ranking] = frontPlayer;
-            players[ranking-1] = currentPlayer;
+            players[ranking - 1] = currentPlayer;
 
             // 할때마다 계산해서 map을 수정
             rankingMap.replace(frontPlayer, ranking);
-            rankingMap.replace(currentPlayer, ranking-1);
+            rankingMap.replace(currentPlayer, ranking - 1);
         }
 
         //해설진들은 선수들이 자기 바로 앞의 선수를 추월할 때 추월한 선수의 이름을 부릅니다.

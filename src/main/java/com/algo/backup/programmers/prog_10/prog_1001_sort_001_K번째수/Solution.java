@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_10.prog_1001_sort_001_K번째수;
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

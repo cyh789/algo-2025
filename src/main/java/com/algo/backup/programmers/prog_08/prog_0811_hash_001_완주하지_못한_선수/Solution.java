@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0811_hash_001_완주하지_못�
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -38,7 +39,6 @@ public class Solution {
             }
         }
 
-        String answer = participant[participant.length - 1];
-        return answer;
+        return participant[participant.length - 1];
     }
 }

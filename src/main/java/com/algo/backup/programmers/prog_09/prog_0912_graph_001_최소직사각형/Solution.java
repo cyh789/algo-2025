@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0912_graph_001_최소직사각�
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class Solution {
         n[index++] = new int[][]{{14, 4}, {19, 6}, {6, 16}, {18, 7}, {7, 11}}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[][] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -69,10 +70,10 @@ public class Solution {
     public static int solution(int[][] sizes) {
         int x = 0;
         int y = 0;
-        for (int i = 0; i < sizes.length; i++) {
-            Arrays.sort(sizes[i]);
-            x = Math.max(x, sizes[i][0]);
-            y = Math.max(y, sizes[i][1]);
+        for (int[] size : sizes) {
+            Arrays.sort(size);
+            x = Math.max(x, size[0]);
+            y = Math.max(y, size[1]);
         }
 
         return x * y;

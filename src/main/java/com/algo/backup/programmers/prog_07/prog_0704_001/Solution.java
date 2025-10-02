@@ -14,7 +14,7 @@ public class Solution {
     }
 
     public static String solution(String video_len, String pos, String op_start, String op_end, String[] commands) {
-        String answer = "";
+        String answer;
         int video_len_temp = transFunc(video_len);  //비디오 전체 길이
         int pos_temp = transFunc(pos);      //현재 재생 위치
         int op_start_temp = transFunc(op_start);
@@ -24,11 +24,11 @@ public class Solution {
         if (current >= op_start_temp && current <= op_end_temp) {
             current = op_end_temp;
         }
-        for (int i = 0; i < commands.length; i++) {
-            if ("prev".equals(commands[i])) {
+        for (String command : commands) {
+            if ("prev".equals(command)) {
                 current = Math.max(0, current - 10);
             }
-            if ("next".equals(commands[i])) {
+            if ("next".equals(command)) {
                 current = Math.min(current + 10, video_len_temp);
             }
 

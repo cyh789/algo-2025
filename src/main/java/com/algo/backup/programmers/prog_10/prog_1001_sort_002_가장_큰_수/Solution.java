@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_10.prog_1001_sort_002_가장_큰_수;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -15,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{0, 0, 0};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            String answer = solution(n[i]);
+        for (int[] ints : n) {
+            String answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

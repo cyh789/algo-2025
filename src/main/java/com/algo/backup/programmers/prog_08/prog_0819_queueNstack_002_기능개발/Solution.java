@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;

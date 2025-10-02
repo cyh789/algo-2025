@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_08.prog_0825_014_덧칠하기_999999999;
 
 //덧칠하기
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -50,12 +51,11 @@ public class Solution {
         int count = 0;
         int start = section[0];
         int end = Integer.MIN_VALUE;
-        for (int i = 0; i < section.length; i++) {
-            int selected = section[i];
+        for (int selected : section) {
             if (selected >= start + m) start = selected;
             if (selected > end) {
                 end = selected + m - 1;
-                count ++;
+                count++;
             }
 
             for (int j = start; j <= end; j++) {

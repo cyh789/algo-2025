@@ -51,8 +51,7 @@ public class Solution {
 
         //머쓱이의 컴퓨터 바탕화면의 상태를 나타내는 문자열 배열 wallpaper
         // 드래그의 시작점이 (lux, luy), 끝점이 (rdx, rdy)라면 정수 배열 [lux, luy, rdx, rdy]를 return
-        int[] answer = new int[]{startH, startW, endH, endW};
 
-        return answer;
+        return new int[]{startH, startW, endH, endW};
     }
 }

@@ -41,8 +41,8 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < parkTable.length; i++) {
-            System.out.println(Arrays.toString(parkTable[i]));
+        for (String[] strings : parkTable) {
+            System.out.println(Arrays.toString(strings));
         }
         System.out.println("==============");
 
@@ -52,11 +52,11 @@ public class Solution {
         int currentH = startH;
         int currentW = startW;
 
-        for (int k = 0; k < routes.length; k++) {
+        for (String route : routes) {
 
             System.out.println("currentH=" + currentH + " / currentW=" + currentW);
 
-            String[] routesTemp = routes[k].split(" ");
+            String[] routesTemp = route.split(" ");
             char direction = routesTemp[0].charAt(0);
             int move = Integer.parseInt(routesTemp[1]);
 
@@ -118,7 +118,6 @@ public class Solution {
 
 
         // 로봇 강아지가 모든 명령을 수행 후 놓인 위치를 [세로 방향 좌표, 가로 방향 좌표] 순으로 배열에 담아 return 하도록 solution 함수를 완성해주세요.
-        int[] answer = {currentH, currentW};
-        return answer;
+        return new int[]{currentH, currentW};
     }
 }

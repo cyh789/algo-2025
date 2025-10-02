@@ -1,6 +1,5 @@
 package com.algo.backup.programmers.prog_08.prog_0811_hash_005_베스트앨범_map_map;
 
-import java.util.HashMap;
 import java.util.*;
 
 class Solution {
@@ -22,13 +21,13 @@ class Solution {
         }
 
         List<String> keySet = new ArrayList<>(num.keySet());
-        Collections.sort(keySet, (s1, s2) -> num.get(s2) - (num.get(s1)));
+        keySet.sort((s1, s2) -> num.get(s2) - (num.get(s1)));
 
         for(String key : keySet) {
             HashMap<Integer, Integer> map = music.get(key);
             List<Integer> genre_key = new ArrayList<>(map.keySet());
 
-            Collections.sort(genre_key, (s1, s2) -> map.get(s2) - (map.get(s1)));
+            genre_key.sort((s1, s2) -> map.get(s2) - (map.get(s1)));
 
             answer.add(genre_key.get(0));
             if(genre_key.size() > 1) answer.add(genre_key.get(1));

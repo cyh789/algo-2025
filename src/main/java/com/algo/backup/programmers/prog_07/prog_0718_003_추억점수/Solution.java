@@ -44,8 +44,7 @@ public class Solution {
         for (int i = 0; i < photo.length; i++) {
             int score = 0;
             String[] strings = photo[i];
-            for (int j = 0; j < strings.length; j++) {
-                String selected = strings[j];
+            for (String selected : strings) {
                 if (map.containsKey(selected)) score += map.get(selected);
             }
             answer[i] = score;

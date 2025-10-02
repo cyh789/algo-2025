@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_10.prog_1002_graph_006_전력망을_둘로_나누기;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

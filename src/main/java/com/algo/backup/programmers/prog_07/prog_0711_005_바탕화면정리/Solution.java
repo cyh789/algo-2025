@@ -28,8 +28,8 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < wallpaperTable.length; i++) {
-            System.out.println(Arrays.toString(wallpaperTable[i]));
+        for (int[] ints : wallpaperTable) {
+            System.out.println(Arrays.toString(ints));
         }
 
         int startIndexH = Integer.MAX_VALUE;
@@ -59,8 +59,7 @@ public class Solution {
 
         //드래그의 시작점이 (lux, luy), 끝점이 (rdx, rdy)라면
         // [lux, luy, rdx, rdy]를 return
-        int[] answer = {startIndexH, startIndexW, endIndexH, endIndexW};
-        return answer;
+        return new int[]{startIndexH, startIndexW, endIndexH, endIndexW};
 
         //컴퓨터 바탕화면은 각 칸이 정사각형인 격자판입니다.
 

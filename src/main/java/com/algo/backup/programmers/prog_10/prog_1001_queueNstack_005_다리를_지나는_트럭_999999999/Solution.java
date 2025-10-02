@@ -1,9 +1,9 @@
 package com.algo.backup.programmers.prog_10.prog_1001_queueNstack_005_다리를_지나는_트럭_999999999;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 public class Solution {
 
     public static void main(String[] args) {
@@ -82,11 +82,7 @@ public class Solution {
         int time = 0;
         int currBridgeWeight = 0;
         int currTruckIdx = 0;
-        while (true) {
-
-            if (currTruckIdx >= truck_weights.length && currBridgeWeight == 0) {
-                break;
-            }
+        while (currTruckIdx < truck_weights.length || currBridgeWeight != 0) {
 
             System.out.println(time + " sec | " + queue + " | " + currBridgeWeight);
 

@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_08.prog_0829_014_덧칠하기_999999999;
 
 //덧칠하기
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

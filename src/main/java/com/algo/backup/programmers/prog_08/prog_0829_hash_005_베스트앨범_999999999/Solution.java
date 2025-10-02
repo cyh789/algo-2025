@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0829_hash_005_베스트앨범_9
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -47,13 +48,12 @@ class Solution {
         for (int i = 0; i < genres.length; i++) {
             String genreName = genres[i];
             int count = plays[i];
-            int songName = i;
 
             genreMap.put(genreName, genreMap.getOrDefault(genreName, 0) + count);
 
             Map<Integer, Integer> song = new HashMap<>();
             if (songMap.containsKey(genreName)) song = songMap.get(genreName);
-            song.put(songName, count);
+            song.put(i, count);
             songMap.put(genreName, song);
         }
 
@@ -61,9 +61,7 @@ class Solution {
         genreList.sort((o1, o2) -> genreMap.get(o2) - genreMap.get(o1));
 
         List<Integer> answer = new ArrayList<>();
-        for (int i = 0; i < genreList.size(); i++) {
-            String genreName = genreList.get(i);
-
+        for (String genreName : genreList) {
             Map<Integer, Integer> song = songMap.get(genreName);
             List<Integer> songList = new ArrayList<>(song.keySet()); //int songName
             songList.sort((o1, o2) -> song.get(o2) - song.get(o1));

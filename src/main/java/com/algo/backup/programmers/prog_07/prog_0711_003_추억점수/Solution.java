@@ -37,7 +37,7 @@ public class Solution {
         // 예를 들어 사진 속 인물의 이름이 ["may", "kein", "kain"]이고 각 인물의 그리움 점수가 [5점, 10점, 1점]일 때 해당 사진의 추억 점수는 16(5 + 10 + 1)점이 됩니다.
         int[] answer = new int[photo.length];
         for (int i = 0; i < photo.length; i++) {
-            String nameInPhoto = "";
+            String nameInPhoto;
             int sum = 0;
             for (int j = 0; j < photo[i].length; j++) {
                 nameInPhoto = photo[i][j];

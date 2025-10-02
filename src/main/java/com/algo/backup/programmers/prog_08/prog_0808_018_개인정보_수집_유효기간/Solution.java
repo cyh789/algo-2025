@@ -4,6 +4,7 @@ import java.util.*;
 
 //2023 KAKAO BLIND RECRUITMENT
 //개인정보 수집 유효기간
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -55,9 +56,9 @@ public class Solution {
         }
 
         Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < terms.length; i++) {
-            String name = terms[i].substring(0, 1);
-            String month = terms[i].substring(2);
+        for (String term : terms) {
+            String name = term.substring(0, 1);
+            String month = term.substring(2);
             int monthTemp = Integer.parseInt(month) * 28;
             map.put(name, monthTemp);
         }
@@ -69,9 +70,7 @@ public class Solution {
             }
         }
 
-        int[] answer = list.stream().mapToInt(integer -> integer).toArray();
-
-        return answer;
+        return list.stream().mapToInt(integer -> integer).toArray();
     }
 
     private static int transFunc(String today) {

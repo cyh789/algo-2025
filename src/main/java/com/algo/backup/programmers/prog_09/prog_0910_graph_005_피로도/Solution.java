@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_09.prog_0910_graph_005_피로도;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -66,9 +67,8 @@ public class Solution {
     public static int solution(int k, int[][] dungeons) {
         boolean[] visited = new boolean[dungeons.length];
         int depth = 0;
-        int curr = k;
         count = 0;
-        dfs(dungeons, visited, curr, depth);
+        dfs(dungeons, visited, k, depth);
 
         return count;
     }

@@ -50,12 +50,12 @@ public class Solution {
 //        }
 
         int selectedRowIndex = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == num) {
-                selectedRowIndex = list.get(i).getRowIndex();
+        for (Box box : list) {
+            if (box.getId() == num) {
+                selectedRowIndex = box.getRowIndex();
             }
 
-            if (list.get(i).getId() >= num && list.get(i).getRowIndex() == selectedRowIndex) {
+            if (box.getId() >= num && box.getRowIndex() == selectedRowIndex) {
                 answer++;
             }
         }

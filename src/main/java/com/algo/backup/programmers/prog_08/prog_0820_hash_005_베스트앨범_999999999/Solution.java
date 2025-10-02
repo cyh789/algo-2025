@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0820_hash_005_베스트앨범_9
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -64,14 +65,14 @@ class Solution {
 
         //정렬 -> String genre name 순으로만 나기면 됨. sort by int count
         List<String> genreList = new ArrayList<>(genreMap.keySet());
-        Collections.sort(genreList, (o1, o2) -> genreMap.get(o2) - genreMap.get(o1));   //내림차순
+        genreList.sort((o1, o2) -> genreMap.get(o2) - genreMap.get(o1));   //내림차순
 
         //정렬 -> int music index 순으로만 나기면 됨. sort by int music count
         //int[] 라서 fori 안에서 해야함
         List<Integer> ansewr = new ArrayList<>();
         for (String name : genreList) {
             List<int[]> musicList = musicMap.get(name);
-            Collections.sort(musicList, (o1, o2) -> o2[1] - o1[1]); //내림차순
+            musicList.sort((o1, o2) -> o2[1] - o1[1]); //내림차순
 
             ansewr.add(musicList.get(0)[0]);    //int music index
             if (musicList.size() > 1) ansewr.add(musicList.get(1)[0]);    //int music index

@@ -35,15 +35,15 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < parkTable.length; i++) {
-            System.out.println(Arrays.toString(parkTable[i]));
+        for (String[] strings : parkTable) {
+            System.out.println(Arrays.toString(strings));
         }
 
         int currentIndexH = startIndexH;
         int currentIndexW = startIndexW;
 
-        for (int i = 0; i < routes.length; i++) {
-            String[] parts = routes[i].split(" ");
+        for (String route : routes) {
+            String[] parts = route.split(" ");
             String direction = parts[0];
             int move = Integer.parseInt(parts[1]);
 
@@ -82,8 +82,6 @@ public class Solution {
             }
         }
 
-        int[] answer = {currentIndexH, currentIndexW};
-        
-        return answer;
+        return new int[]{currentIndexH, currentIndexW};
     }
 }

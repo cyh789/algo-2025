@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_07.prog_0718_006_덧칠하기;
 
 //덧칠하기
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -51,12 +52,10 @@ public class Solution {
         //start  =>  start * m 계산,  예외 :: 마지막 값이 범위를 넘어 갈 경우 +1 or +0
         //end    =>  end * 계산,      예외 :: 마지막 값이 범위를 넘어 갈 경우 +1 or +0
         //위 계산 중 더 적은 값이 정답
-        int start = section[0];
-        int current = start;
+        int current = section[0];
         int count = 1;
 
-        for (int i = 0; i < section.length; i++) {
-            int selected = section[i];
+        for (int selected : section) {
             if (current + m <= selected) {
                 current = selected;
                 count++;

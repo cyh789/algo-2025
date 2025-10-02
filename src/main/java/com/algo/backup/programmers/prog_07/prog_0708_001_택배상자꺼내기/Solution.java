@@ -49,11 +49,11 @@ public class Solution {
 //        }
 
         int selectedColumn = 0;
-        for (int i = 0; i < list.size(); i++) {
-            if (num == list.get(i).getId()) {
-                selectedColumn = list.get(i).getColumn();
+        for (Box box : list) {
+            if (num == box.getId()) {
+                selectedColumn = box.getColumn();
             }
-            if (selectedColumn == list.get(i).getColumn()) {
+            if (selectedColumn == box.getColumn()) {
                 answer++;
             }
         }

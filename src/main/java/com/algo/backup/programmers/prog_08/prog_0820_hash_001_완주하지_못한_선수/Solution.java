@@ -1,9 +1,8 @@
 package com.algo.backup.programmers.prog_08.prog_0820_hash_001_완주하지_못한_선수;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

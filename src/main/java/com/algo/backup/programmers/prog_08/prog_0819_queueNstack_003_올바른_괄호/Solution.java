@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0819_queueNstack_003_올바른_
 
 import java.util.Stack;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         m[index++] = "(()("		;
         index = 0;
 
-        for (int i = 0; i < m.length; i++) {
-            boolean answer = solution(m[i]);
+        for (String s : m) {
+            boolean answer = solution(s);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -46,9 +47,7 @@ public class Solution {
             if (leftCount < rightCount) return false;
         }
 
-        if (leftCount == rightCount) return true;
-
-        return false;
+        return leftCount == rightCount;
     }
 
     public static boolean solution(String s) {

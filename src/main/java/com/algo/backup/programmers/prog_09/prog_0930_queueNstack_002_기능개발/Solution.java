@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0930_queueNstack_002_기능개�
 
 import java.util.*;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -55,7 +56,7 @@ class Solution {
                 break;
             }
         }
-        System.out.println(countQueue.toString());
+        System.out.println(countQueue);
 
         List<Integer> answer = new ArrayList<>();
         int prev = countQueue.poll();

@@ -37,8 +37,7 @@ public class Solution {
     }
 
     private static int chkFunc(Integer[] matsTemp, int i, int j, String[][] park, int w, int h) {
-        for (int k = 0; k < matsTemp.length; k++) {
-            int mat = matsTemp[k];
+        for (int mat : matsTemp) {
             int matH = i + mat;
             int matW = j + mat;
             if (matH > h || matW > w) {

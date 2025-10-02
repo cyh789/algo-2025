@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_09.prog_0922_hash_004_의상_999999999;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class Solution {
         n[index++] = new String[][]{{"crow_mask", "face"}, {"blue_sunglasses", "face"}, {"smoky_makeup", "face"}}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (String[][] strings : n) {
+            int answer = solution(strings);
             System.out.println(answer);
             System.out.println("=============");
         }

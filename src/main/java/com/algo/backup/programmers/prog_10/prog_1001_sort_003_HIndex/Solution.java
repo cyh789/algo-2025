@@ -1,9 +1,8 @@
 package com.algo.backup.programmers.prog_10.prog_1001_sort_003_HIndex;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.PriorityQueue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -16,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{3, 5, 6};
         n[index++] = new int[]{5, 6};
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

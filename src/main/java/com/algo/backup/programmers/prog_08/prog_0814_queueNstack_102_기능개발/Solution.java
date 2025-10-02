@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0814_queueNstack_102_기능개�
 
 import java.util.*;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -25,7 +26,7 @@ class Solution {
     }
 
     public static int[] solution(int[] progresses, int[] speeds) {
-        Queue<Integer> queue = new LinkedList();
+        Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < progresses.length; i++) {
             int cal = (100 - progresses[i]) / speeds[i];
             if ((100 - progresses[i]) % speeds[i] > 0) cal++;

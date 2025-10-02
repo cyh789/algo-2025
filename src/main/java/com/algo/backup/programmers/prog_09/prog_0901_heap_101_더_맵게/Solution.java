@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 public class Solution {
 
     public static void main(String[] args) {

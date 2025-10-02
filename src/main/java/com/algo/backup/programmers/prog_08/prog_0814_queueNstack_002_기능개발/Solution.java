@@ -3,8 +3,8 @@ package com.algo.backup.programmers.prog_08.prog_0814_queueNstack_002_기능개�
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;

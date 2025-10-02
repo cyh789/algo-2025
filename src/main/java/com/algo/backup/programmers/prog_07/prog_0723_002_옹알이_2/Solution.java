@@ -1,8 +1,7 @@
 package com.algo.backup.programmers.prog_07.prog_0723_002_옹알이_2;
 
-import java.util.Arrays;
-
 //옹알이_2
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +12,8 @@ public class Solution {
         n[index++] = new String[]{"ayaye", "uuu", "yeye", "yemawoo", "ayaayaa"};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (String[] strings : n) {
+            int answer = solution(strings);
             System.out.println(answer);
             System.out.println("=============");
         }

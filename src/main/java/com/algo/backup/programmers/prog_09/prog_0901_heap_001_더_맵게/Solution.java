@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_09.prog_0901_heap_001_더_맵게;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 public class Solution {
 
     public static void main(String[] args) {
@@ -58,7 +58,7 @@ public class Solution {
     public static int solution(int[] scoville, int K) {
         Arrays.sort(scoville);
 
-        PriorityQueue<Integer> queue = new PriorityQueue();
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
         for (int i : scoville) {
             queue.add(i);
         }

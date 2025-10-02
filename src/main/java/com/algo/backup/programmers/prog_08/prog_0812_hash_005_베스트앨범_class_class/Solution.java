@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0812_hash_005_베스트앨범_c
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -45,9 +46,9 @@ class Solution {
     }
 
     static class Music {
-        private String genre;
-        private int index;
-        private int count;
+        private final String genre;
+        private final int index;
+        private final int count;
 
         public Music(String genre, int index, int count) {
             this.genre = genre;
@@ -57,9 +58,9 @@ class Solution {
     }
 
     static class Genre {
-        private String name;
+        private final String name;
         private int totalCount;
-        private List<Music> musics;
+        private final List<Music> musics;
 
         public Genre(String name) {
             this.name = name;

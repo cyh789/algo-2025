@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0901_heap_002_디스크_컨트�
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -11,8 +12,8 @@ public class Solution {
         n[index++] = new int[][]{{0, 3}, {1, 9}, {3, 5}};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[][] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -64,10 +65,7 @@ public class Solution {
         int endTime = 0;
         int jobsIdx = 0;
         int sum = 0;
-        while (true) {
-            if (count >= jobs.length) {
-                break;
-            }
+        while (count < jobs.length) {
 
             while (jobsIdx < jobs.length && endTime >= jobs[jobsIdx][0]) {
                 pq.offer(jobs[jobsIdx++]);

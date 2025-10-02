@@ -2,7 +2,6 @@ package com.algo.backup.programmers.prog_07.prog_0701_004;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 //[PCCE 기출문제] 10번 / 데이터 분석
@@ -29,9 +28,9 @@ public class Solution {
         int sortH = condition.valueOf(sort_by.toLowerCase()).getIndex();
 
         List<int[]> list = new ArrayList<>();
-        for (int i = 0; i < h; i++) {
-            if (data[i][extH] < val_ext) {
-                list.add(data[i]);
+        for (int[] datum : data) {
+            if (datum[extH] < val_ext) {
+                list.add(datum);
             }
         }
 
@@ -40,12 +39,7 @@ public class Solution {
             answer[i] = list.get(i);
         }
 
-        Arrays.sort(answer, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[sortH] - o2[sortH];
-            }
-        });
+        Arrays.sort(answer, (o1, o2) -> o1[sortH] - o2[sortH]);
 
         return answer;
     }
@@ -53,7 +47,7 @@ public class Solution {
     public enum condition {
         code(0), date(1), maximum(2), remain(3);
 
-        private int index;
+        private final int index;
 
         condition(int index) {
             this.index = index;

@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_10.prog_1002_graph_004_카펫;
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

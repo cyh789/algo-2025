@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0909_graph_006_전력망을_둘
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -69,7 +70,6 @@ public class Solution {
     // 두 전력망이 각각 4개와 3개의 송전탑을 가지게 되며, 이 방법이 최선입니다.
 
     public static int solution(int n, int[][] wires) {
-        int answer = n;
         // 인접 리스트로 그래프 초기화
         List<List<Integer>> graph = new ArrayList<>();
         for (int i = 0; i <= n; i++) {

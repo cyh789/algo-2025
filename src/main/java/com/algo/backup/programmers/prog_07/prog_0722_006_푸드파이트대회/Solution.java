@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_07.prog_0722_006_푸드파이트대회;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -11,8 +12,8 @@ public class Solution {
         n[index++] = new int[]{1, 7, 1, 2};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            String answer = solution(n[i]);
+        for (int[] ints : n) {
+            String answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

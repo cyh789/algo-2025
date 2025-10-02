@@ -32,10 +32,10 @@ public class Solution {
         int[][] giftTable = new int[n][n];
         //선물 지수는 이번 달까지 자신이 친구들에게 준 선물의 수에서 받은 선물의 수를 뺀 값입니다.
         int[] giftScore = new int[n];
-        for (int i = 0; i < gifts.length; i++) {
-            String[] parts = gifts[i].split(" ");
+        for (String gift : gifts) {
+            String[] parts = gift.split(" ");
             String giver = parts[0];
-            String receiver =  parts[1];
+            String receiver = parts[1];
             int giverIndex = map.get(giver);
             int receiverIndex = map.get(receiver);
             giftTable[giverIndex][receiverIndex]++;
@@ -69,8 +69,8 @@ public class Solution {
         }
 
         //다음달에 가장 많은 선물을 받는 친구가 받을 선물의 수를 return 하도록 solution 함수를 완성해 주세요.
-        for (int i = 0; i < nextMonthGifts.length; i++) {
-            answer = Math.max(answer, nextMonthGifts[i]);
+        for (int nextMonthGift : nextMonthGifts) {
+            answer = Math.max(answer, nextMonthGift);
         }
         return answer;
     }

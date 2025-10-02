@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("UnusedAssignment")
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -13,8 +14,8 @@ class Solution {
         n[index++] = new int[]{4,4,4,3,3}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (int[] ints : n) {
+            int[] answer = solution(ints);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -38,10 +39,10 @@ class Solution {
 
         List<Integer> answer = new ArrayList<>();
         int prev = Integer.MAX_VALUE;
-        for (int i = 0; i < arr.length; i++) {
-            if (prev != arr[i]) {
-                answer.add(arr[i]);
-                prev = arr[i];
+        for (int j : arr) {
+            if (prev != j) {
+                answer.add(j);
+                prev = j;
             }
         }
 

@@ -1,10 +1,9 @@
 package com.algo.backup.programmers.prog_09.prog_0930_heap_003_이중우선순위큐;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 public class Solution {
 
     public static void main(String[] args) {
@@ -15,8 +14,8 @@ public class Solution {
         n[index++] = new String[]{"I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (String[] strings : n) {
+            int[] answer = solution(strings);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }

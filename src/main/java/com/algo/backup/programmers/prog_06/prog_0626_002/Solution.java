@@ -7,7 +7,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 //[PCCE 기출문제] 10번 / 데이터 분석
-public class Solution {
+public class
+
+
+
+
+
+
+
+
+
+Solution {
     public static void main(String[] args) {
         int[][] data = {{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}, {4, 20300401, 10, 9}};
         String ext = "date";
@@ -21,9 +31,9 @@ public class Solution {
         int sort = Column.valueOf(sort_by.toUpperCase()).getIndex();
 
         ArrayList<int[]> dataList = new ArrayList<>();
-        for (int i = 0; i < data.length; i++) {
-            if (data[i][val] < val_ext) {
-                dataList.add(data[i]);
+        for (int[] datum : data) {
+            if (datum[val] < val_ext) {
+                dataList.add(datum);
             }
         }
 
@@ -32,12 +42,7 @@ public class Solution {
             answer[i] = dataList.get(i);
         }
 
-        Arrays.sort(answer, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[sort] - o2[sort];
-            }
-        });
+        Arrays.sort(answer, (o1, o2) -> o1[sort] - o2[sort]);
 
         for (int[] row : answer) {
             System.out.println(Arrays.toString(row));
@@ -53,7 +58,7 @@ public class Solution {
         List<int[]> dataList = Arrays.stream(data)
                 .filter(row -> row[val] < val_ext)
                 .sorted(Comparator.comparingInt(row -> row[sort]))
-                .collect(Collectors.toList());
+                .toList();
 
         int[][] answer = new int[dataList.size()][3];
         for (int i = 0; i < dataList.size(); i++) {
@@ -66,7 +71,7 @@ public class Solution {
     public enum Column {
         CODE(0), DATE(1), MAXIMUM(2), REMAIN(3);
 
-        private int index;
+        private final int index;
 
         Column(int index){
             this.index = index;

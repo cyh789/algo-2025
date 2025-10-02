@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_07.prog_0723_004_삼총사;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -10,8 +11,8 @@ public class Solution {
         n[index++] = new int[]{-3, -2, -1, 0, 1, 2, 3};
         n[index++] = new int[]{-1, 1, -1, 1};
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_09.prog_0905_sort_002_가장_큰_수;
 
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +13,8 @@ public class Solution {
         n[index++] = new int[]{3, 30, 34, 5, 9};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            String answer = solution(n[i]);
+        for (int[] ints : n) {
+            String answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

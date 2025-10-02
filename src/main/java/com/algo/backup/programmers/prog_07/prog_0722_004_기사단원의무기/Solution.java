@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_07.prog_0722_004_기사단원의무기;
 
 //기사단원의무기
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0804_009_데이터_분석;
 import java.util.*;
 
 //데이터 분석
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
     public static void main(String[] args) {
         int[][] data = {{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}};
@@ -24,21 +25,16 @@ public class Solution {
         map.put("remain", mapIndex++);
 
         List<int[]> list = new ArrayList<>();
-        for (int i = 0; i < data.length; i++) {
-            int extTemp = data[i][map.get(ext)];
+        for (int[] datum : data) {
+            int extTemp = datum[map.get(ext)];
             if (extTemp <= valExt) {
-                list.add(data[i]);
+                list.add(datum);
             }
         }
 
         int[][] answer = list.toArray(int[][]::new);
         int sortIndex = map.get(sortBy);
-        Arrays.sort(answer, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[sortIndex] - o2[sortIndex];
-            }
-        });
+        Arrays.sort(answer, (o1, o2) -> o1[sortIndex] - o2[sortIndex]);
 
         return answer;
     }

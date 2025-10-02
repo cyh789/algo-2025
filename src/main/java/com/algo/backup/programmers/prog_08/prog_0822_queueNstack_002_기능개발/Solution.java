@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0822_queueNstack_002_기능개�
 
 import java.util.*;
 
+@SuppressWarnings({"DataFlowIssue", "UnusedAssignment"})
 class Solution {
     public static void main(String[] args) {
         int arrIndex = 2;

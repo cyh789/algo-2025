@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         n[index++] = new String[]{"I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (String[] strings : n) {
+            int[] answer = solution(strings);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
@@ -42,8 +43,8 @@ public class Solution {
         Queue<Integer> maxQueue = new PriorityQueue<>((i1, i2) -> i2 - i1);
         Queue<Integer> minQueue = new PriorityQueue<>();
 
-        for(int i = 0; i < operations.length; i++) {
-            String[] selected = operations[i].split(" ");
+        for (String operation : operations) {
+            String[] selected = operation.split(" ");
             if ("I".equals(selected[0])) {
                 maxQueue.offer(Integer.parseInt(selected[1]));
                 minQueue.offer(Integer.parseInt(selected[1]));

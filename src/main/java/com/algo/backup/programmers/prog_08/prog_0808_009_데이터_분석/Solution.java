@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0808_009_데이터_분석;
 import java.util.*;
 
 //데이터 분석
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
     public static void main(String[] args) {
         int[][] data = {{1, 20300104, 100, 80}, {2, 20300804, 847, 37}, {3, 20300401, 10, 8}};
@@ -32,24 +33,19 @@ public class Solution {
         int dataH = data.length;
         int dataW = data[0].length;
         List<int[]> list = new ArrayList<>();
-        for (int i = 0; i < dataH; i++) {
+        for (int[] datum : data) {
             int extIdx = map.get(ext);
 
-            int selected = data[i][extIdx];
+            int selected = datum[extIdx];
             if (selected < valExt) {
-                list.add(data[i]);
+                list.add(datum);
             }
         }
 
-        int[][] answer = list.stream().toArray(int[][]::new);
+        int[][] answer = list.toArray(int[][]::new);
 
         int sortByIdx = map.get(sortBy);
-        Arrays.sort(answer, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                return o1[sortByIdx] - o2[sortByIdx];
-            }
-        });
+        Arrays.sort(answer, (o1, o2) -> o1[sortByIdx] - o2[sortByIdx]);
 
         //data에서 ext 값이 val_ext보다 작은 데이터만 뽑은 후,
         // sort_by에 해당하는 값을 기준으로 오름차순으로 정렬하여 return 하도록 solution 함수를 완성해 주세요.

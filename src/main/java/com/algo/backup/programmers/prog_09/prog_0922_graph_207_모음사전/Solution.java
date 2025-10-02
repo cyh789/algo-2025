@@ -1,5 +1,6 @@
 package com.algo.backup.programmers.prog_09.prog_0922_graph_207_모음사전;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Solution {
         n[index++] = "EIO";
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (String s : n) {
+            int answer = solution(s);
             System.out.println(answer);
             System.out.println("=============");
         }

@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_08.prog_0820_queueNstack_004_프로세�
 
 import java.util.*;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

@@ -42,12 +42,12 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < parkTable.length; i++) {
-            System.out.println(Arrays.toString(parkTable[i]));
+        for (String[] strings : parkTable) {
+            System.out.println(Arrays.toString(strings));
         }
 
-        for (int i = 0; i < routes.length; i++) {
-            String[] routesTemp = routes[i].split(" ");
+        for (String route : routes) {
+            String[] routesTemp = route.split(" ");
             int move = Integer.parseInt(routesTemp[1]);
             boolean stop = false;
 

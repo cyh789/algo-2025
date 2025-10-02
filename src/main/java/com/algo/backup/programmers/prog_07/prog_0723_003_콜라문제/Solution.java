@@ -1,6 +1,7 @@
 package com.algo.backup.programmers.prog_07.prog_0723_003_콜라문제;
 
 //콜라문제
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

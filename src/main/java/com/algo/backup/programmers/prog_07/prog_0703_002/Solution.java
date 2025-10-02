@@ -15,7 +15,7 @@ public class Solution {
     }
 
     public static int solution(int[] bandage, int health, int[][] attacks) {
-        int answer = 0;
+        int answer;
         int w = attacks[0].length;
         int h = attacks.length;
         List<Monster> list = new ArrayList<>();
@@ -55,8 +55,8 @@ public class Solution {
     }
 
     public static class Monster {
-        private int time;
-        private int damage;
+        private final int time;
+        private final int damage;
 
         public Monster(int time, int damage) {
             this.time = time;

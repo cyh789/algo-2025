@@ -63,7 +63,7 @@ public class Solution {
     }
 
     private static int transFunc(int time) {
-        int answer = 0;
+        int answer;
         int hour = time / 100;
         int min = time % 100;
         answer = hour * 60 + min;

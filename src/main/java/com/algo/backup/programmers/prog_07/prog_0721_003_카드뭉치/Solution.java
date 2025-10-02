@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -40,20 +41,19 @@ public class Solution {
         //for i cards2
         int cards1Index = 1;
         Map<String, Integer> map1 = new HashMap<>();
-        for (int i = 0; i < cards1.length; i++) {
-            map1.put(cards1[i], cards1Index++);
+        for (String string : cards1) {
+            map1.put(string, cards1Index++);
         }
 
         int cards2Index = 1;
         Map<String, Integer> map2 = new HashMap<>();
-        for (int i = 0; i < cards2.length; i++) {
-            map2.put(cards2[i], cards2Index++);
+        for (String s : cards2) {
+            map2.put(s, cards2Index++);
         }
 
         int currentCards1Index = 1;
         int currentCards2Index = 1;
-        for (int i = 0; i < goal.length; i++) {
-            String selected = goal[i];
+        for (String selected : goal) {
             if (map1.containsKey(selected) && map1.get(selected) == currentCards1Index) {
                 currentCards1Index++;
             } else {

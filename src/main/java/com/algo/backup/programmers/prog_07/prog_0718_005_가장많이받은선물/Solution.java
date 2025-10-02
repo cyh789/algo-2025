@@ -56,11 +56,11 @@ public class Solution {
         //   giftsTable[giverIndex][receiverIndex]++
         //   giftScore[giverIndex]++;
         //   giftScore[giverIndex]--;
-        int friendsH = friends.length;;
+        int friendsH = friends.length;
         int[] giftScore = new int[friendsH];
         int[][] giftsTable = new int[friendsH][friendsH];
-        for (int i = 0; i < gifts.length; i++) {
-            String[] giftsTemp = gifts[i].split(" ");
+        for (String gift : gifts) {
+            String[] giftsTemp = gift.split(" ");
             String giver = giftsTemp[0];
             String receiver = giftsTemp[1];
             int giverIndex = map.get(giver);
@@ -70,8 +70,8 @@ public class Solution {
             giftScore[receiverIndex]--;
         }
 
-        for (int i = 0; i < giftsTable.length; i++) {
-            System.out.println(Arrays.toString(giftsTable[i]));
+        for (int[] ints : giftsTable) {
+            System.out.println(Arrays.toString(ints));
         }
 
         //int[friendsH] nextMonthGifts

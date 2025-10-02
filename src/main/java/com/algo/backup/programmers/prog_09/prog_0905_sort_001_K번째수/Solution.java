@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0905_sort_001_K번째수;
 
 import java.util.Arrays;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -49,10 +50,10 @@ public class Solution {
 
         int[] answer = new int[commands.length];
         int answerIdx = 0;
-        for (int i = 0; i < commands.length; i++) {
-            int startIdx = commands[i][0];
-            int endIdx = commands[i][1];
-            int selectedIdx = commands[i][2];
+        for (int[] command : commands) {
+            int startIdx = command[0];
+            int endIdx = command[1];
+            int selectedIdx = command[2];
 
             int[] arrayTemp = Arrays.copyOfRange(array, startIdx - 1, endIdx);
 

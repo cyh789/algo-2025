@@ -1,8 +1,8 @@
 package com.algo.backup.programmers.prog_08.prog_0822_hash_003_전화번호;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +14,8 @@ public class Solution {
         n[index++] = new String[]{"12","123","1235","567","88"}		;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            boolean answer = solution(n[i]);
+        for (String[] strings : n) {
+            boolean answer = solution(strings);
             System.out.println(answer);
             System.out.println("=============");
         }

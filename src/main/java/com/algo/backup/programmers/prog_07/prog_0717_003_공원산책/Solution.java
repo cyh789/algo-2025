@@ -45,8 +45,8 @@ public class Solution {
             }
         }
 
-        for (int i = 0; i < routes.length; i++) {
-            String[] routesTemp = routes[i].split(" ");
+        for (String route : routes) {
+            String[] routesTemp = route.split(" ");
             String direction = routesTemp[0];
             int move = Integer.parseInt(routesTemp[1]);
 

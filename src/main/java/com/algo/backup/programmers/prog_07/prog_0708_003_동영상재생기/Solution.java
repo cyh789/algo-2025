@@ -26,7 +26,7 @@ public class Solution {
     }
 
     public static String solution(String videoLen, String pos, String opStart, String opEnd, String[] commands) {
-        String answer = "";
+        String answer;
         int videoLenTemp = transFunc(videoLen);
         int posTemp = transFunc(pos);
         int opStartTemp = transFunc(opStart);
@@ -38,10 +38,10 @@ public class Solution {
         }
         for (String command : commands) {
             if ("prev".equals(command)) {
-                current = current - 10 <= 0 ? 0 : current - 10;
+                current = Math.max(current - 10, 0);
             }
             if ("next".equals(command)) {
-                current = current + 10 >= videoLenTemp ? videoLenTemp : current + 10;
+                current = Math.min(current + 10, videoLenTemp);
             }
 
             if (opStartTemp <= current && opEndTemp >= current) {
@@ -56,7 +56,7 @@ public class Solution {
     }
 
     private static int transFunc(String time) {
-        int answer = 0;
+        int answer;
         int min = Integer.parseInt(time.substring(0, 2));
         int sec = Integer.parseInt(time.substring(3, 5));
         answer = min * 60 + sec;

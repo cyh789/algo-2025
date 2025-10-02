@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_09.prog_0917_graph_006_전력망을_둘
 
 import java.util.ArrayList;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -92,10 +93,9 @@ public class Solution {
             graph.get(v2).remove(Integer.valueOf(v1));
 
             boolean[] visited = new boolean[graphSize];
-            int curr = v1;
             cntV1 = 1;
             //끊긴 그래프에서 한 쪽 노드(v1)에서 DFS/BFS를 돌려 탐색된 노드 개수를 센다.
-            dfs(graph, curr, visited);
+            dfs(graph, v1, visited);
             int cntV2 = n - cntV1;
 
             //두 개의 차이 |cnt - (n - cnt)|를 구한다.

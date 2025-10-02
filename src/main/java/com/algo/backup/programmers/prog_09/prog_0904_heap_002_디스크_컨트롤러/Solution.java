@@ -2,8 +2,8 @@ package com.algo.backup.programmers.prog_09.prog_0904_heap_002_디스크_컨트�
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
-import java.util.stream.Collectors;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +13,8 @@ public class Solution {
         n[index++] = new int[][]{{0, 3}, {1, 9}, {3, 5}};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[][] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

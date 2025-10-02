@@ -2,6 +2,7 @@ package com.algo.backup.programmers.prog_07.prog_0704_003;
 
 //2025 프로그래머스 코드챌린지 1차 예선
 //유연근무제
+@SuppressWarnings("ConstantValue")
 public class Solution {
     public static void main(String[] args) {
         int[] schedules;

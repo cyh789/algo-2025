@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_07.prog_0722_005_과일장수;
 import java.util.Arrays;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {

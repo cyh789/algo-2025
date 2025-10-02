@@ -1,10 +1,9 @@
 package com.algo.backup.programmers.prog_09.prog_0930_heap_102_디스크_컨트롤러;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +13,8 @@ public class Solution {
         n[index++] = new int[][]{{0, 3}, {1, 9}, {3, 5}};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[][] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }

@@ -64,15 +64,15 @@ public class Solution {
         // 단, 조건을 만족하는 데이터는 항상 한 개 이상 존재합니다.
         int dataH = data.length;
         List<int[]> answer = new ArrayList<>();
-        for (int i = 0; i < dataH; i++) {
-            int selectedExt = data[i][extIdx];
-            if (selectedExt < valExt) answer.add(data[i]);
+        for (int[] datum : data) {
+            int selectedExt = datum[extIdx];
+            if (selectedExt < valExt) answer.add(datum);
         }
 
         int finalSortIdx = sortIdx;
-        Collections.sort(answer, (o1, o2) -> o1[finalSortIdx] - o2[finalSortIdx]);
+        answer.sort((o1, o2) -> o1[finalSortIdx] - o2[finalSortIdx]);
 
-        return answer.stream().toArray(int[][]::new);
+        return answer.toArray(int[][]::new);
     }
 
 

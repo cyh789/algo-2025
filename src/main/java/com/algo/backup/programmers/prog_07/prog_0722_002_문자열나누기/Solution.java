@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //문자열나누기
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -16,8 +17,8 @@ public class Solution {
         m[index++] = "aaabbaccccabba";
         index = 0;
 
-        for (int i = 0; i < m.length; i++) {
-            int answer = solution(m[i]);
+        for (String s : m) {
+            int answer = solution(s);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -66,7 +67,7 @@ public class Solution {
             }
         }
 
-        System.out.println(list.toString());
+        System.out.println(list);
 
         return list.size();
     }

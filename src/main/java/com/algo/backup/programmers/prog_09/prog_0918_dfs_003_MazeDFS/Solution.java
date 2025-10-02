@@ -1,7 +1,5 @@
 package com.algo.backup.programmers.prog_09.prog_0918_dfs_003_MazeDFS;
 
-import java.util.Arrays;
-
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
 
@@ -22,7 +20,6 @@ public class Solution {
         int[] dy = {0, 0, -1, 1}; // 좌우
         int[] start = {1, 1}; // 시작점 (1,1)
         int[] end = {3, 3}; // 종료지점 (1,1)
-        int[] curr = start;
         dfs(maze, 1, 1, dx, dy, visited);
     }
     static int totalMove = 0;

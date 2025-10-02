@@ -20,7 +20,7 @@ public class Solution {
     }
 
     public static int solution(int[] bandage, int health, int[][] attacks) {
-        int answer = -1;
+        int answer;
 
         List<Creep> list = new ArrayList<>();
         for (int[] arr : attacks) {

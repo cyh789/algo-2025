@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //카드뭉치
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -13,8 +14,8 @@ public class Solution {
         n[index++] = "banana";
         n[index++] = "foobar";
 
-        for (int i = 0; i < n.length; i++) {
-            int[] answer = solution(n[i]);
+        for (String s : n) {
+            int[] answer = solution(s);
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }

@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_09.prog_0902_heap_002_디스크_컨트�
 import java.util.Arrays;
 import java.util.PriorityQueue;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -12,8 +13,8 @@ public class Solution {
         n[index++] = new int[][]{{0, 3}, {1, 9}, {3, 5}};
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[][] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -89,6 +90,6 @@ public class Solution {
             }
         }
 
-        return (int) Math.floor(sum / jobs.length);
+        return (int) (double) (sum / jobs.length);
     }
 }

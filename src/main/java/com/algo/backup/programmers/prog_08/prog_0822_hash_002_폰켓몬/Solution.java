@@ -3,6 +3,7 @@ package com.algo.backup.programmers.prog_08.prog_0822_hash_002_폰켓몬;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -14,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{3,3,3,2,2,2}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -65,8 +66,7 @@ public class Solution {
         int size = set.size();
         int half = nums.length / 2;
 
-        if (size >= half) return half;
+        return Math.min(size, half);
 
-        return size;
     }
 }

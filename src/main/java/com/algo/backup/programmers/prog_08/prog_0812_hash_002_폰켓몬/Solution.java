@@ -1,10 +1,9 @@
 package com.algo.backup.programmers.prog_08.prog_0812_hash_002_폰켓몬;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
+@SuppressWarnings("UnusedAssignment")
 public class Solution {
 
     public static void main(String[] args) {
@@ -16,8 +15,8 @@ public class Solution {
         n[index++] = new int[]{3,3,3,2,2,2}	;
         index = 0;
 
-        for (int i = 0; i < n.length; i++) {
-            int answer = solution(n[i]);
+        for (int[] ints : n) {
+            int answer = solution(ints);
             System.out.println(answer);
             System.out.println("=============");
         }
@@ -28,13 +27,12 @@ public class Solution {
 
     public static int solution(int[] nums) {
         Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            set.add(nums[i]);
+        for (int num : nums) {
+            set.add(num);
         }
 
         int selectedNum = nums.length / 2;
-        if (selectedNum <= set.size()) return selectedNum;
+        return Math.min(selectedNum, set.size());
 
-        return set.size();
     }
 }
