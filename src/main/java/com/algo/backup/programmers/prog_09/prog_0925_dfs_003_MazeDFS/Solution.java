@@ -38,7 +38,6 @@ public class Solution {
         }
 
         for (int i = 0; i < dx.length; i++) {
-
             int nextX = curr[0] + dx[i];
             int nextY = curr[1] + dy[i];
             if (nextX < 0 || nextX > maze.length) continue;
