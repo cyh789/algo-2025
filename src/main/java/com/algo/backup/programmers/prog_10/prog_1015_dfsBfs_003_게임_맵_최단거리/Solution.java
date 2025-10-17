@@ -1,7 +1,4 @@
-package com.algo.programmers.prog_1014_dfsBfs_003_게임_맵_최단거리;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package com.algo.backup.programmers.prog_10.prog_1015_dfsBfs_003_게임_맵_최단거리;
 
 @SuppressWarnings("UnusedAssignment")
 public class Solution {
@@ -76,51 +73,7 @@ public class Solution {
     //문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.
 
     public static int solution(int[][] maps) {
-        return bfs(maps);
-    }
-
-    private static int bfs(int[][] maps) {
-        int[] dx = new int[]{-1, 1, 0, 0};
-        int[] dy = new int[]{0, 0, -1, 1};
-
-        Queue<Node> queue = new LinkedList<>();
-        Node node = new Node(0, 0, 1);
-        queue.add(node);
-
-        boolean[][] visited = new boolean[maps.length][maps[0].length];
-        visited[0][0] = true;
-
-        while (!queue.isEmpty()) {
-            Node curr = queue.poll();
-            if (curr.x == maps.length - 1 && curr.y == maps[0].length - 1) return curr.cnt;
-
-            for (int i = 0; i < dx.length; i++) {
-                int x = curr.x + dx[i];
-                int y = curr.y + dy[i];
-
-                if (x < 0 || x >= maps.length) continue;
-                if (y < 0 || y >= maps[0].length) continue;
-                if (visited[x][y]) continue;
-                if (maps[x][y] == 0) continue;
-
-                visited[x][y] = true;
-                queue.add(new Node(x, y, curr.cnt + 1));
-            }
-        }
-
-        return -1;
-    }
-
-    static final class Node {
-        private final int x;
-        private final int y;
-        private final int cnt;
-
-        public Node(int x, int y, int cnt) {
-            this.x = x;
-            this.y = y;
-            this.cnt = cnt;
-        }
+        return 0;
     }
 
 }

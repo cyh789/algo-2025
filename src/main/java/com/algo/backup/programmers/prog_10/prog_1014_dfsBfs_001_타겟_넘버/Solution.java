@@ -1,7 +1,6 @@
-package com.algo.programmers.prog_1014_dfsBfs_101_타겟_넘버;
+package com.algo.backup.programmers.prog_10.prog_1014_dfsBfs_001_타겟_넘버;
 
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.Queue;
 
 public class Solution {
@@ -66,41 +65,40 @@ public class Solution {
     }
 
     private static int bfs(int[] numbers, int target) {
-        int sum = 0;
-        int cnt = 0;
         Queue<Node> queue = new LinkedList<>();
-        queue.add(new Node(sum, cnt));
+        queue.add(new Node(0, 0));
 
+        int cnt = 0;
         while (!queue.isEmpty()) {
             Node curr = queue.poll();
+            //System.out.println("curr=" + curr);
 
             if (curr.cnt >= numbers.length) {
                 if (curr.sum == target) cnt++;
                 continue;
             }
 
-            queue.add(new Node(curr.sum + numbers[curr.cnt], curr.cnt+ 1));
-            queue.add(new Node(curr.sum - numbers[curr.cnt], curr.cnt+ 1));
+            for (int i = 0; i < 2; i++) {
+                int sum = i == 0 ? curr.sum + numbers[curr.cnt] : curr.sum - numbers[curr.cnt];
+                queue.add(new Node(sum, curr.cnt + 1));
+            }
         }
 
         return cnt;
     }
 
-    private static final class Node {
+    static final class Node {
         private final int sum;
         private final int cnt;
 
-        private Node(int sum, int cnt) {
+        public Node(int sum, int cnt) {
             this.sum = sum;
             this.cnt = cnt;
         }
 
         @Override
         public String toString() {
-            return "Node[" +
-                    "sum=" + sum + ", " +
-                    "cnt=" + cnt + ']';
+            return "Node{sum=" + sum + ", cnt=" + cnt + "}";
         }
-
     }
 }

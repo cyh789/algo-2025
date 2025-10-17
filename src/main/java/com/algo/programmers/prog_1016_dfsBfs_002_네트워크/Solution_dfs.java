@@ -1,9 +1,6 @@
-package com.algo.backup.programmers.prog_10.prog_1013_dfsBfs_102_네트워크;
+package com.algo.programmers.prog_1016_dfsBfs_002_네트워크;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-
-public class Solution {
+public class Solution_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 3;
@@ -27,6 +24,7 @@ public class Solution {
         }
         //2
         //1
+        //3
     }
 
     //네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다.
@@ -62,24 +60,24 @@ public class Solution {
     public static int solution(int n, int[][] computers) {
         boolean[] visited = new boolean[n];
         cnt = 0;
-        LinkedList<int[]> result = new LinkedList<>();
         for (int i = 0; i < n; i++) {
-            if (visited[i]) continue;
-            dfs(computers, i, visited, result);
-            cnt++;
+            if (visited[i]) continue;   //중복방지 실행
+            dfs(computers, visited, i);
+            cnt++;  //첫 방문이면 무조건 + 1
         }
 
         return cnt;
     }
 
-    private static void dfs(int[][] computers, int idx, boolean[] visited, LinkedList<int[]> result) {
-        visited[idx] = true;
+    private static void dfs(int[][] computers, boolean[] visited, int idx) {
+        visited[idx] = true;    //중복방지
 
-        for (int i = 0; i < computers[idx].length; i++) {
-            if (visited[i]) continue;
-            if (computers[idx][i] == 0) continue;
+        for (int i = 0; i < computers.length; i++) {
+            int v1 = computers[idx][i];
+            if (v1 == 0) continue;
+            if (visited[i]) continue;   //중복방지 실행
 
-            dfs(computers, i, visited, result);
+            dfs(computers, visited, i);
         }
     }
 

@@ -1,7 +1,7 @@
-package com.algo.backup.programmers.prog_10.prog_1013_dfsBfs_102_네트워크;
+package com.algo.programmers.prog_1016_dfsBfs_002_네트워크;
 
-import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution {
 
@@ -27,6 +27,7 @@ public class Solution {
         }
         //2
         //1
+        //3
     }
 
     //네트워크란 컴퓨터 상호 간에 정보를 교환할 수 있도록 연결된 형태를 의미합니다.
@@ -62,27 +63,33 @@ public class Solution {
     public static int solution(int n, int[][] computers) {
         boolean[] visited = new boolean[n];
         cnt = 0;
-        LinkedList<int[]> result = new LinkedList<>();
         for (int i = 0; i < n; i++) {
             if (visited[i]) continue;
-            dfs(computers, i, visited, result);
+            bfs(computers, visited, i);
             cnt++;
         }
 
         return cnt;
     }
 
-    private static void dfs(int[][] computers, int idx, boolean[] visited, LinkedList<int[]> result) {
+    private static void bfs(int[][] computers, boolean[] visited, int idx) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(idx);
+
         visited[idx] = true;
+        while (!q.isEmpty()) {
+            int currIdx = q.poll();
+            if (currIdx >= computers.length) continue;
+            for (int i = 0; i < computers.length; i++) {
+                int v1 = computers[currIdx][i];
+                if (v1 == 0) continue;
+                if (visited[i]) continue;
 
-        for (int i = 0; i < computers[idx].length; i++) {
-            if (visited[i]) continue;
-            if (computers[idx][i] == 0) continue;
-
-            dfs(computers, i, visited, result);
+                visited[i] = true;
+                q.add(i);
+            }
         }
     }
 
     static int cnt;
-
 }
