@@ -188,8 +188,8 @@ public class Solution {
         int cnt = 0;
         q.add(new int[]{characterX, characterY, cnt});
 
-        boolean[][] visitied = new boolean[map.length][map[0].length];
-        visitied[characterX][characterY] = true;
+        boolean[][] visited = new boolean[map.length][map[0].length];
+        visited[characterX][characterY] = true;
         while (!q.isEmpty()) {
             int[] curr = q.poll();
             int currX = curr[0];
@@ -205,10 +205,10 @@ public class Solution {
                 int nextY = currY + dy[i];
                 if (nextX  < 0 || nextX >= map.length) continue;
                 if (nextY  < 0 || nextY >= map[0].length) continue;
-                if (visitied[nextX][nextY]) continue;
+                if (visited[nextX][nextY]) continue;
                 if (map[nextX][nextY] != 1) continue;
 
-                visitied[nextX][nextY] = true;
+                visited[nextX][nextY] = true;
                 q.add(new int[]{nextX, nextY, currCnt + 1});
             }
         }

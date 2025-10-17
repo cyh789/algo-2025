@@ -134,7 +134,77 @@ public class Solution_dfs {
     //
     //설명 생략
     public static int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
-        return 0;
+        int[][] map = new int[101][101];
+
+        //내부 = 2
+        for (int[] ints : rectangle) {
+            int x1 = ints[0] * 2;
+            int y1 = ints[1] * 2;
+            int x2 = ints[2] * 2;
+            int y2 = ints[3] * 2;
+
+            for (int i = x1 + 1; i < x2; i++) {
+                for (int j = y1 + 1; j < y2; j++) {
+                    map[i][j] = 2; // 내부는 2로 표시
+                }
+            }
+        }
+
+        //테두리 = 1
+        for (int[] ints : rectangle) {
+            int x1 = ints[0] * 2;
+            int y1 = ints[1] * 2;
+            int x2 = ints[2] * 2;
+            int y2 = ints[3] * 2;
+
+            for (int i = x1; i <= x2; i++) {
+                if (map[i][y1] != 2) map[i][y1] = 1;
+                if (map[i][y2] != 2) map[i][y2] = 1;
+            }
+            for (int j = y1; j <= y2; j++) {
+                if (map[x1][j] != 2) map[x1][j] = 1;
+                if (map[x2][j] != 2) map[x2][j] = 1;
+            }
+        }
+
+        cnt = 0;
+        answer = Integer.MAX_VALUE;
+        boolean[][] visited = new boolean[map.length][map[0].length];
+        dfs(map, characterX * 2, characterY * 2, itemX * 2, itemY * 2, visited);
+
+        return answer == Integer.MAX_VALUE ? -1 : answer / 2;
     }
+
+    private static void dfs(int[][] map, int characterX, int characterY, int itemX, int itemY, boolean[][] visited) {
+        int[] dx = {1, -1, 0, 0};
+        int[] dy = {0, 0, 1, -1};
+
+        //System.out.println("characterX=" + characterX + " / characterY=" + characterY + " / cnt=" + cnt);
+
+        if (characterX == itemX && characterY == itemY) {
+            answer = Math.min(answer, cnt);
+            return;
+        }
+        visited[characterX][characterY] = true;
+
+        for (int i = 0; i < dx.length; i++) {
+            int nextX = characterX + dx[i];
+            int nextY = characterY + dy[i];
+            if (nextX  < 0 || nextX >= map.length) continue;
+            if (nextY  < 0 || nextY >= map[0].length) continue;
+            if (visited[nextX][nextY]) continue;
+            if (map[nextX][nextY] != 1) continue;
+
+            visited[nextX][nextY] = true;
+            cnt++;
+            //System.out.println("nextX=" + nextX + " / nextY=" + nextY + " / cnt=" + cnt);
+            dfs(map, nextX, nextY, itemX, itemY, visited);
+            cnt--;
+            visited[nextX][nextY] = false;
+        }
+    }
+
+    static int cnt;
+    static int answer;
 
 }
