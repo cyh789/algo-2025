@@ -1,6 +1,8 @@
 package com.algo.programmers.prog_1017_dfsBfs_006_여행경로;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Solution_dfs {
 
@@ -17,8 +19,8 @@ public class Solution_dfs {
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
-        //{"ICN", "JFK", "HND", "IAD"}
-        //{"ICN", "ATL", "ICN", "SFO", "ATL", "SFO"}
+        //[ICN, JFK, HND, IAD]
+        //[ICN, ATL, ICN, SFO, ATL, SFO]
     }
     //주어진 항공권을 모두 이용하여 여행경로를 짜려고 합니다. 항상 "ICN" 공항에서 출발합니다.
     //
@@ -45,7 +47,44 @@ public class Solution_dfs {
     //["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
     public static String[] solution(String[][] tickets) {
-        String[] answer = {};
-        return answer;
+
+        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
+
+        boolean[] visited = new boolean[tickets.length];
+        String v2 = "ICN";
+        List<String> result = new LinkedList<>();
+
+        answer = new LinkedList<>();
+        dfs(tickets, visited, result, v2);
+
+        return answer.toArray(new String[0]);
+    }
+    static List<String> answer;
+
+    private static void dfs(String[][] tickets, boolean[] visited, List<String> result, String v2) {
+
+        result.add(v2);
+        //System.out.println(result);
+
+        if (result.size() == tickets.length + 1) {
+            answer = new LinkedList<>(result);
+            //System.out.println("@@@@ 도착 answer=" + answer);
+            return;
+        }
+
+        for (int i = 0; i < tickets.length; i++) {
+            String nextV1 = tickets[i][0];
+            String nextV2 = tickets[i][1];
+
+            if (!v2.equals(nextV1)) continue;
+            if (visited[i]) continue;
+
+            visited[i] = true;
+            dfs(tickets, visited, result, nextV2);
+            visited[i] = false;
+            result.remove(result.size() - 1);
+
+            if (!answer.isEmpty()) return;
+        }
     }
 }

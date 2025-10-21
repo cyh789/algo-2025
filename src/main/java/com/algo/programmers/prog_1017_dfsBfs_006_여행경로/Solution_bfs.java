@@ -17,8 +17,8 @@ public class Solution_bfs {
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
-        //{"ICN", "JFK", "HND", "IAD"}
-        //{"ICN", "ATL", "ICN", "SFO", "ATL", "SFO"}
+        //[ICN, JFK, HND, IAD]
+        //[ICN, ATL, ICN, SFO, ATL, SFO]
     }
     //주어진 항공권을 모두 이용하여 여행경로를 짜려고 합니다. 항상 "ICN" 공항에서 출발합니다.
     //
@@ -67,10 +67,10 @@ public class Solution_bfs {
             List<String> currResult = curr.result;
             boolean[] currVisited = curr.visited;
 
-            System.out.println(curr);
+            //System.out.println(curr);
 
             if (currResult.size() == tickets.length + 1) {
-                System.out.println("@@@@ 도착");
+                //System.out.println("@@@@ 도착");
                 answer = currResult;
                 break;
             }
