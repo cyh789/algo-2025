@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1017_dfsBfs_006_여행경로;
+package com.algo.programmers.prog_1020_dfsBfs_006_여행경로;
 
 import java.util.*;
 

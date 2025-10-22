@@ -1,6 +1,8 @@
-package com.algo.programmers.prog_1017_dfsBfs_007_퍼즐_조각_채우기;
+package com.algo.programmers.prog_1021_dfsBfs_007_퍼즐_조각_채우기;
 
-public class Solution {
+import java.util.*;
+
+public class Solution_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -79,7 +81,127 @@ public class Solution {
     //입력은 다음과 같은 형태이며, 문제의 예시와 같습니다.
 
     public static int solution(int[][] game_board, int[][] table) {
-        int answer = -1;
+        int answer = 0;
+
+        List<List<int[]>> boardList = new ArrayList<>();
+        List<List<int[]>> tableList = new ArrayList<>();
+        boolean[][] boardVisited = new boolean[game_board.length][game_board.length];
+        boolean[][] tableVisited = new boolean[table.length][table.length];
+
+        for(int i = 0; i < game_board.length; i++) {
+            for(int j = 0; j < game_board[0].length; j++) {
+                // 1. game_board 의 빈 영역 확인
+                if (game_board[i][j] == 0 && !boardVisited[i][j]) {
+                    bfs(i, j, game_board, boardVisited, 0, boardList);
+                }
+
+                // 2. table의 블록 영역 확인
+                if (table[i][j] == 1 && !tableVisited[i][j]) {
+                    bfs(i, j, table, tableVisited, 1, tableList);
+                }
+            }
+        }
+
+        for (List<int[]> lst : tableList)
+            for (int[] arr : lst)
+                System.out.print(Arrays.toString(arr));
+        System.out.println();
+        for (List<int[]> lst : boardList)
+            for (int[] arr : lst)
+                System.out.print(Arrays.toString(arr));
+        System.out.println();
+
+
+        boolean[] visited = new boolean[boardList.size()];
+
+        for (int i = 0; i < tableList.size(); i++) {
+            List<int[]> tablePoints = tableList.get(i);
+
+            for (int j = 0; j < boardList.size(); j++) {
+                List<int[]> boardPoints = boardList.get(j);
+
+                if (tablePoints.size() == boardPoints.size() && !visited[j]) {
+                    if (chkFunc(boardPoints, tablePoints)) {
+                        answer += tablePoints.size();
+                        visited[j] = true;
+                        break;
+                    }
+                }
+            }
+        }
+
         return answer;
+    }
+
+    private static boolean chkFunc(List<int[]> boardPoints, List<int[]> tablePoints) {
+        // board 좌표 정렬
+        Collections.sort(boardPoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+
+        for (int i = 0; i < 4; i++) {
+            boolean correct = true;
+
+            // 퍼즐 조각 회전 했으니 다시 좌표 정렬
+            Collections.sort(tablePoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+
+            // 회전했으니 다시 좌표 (0, 0)을 기준으로 조정
+            int zeroX = tablePoints.get(0)[0];
+            int zeroY = tablePoints.get(0)[1];
+            for (int j = 0; j < tablePoints.size(); j++) {
+                tablePoints.get(j)[0] -= zeroX;
+                tablePoints.get(j)[1] -= zeroY;
+            }
+
+            for (int j = 0; j < tablePoints.size(); j++) {
+                int[] boardPoint = boardPoints.get(j);
+                int[] tablePoint = tablePoints.get(j);
+                if (boardPoint[0] != tablePoint[0] || boardPoint[1] != tablePoint[1]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if(correct) return true;
+
+            // 좌표 90도 회전 : (x,y) = (-y,x) => 배열 90도 회전 -> [x][y] = [y][-x]
+            for (int j = 0; j < tablePoints.size(); j++) {
+                int temp = tablePoints.get(j)[0];
+                tablePoints.get(j)[0] = tablePoints.get(j)[1];
+                tablePoints.get(j)[1] = -temp;
+            }
+        }
+
+        return false;
+    }
+
+    private static void bfs(int startX, int startY, int[][] board, boolean[][] visited, int target, List<List<int[]>> list) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        List<int[]> result = new ArrayList<>();
+        Deque<int[]> q = new ArrayDeque<>();
+        q.add(new int[] {startX, startY});
+        result.add(new int[] {0, 0});
+
+        visited[startX][startY] = true;
+        while (!q.isEmpty()) {
+            int[] curr = q.poll();
+
+            for (int i = 0; i < dx.length; i++) {
+                int nextX = curr[0]+ dx[i];
+                int nextY = curr[1] + dy[i];
+
+                if (nextX < 0 || nextX >= board.length) continue;
+                if (nextY < 0 || nextY >= board[0].length) continue;
+                if (visited[nextX][nextY]) continue;
+
+                if (board[nextX][nextY] != target) continue;
+
+                visited[nextX][nextY] = true;
+                q.add(new int[]{nextX, nextY});
+                result.add(new int[]{nextX - startX, nextY - startY});
+            }
+        }
+
+        list.add(result);
     }
 }

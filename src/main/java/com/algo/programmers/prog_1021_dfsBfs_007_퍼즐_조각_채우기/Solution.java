@@ -1,6 +1,6 @@
-package com.algo.programmers.prog_1017_dfsBfs_007_퍼즐_조각_채우기;
+package com.algo.programmers.prog_1021_dfsBfs_007_퍼즐_조각_채우기;
 
-public class Solution_bfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
