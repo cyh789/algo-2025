@@ -1,8 +1,8 @@
-package com.algo.programmers.prog_20251103_real_3;
+package com.algo.backup.programmers.prog_11.prog_20251103_real_3;
 
 import java.util.ArrayList;
 
-public class Solution_2 {
+public class Solution_1 {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -27,12 +27,14 @@ public class Solution_2 {
         }
 
         int cnt = 0;
-        for (int i = 0; i < circles.length; i++) {
+        for (int i = 0; i < circles.length - 1; i++) {
             int start = circles[i][0];
             int r = circles[i][2];
-            for (int j = i + 1; j < circles.length - 1; j++) {
+
+            for (int j = i + 1; j < circles.length; j++) {
                 int startTemp = circles[j][0];
                 int rTemp = circles[j][2];
+
                 if (start - r >= startTemp - rTemp && start + r <= startTemp + rTemp) {
                     list.get(j).add(i);
                     cnt++;
@@ -54,14 +56,12 @@ public class Solution_2 {
     }
 
     private static int dfs(boolean[] visited, ArrayList<ArrayList<Integer>> list, int i) {
-        visited[i] = true;
         int cnt = 1;
+        visited[i] = true;
         for (int nextIdx : list.get(i)) {
             if (visited[nextIdx]) continue;
             cnt += dfs(visited, list, nextIdx);
         }
         return cnt;
     }
-
-
 }

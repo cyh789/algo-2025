@@ -1,7 +1,4 @@
-package com.algo.programmers.prog_20251103_real_2;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.algo.backup.programmers.prog_11.prog_20251103_real_2;
 
 public class Solution {
 

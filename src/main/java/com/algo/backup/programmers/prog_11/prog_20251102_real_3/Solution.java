@@ -1,8 +1,9 @@
-package com.algo.programmers.prog_20251103_real_3;
+package com.algo.backup.programmers.prog_11.prog_20251102_real_3;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Solution_1 {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -21,7 +22,12 @@ public class Solution_1 {
     }
 
     public static int solution(int[][] circles) {
-        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        //포함하려면 min, max
+        //s = x축 최소, l= x축 최대
+        //min.s >= max.s => cnt++
+        //min.l <= max.l => cnt++
+
+        List<List<Integer>> list = new ArrayList<>();
         for (int i = 0; i < circles.length; i++) {
             list.add(new ArrayList<>());
         }
@@ -36,32 +42,36 @@ public class Solution_1 {
                 int rTemp = circles[j][2];
 
                 if (start - r >= startTemp - rTemp && start + r <= startTemp + rTemp) {
+                    //System.out.println(Arrays.toString(circles[i]) + " " + Arrays.toString(circles[j]));
                     list.get(j).add(i);
                     cnt++;
                 }
             }
         }
 
-        System.out.println(list);
+        //System.out.println(list);
         if (cnt == 0) return 1;
 
         int maxCnt = 0;
         for (int i = 0; i < list.size(); i++) {
             boolean[] visited = new boolean[circles.length];
-            int diff = dfs(visited, list, i);
-            maxCnt = Math.max(maxCnt, diff);
+            if (visited[i]) continue;
+            int diffCnt = dfs(list, visited, i);
+            //System.out.println(diffCnt);
+            maxCnt = Math.max(maxCnt, diffCnt);
         }
 
         return maxCnt == 0 ? 1 : maxCnt;
     }
 
-    private static int dfs(boolean[] visited, ArrayList<ArrayList<Integer>> list, int i) {
+    private static int dfs(List<List<Integer>> list, boolean[] visited, int idx) {
+        visited[idx] = true;
         int cnt = 1;
-        visited[i] = true;
-        for (int nextIdx : list.get(i)) {
+        for (int nextIdx : list.get(idx)) {
             if (visited[nextIdx]) continue;
-            cnt += dfs(visited, list, nextIdx);
+            cnt += dfs(list, visited, nextIdx);
         }
+
         return cnt;
     }
 }
