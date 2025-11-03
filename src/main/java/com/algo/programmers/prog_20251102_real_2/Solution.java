@@ -37,36 +37,36 @@ public class Solution {
 
         //System.out.println("0 덧셈 1 뺄셈 2 나눗셈 3 곱셈");
         int cnt = 0;
-        for (int i = 0; i < 4; i++) {
+        for (int m = 0; m < 4; m++) {
             int total = n;
-            total -= mMap.get(i);
+            total -= mMap.get(m);
 
-            for (int j = 0; j < 10; j++) {
-                total -= sMap.get(j);
+            for (int i1 = 0; i1 < 10; i1++) {
+                total -= sMap.get(i1);
 
-                for (int k = 0; k < 10; k++) {
-                    total -= sMap.get(k);
+                for (int i2 = 0; i2 < 10; i2++) {
+                    total -= sMap.get(i2);
 
-                    for (int l = 0; l < 10; l++) {
-                        if (total - sMap.get(l) != 0) continue;
-                        if (k == 0) {
-                            if (l != 0 && l != j) continue;
-                            if (i == 2) continue;
+                    for (int i3 = 0; i3 < 10; i3++) {
+                        if (total - sMap.get(i3) != 0) continue;
+                        if (i2 == 0) {
+                            if (i3 != 0 && i3 != i1) continue;
+                            if (m == 2) continue;
                         }
-                        total -= sMap.get(l);
+                        total -= sMap.get(i3);
 
-                        if (i == 0 && j + k == l) cnt++;
-                        if (i == 1 && j - k == l) cnt++;
-                        if (k == 0 && i == 3) cnt++;
+                        if (m == 0 && i1 + i2 == i3) cnt++;
+                        if (m == 1 && i1 - i2 == i3) cnt++;
+                        if (i2 == 0 && m == 3) cnt++;
                         else {
-                            if (i == 2 && j / k == l) cnt++;
-                            if (i == 3 && j * k == l) cnt++;
+                            if (m == 2 && i1 / i2 == i3) cnt++;
+                            if (m == 3 && i1 * i2 == i3) cnt++;
                         }
-                        total += sMap.get(l);
+                        total += sMap.get(i3);
                     }
-                    total += sMap.get(k);
+                    total += sMap.get(i2);
                 }
-                total += sMap.get(j);
+                total += sMap.get(i1);
             }
         }
 
