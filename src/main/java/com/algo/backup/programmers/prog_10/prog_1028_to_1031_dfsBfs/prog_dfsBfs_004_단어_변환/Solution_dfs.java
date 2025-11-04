@@ -1,9 +1,6 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_004_단어_변환;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_004_단어_변환;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-public class Solution_bfs {
+public class Solution_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -58,46 +55,38 @@ public class Solution_bfs {
     //target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다.
 
     public static int solution(String begin, String target, String[] words) {
-        return bfs(begin, target, words);
-    }
-
-    private static int bfs(String begin, String target, String[] words) {
-        Queue<Node> q = new LinkedList<>();
-        String str = begin;
-        int idx = 0;
-        int cnt = 0;
-        q.add(new Node(str, idx, cnt));
-
         boolean[] visited = new boolean[words.length];
+        int cnt = 0;
+        answer = Integer.MAX_VALUE;
+        String currStr = begin;
+        dfs(currStr, target, words, visited, cnt);
 
-        while (!q.isEmpty()) {
-            Node curr = q.poll();
-            String currStr = curr.str;
-            int currIdx = curr.idx;
-            int currCnt = curr.cnt;
+        return answer == Integer.MAX_VALUE ? 0 : answer;
+    }
+    static int answer;
 
-            if (currStr.equals(target)) {
-                cnt = currCnt;
-                break;
-            }
-            if (currIdx == words.length - 1) {
-                break;
-            }
-
-            for (int i = 0; i < words.length; i++) {
-                String nextStr = words[i];
-
-                if (visited[i]) continue;
-                if (!chkFunc(currStr, nextStr)) continue;
-
-                //System.out.println(curr + " / nextStr=" + nextStr);
-
-                visited[i] = true;
-                q.add(new Node(nextStr, i, currCnt + 1));
-            }
+    private static void dfs(String currStr, String target, String[] words, boolean[] visited, int cnt) {
+        if (answer < cnt) {
+            //System.out.println("@@가지치기");
+            return;
         }
 
-        return cnt;
+        if (currStr.equals(target)) {
+            //System.out.println("@@도착 answer=" + answer + " / cnt=" + cnt);
+            answer = Math.min(answer, cnt);
+            return;
+        }
+
+        for (int i = 0; i < words.length; i++) {
+            String nextStr = words[i];
+
+            if (visited[i]) continue;
+            if (!chkFunc(currStr, nextStr)) continue;
+
+            visited[i] = true;
+            dfs(nextStr, target, words, visited, cnt + 1);
+            visited[i] = false;
+        }
     }
 
     private static boolean chkFunc(String currStr, String nextStr) {
@@ -107,25 +96,5 @@ public class Solution_bfs {
         }
 
         return currStr.length() - 1 == cnt;
-    }
-
-    private static final class Node {
-        private final String str;
-        private final int idx;
-        private final int cnt;
-
-        private Node(String str, int idx, int cnt) {
-            this.str = str;
-            this.idx = idx;
-            this.cnt = cnt;
-        }
-
-        @Override
-        public String toString() {
-            return "Node[" +
-                    "str=" + str + ", " +
-                    "idx=" + idx + ", " +
-                    "cnt=" + cnt + ']';
-        }
     }
 }

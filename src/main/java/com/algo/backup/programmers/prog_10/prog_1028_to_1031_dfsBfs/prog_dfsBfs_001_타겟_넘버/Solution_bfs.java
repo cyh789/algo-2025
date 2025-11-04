@@ -1,6 +1,9 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_001_타겟_넘버;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_001_타겟_넘버;
 
-public class Solution {
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -58,7 +61,31 @@ public class Solution {
     //총 2가지 방법이 있으므로, 2를 return 합니다.
 
     public static int solution(int[] numbers, int target) {
-        return 0;
+        return bfs(numbers, target);
+    }
+
+    private static int bfs(int[] numbers, int target) {
+        Queue<int[]> q = new LinkedList<>();
+        int sum = 0;
+        int depth = 0;
+        q.add(new int[]{sum, depth});
+
+        int cnt = 0;
+        while (!q.isEmpty()) {
+            int[] curr = q.poll();
+            int currSum = curr[0];
+            int currDepth = curr[1];
+
+            if (currDepth >= numbers.length) {
+                if (currSum == target) cnt++;
+                continue;
+            }
+
+            q.add(new int[]{currSum + numbers[currDepth], currDepth + 1});
+            q.add(new int[]{currSum - numbers[currDepth], currDepth + 1});
+        }
+
+        return cnt;
     }
 
 }

@@ -1,6 +1,6 @@
-package com.algo.programmers.prog_dfsBfs_005_아이템_줍기;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_005_아이템_줍기;
 
-public class Solution_dfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 5;

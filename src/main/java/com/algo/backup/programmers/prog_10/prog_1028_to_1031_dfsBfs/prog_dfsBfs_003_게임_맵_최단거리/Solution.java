@@ -1,10 +1,7 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_003_게임_맵_최단거리;
-
-import java.util.LinkedList;
-import java.util.Queue;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_003_게임_맵_최단거리;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_bfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -76,48 +73,7 @@ public class Solution_bfs {
     //문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.
 
     public static int solution(int[][] maps) {
-        return bfs(maps);
-    }
-
-    private static int bfs(int[][] maps) {
-        int[] dx = {-1, 1, 0, 0};
-        int[] dy = {0, 0, -1, 1};
-
-        Queue<int[]> q = new LinkedList<>();
-        int cnt = 1;
-        q.add(new int[]{0, 0, cnt});
-
-        boolean[][] visited = new boolean[maps.length][maps[0].length];
-        visited[0][0] = true;
-
-        int answer = Integer.MAX_VALUE;
-        while (!q.isEmpty()) {
-            int[] curr = q.poll();
-            int currX = curr[0];
-            int currY = curr[1];
-            int currCnt = curr[2];
-
-            if (currX == maps.length - 1 && currY == maps[0].length - 1) {
-                answer = currCnt;
-                break;
-            }
-
-            for (int i = 0; i < 4; i++) {
-                int nextX = currX + dx[i];
-                int nextY = currY + dy[i];
-
-                if (nextX < 0 || nextX >= maps.length) continue;
-                if (nextY < 0 || nextY >= maps[0].length) continue;
-                if (maps[nextX][nextY] == 0) continue;
-                if (visited[nextX][nextY]) continue;
-
-                visited[nextX][nextY] = true;
-                //System.out.println("currCnt=" + currCnt + " / " + Arrays.toString(curr));
-                q.add(new int[]{nextX, nextY, currCnt + 1});
-            }
-        }
-
-        return answer == Integer.MAX_VALUE ? -1 : answer;
+        return 0;
     }
 
 }

@@ -1,6 +1,5 @@
-package com.algo.programmers.prog_dfsBfs_005_아이템_줍기;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_005_아이템_줍기;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 

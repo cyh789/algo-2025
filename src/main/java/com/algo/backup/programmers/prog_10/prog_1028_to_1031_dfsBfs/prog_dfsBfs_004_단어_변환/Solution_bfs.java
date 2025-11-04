@@ -1,6 +1,9 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_004_단어_변환;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_004_단어_변환;
 
-public class Solution {
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -55,6 +58,74 @@ public class Solution {
     //target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다.
 
     public static int solution(String begin, String target, String[] words) {
-        return 0;
+        return bfs(begin, target, words);
+    }
+
+    private static int bfs(String begin, String target, String[] words) {
+        Queue<Node> q = new LinkedList<>();
+        String str = begin;
+        int idx = 0;
+        int cnt = 0;
+        q.add(new Node(str, idx, cnt));
+
+        boolean[] visited = new boolean[words.length];
+
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            String currStr = curr.str;
+            int currIdx = curr.idx;
+            int currCnt = curr.cnt;
+
+            if (currStr.equals(target)) {
+                cnt = currCnt;
+                break;
+            }
+            if (currIdx == words.length - 1) {
+                break;
+            }
+
+            for (int i = 0; i < words.length; i++) {
+                String nextStr = words[i];
+
+                if (visited[i]) continue;
+                if (!chkFunc(currStr, nextStr)) continue;
+
+                //System.out.println(curr + " / nextStr=" + nextStr);
+
+                visited[i] = true;
+                q.add(new Node(nextStr, i, currCnt + 1));
+            }
+        }
+
+        return cnt;
+    }
+
+    private static boolean chkFunc(String currStr, String nextStr) {
+        int cnt = 0;
+        for (int i = 0; i < currStr.length(); i++) {
+            if (currStr.charAt(i) == nextStr.charAt(i)) cnt++;
+        }
+
+        return currStr.length() - 1 == cnt;
+    }
+
+    private static final class Node {
+        private final String str;
+        private final int idx;
+        private final int cnt;
+
+        private Node(String str, int idx, int cnt) {
+            this.str = str;
+            this.idx = idx;
+            this.cnt = cnt;
+        }
+
+        @Override
+        public String toString() {
+            return "Node[" +
+                    "str=" + str + ", " +
+                    "idx=" + idx + ", " +
+                    "cnt=" + cnt + ']';
+        }
     }
 }

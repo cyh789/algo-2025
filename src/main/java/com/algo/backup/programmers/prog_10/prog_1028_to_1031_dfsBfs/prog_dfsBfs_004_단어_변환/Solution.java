@@ -1,6 +1,6 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_004_단어_변환;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_004_단어_변환;
 
-public class Solution_dfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -55,46 +55,6 @@ public class Solution_dfs {
     //target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다.
 
     public static int solution(String begin, String target, String[] words) {
-        boolean[] visited = new boolean[words.length];
-        int cnt = 0;
-        answer = Integer.MAX_VALUE;
-        String currStr = begin;
-        dfs(currStr, target, words, visited, cnt);
-
-        return answer == Integer.MAX_VALUE ? 0 : answer;
-    }
-    static int answer;
-
-    private static void dfs(String currStr, String target, String[] words, boolean[] visited, int cnt) {
-        if (answer < cnt) {
-            //System.out.println("@@가지치기");
-            return;
-        }
-
-        if (currStr.equals(target)) {
-            //System.out.println("@@도착 answer=" + answer + " / cnt=" + cnt);
-            answer = Math.min(answer, cnt);
-            return;
-        }
-
-        for (int i = 0; i < words.length; i++) {
-            String nextStr = words[i];
-
-            if (visited[i]) continue;
-            if (!chkFunc(currStr, nextStr)) continue;
-
-            visited[i] = true;
-            dfs(nextStr, target, words, visited, cnt + 1);
-            visited[i] = false;
-        }
-    }
-
-    private static boolean chkFunc(String currStr, String nextStr) {
-        int cnt = 0;
-        for (int i = 0; i < currStr.length(); i++) {
-            if (currStr.charAt(i) == nextStr.charAt(i)) cnt++;
-        }
-
-        return currStr.length() - 1 == cnt;
+        return 0;
     }
 }

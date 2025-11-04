@@ -1,6 +1,6 @@
-package com.algo.programmers.prog_dfsBfs_005_아이템_줍기;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_005_아이템_줍기;
 
-public class Solution {
+public class Solution_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 5;
@@ -134,6 +134,75 @@ public class Solution {
     //
     //설명 생략
     public static int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
-        return 0;
+        int[][] graph = new int[101][101];
+        //내부 = 2
+        for (int[] xy : rectangle) {
+            int x1 = xy[0] * 2;
+            int y1 = xy[1] * 2;
+            int x2 = xy[2] * 2;
+            int y2 = xy[3] * 2;
+            for (int i = x1 + 1; i < x2; i++) {
+                for (int j = y1 + 1; j < y2; j++) {
+                    graph[i][j] = 2;
+                }
+            }
+        }
+
+        //테두리 = 1
+        for (int[] xy : rectangle) {
+            int x1 = xy[0] * 2;
+            int y1 = xy[1] * 2;
+            int x2 = xy[2] * 2;
+            int y2 = xy[3] * 2;
+            for (int i = x1; i <= x2; i++) {
+                for (int j = y1; j <= y2; j++) {
+                    //if (i == x1 || i == x2 || j == y1 || j == y2) {
+                        if (graph[i][j] == 2) continue;
+                        graph[i][j] = 1;
+                    //}
+                }
+            }
+        }
+
+        boolean[][] visited = new boolean[101][101];
+        cnt = 0;
+        answer = Integer.MAX_VALUE;
+        dfs(graph, characterX * 2, characterY * 2, itemX * 2, itemY * 2, visited, cnt);
+
+        return answer / 2;
+    }
+    static int cnt;
+    static int answer;
+
+    private static void dfs(int[][] graph, int characterX, int characterY, int itemX, int itemY, boolean[][] visited, int cnt) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+
+        if (answer < cnt) {
+            System.out.println("@@@ 가지치기");
+            return;
+        }
+
+        if (characterX == itemX && characterY == itemY) {
+            //System.out.println("@@@ 도착 answer=" + answer + " / cnt=" + cnt);
+            answer = cnt;
+            return;
+        }
+
+        visited[characterX][characterY] = true;
+
+        for (int i = 0; i < 4; i++) {
+            int nextX = characterX + dx[i];
+            int nextY = characterY + dy[i];
+
+            if (nextX < 0 || nextX >= graph.length) continue;
+            if (nextY < 0 || nextY >= graph[0].length) continue;
+            if (visited[nextX][nextY]) continue;
+            if (graph[nextX][nextY] != 1) continue;
+
+            dfs(graph, nextX, nextY, itemX, itemY, visited, cnt + 1);
+        }
+
     }
 }

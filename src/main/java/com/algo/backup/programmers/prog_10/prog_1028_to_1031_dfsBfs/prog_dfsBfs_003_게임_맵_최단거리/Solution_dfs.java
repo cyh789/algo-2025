@@ -1,7 +1,7 @@
-package com.algo.backup.programmers.prog_10.prog_1028_to_1030_dfsBfs.prog_dfsBfs_003_게임_맵_최단거리;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_003_게임_맵_최단거리;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -73,7 +73,42 @@ public class Solution {
     //문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.
 
     public static int solution(int[][] maps) {
-        return 0;
+        answer = Integer.MAX_VALUE;
+        cnt = 1;
+        boolean[][] visited = new boolean[maps.length][maps[0].length];
+        dfs(maps, visited, 0, 0, cnt);
+
+        return answer == Integer.MAX_VALUE ? -1 : answer;
+    }
+    static int answer;
+    static int cnt;
+
+    private static void dfs(int[][] maps, boolean[][] visited, int x, int y, int cnt) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        visited[x][y] = true;
+
+        if (x == maps.length - 1 && y == maps[0].length - 1) {
+            answer = Math.min(answer, cnt);
+            //System.out.println("@@@ 도착 answer=" + answer);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            int nextX = x + dx[i];
+            int nextY = y + dy[i];
+
+            if (nextX < 0 || nextX >= maps.length) continue;
+            if (nextY < 0 || nextY >= maps[0].length) continue;
+            if (visited[nextX][nextY]) continue;
+            if (maps[nextX][nextY] == 0) continue;
+
+            visited[nextX][nextY] = true;
+            dfs(maps, visited, nextX, nextY, cnt + 1);
+            visited[nextX][nextY] = false;
+
+            if (answer < cnt)  break;
+        }
     }
 
 }
