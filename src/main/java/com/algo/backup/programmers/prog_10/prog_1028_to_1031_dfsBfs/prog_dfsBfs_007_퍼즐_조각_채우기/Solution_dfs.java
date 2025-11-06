@@ -1,6 +1,9 @@
-package com.algo.programmers.prog_dfsBfs_007_퍼즐_조각_채우기;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_007_퍼즐_조각_채우기;
 
-public class Solution {
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -79,7 +82,95 @@ public class Solution {
     //입력은 다음과 같은 형태이며, 문제의 예시와 같습니다.
 
     public static int solution(int[][] game_board, int[][] table) {
-        int answer = -1;
+        int n = game_board.length;
+        ArrayList<ArrayList<int[]>> boardList = new ArrayList<>();
+        boolean[][] boardVisited = new boolean[n][n];
+        ArrayList<ArrayList<int[]>> tableList = new ArrayList<>();
+        boolean[][] tableVisited = new boolean[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!boardVisited[i][j] && game_board[i][j] == 0) {
+                    ArrayList<int[]> result = new ArrayList<>();
+                    dfs(game_board, boardVisited, result, 0, i, j, new int[]{i, j});
+                    boardList.add(result);
+                }
+                if (!tableVisited[i][j] && table[i][j] == 1) {
+                    ArrayList<int[]> result = new ArrayList<>();
+                    dfs(table, tableVisited, result, 1, i, j, new int[]{i, j});
+                    tableList.add(result);
+                }
+            }
+        }
+
+        int answer = 0;
+        boolean[] visited = new boolean[boardList.size()];
+        for (ArrayList<int[]> tablePoints : tableList) {
+            for (int j = 0; j < boardList.size(); j++) {
+                ArrayList<int[]> boardPoints = boardList.get(j);
+                if (visited[j]) continue;
+                if (boardPoints.size() != tablePoints.size()) continue;
+                if (!match(boardPoints, tablePoints)) continue;
+
+                visited[j] = true;
+                answer += tablePoints.size();
+                break;
+            }
+        }
+
         return answer;
+    }
+
+    private static boolean match(ArrayList<int[]> boardPoints, ArrayList<int[]> tablePoints) {
+        Collections.sort(boardPoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+        for (int i = 0; i < 4; i++) {
+            Collections.sort(tablePoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+            boolean correct = true;
+
+            int zeroX = tablePoints.get(0)[0];
+            int zeroY = tablePoints.get(0)[1];
+            for (int j = 0; j < tablePoints.size(); j++) {
+                tablePoints.get(j)[0] -= zeroX;
+                tablePoints.get(j)[1] -= zeroY;
+            }
+
+            for (int j = 0; j < tablePoints.size(); j++) {
+                int[] tablePoint = tablePoints.get(j);
+                int[] boardPoint = boardPoints.get(j);
+                if (tablePoint[0] != boardPoint[0] || tablePoint[1] != boardPoint[1]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if (correct) return true;
+            for (int j = 0; j < tablePoints.size(); j++) {
+                int temp = tablePoints.get(j)[0];
+                tablePoints.get(j)[0] = tablePoints.get(j)[1];
+                tablePoints.get(j)[1] = -temp;
+            }
+        }
+
+        return false;
+    }
+
+    private static void dfs(int[][] gameBoard, boolean[][] visited, ArrayList<int[]> result, int target, int i, int j, int[] start) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        visited[i][j] = true;
+        result.add(new int[]{i - start[0], j - start[1]});
+
+        for (int m = 0; m < 4; m++) {
+            int nextX = i + dx[m];
+            int nextY = j + dy[m];
+
+            if (nextX < 0 || nextX >= gameBoard.length) continue;
+            if (nextY < 0 || nextY >= gameBoard[0].length) continue;
+            if (visited[nextX][nextY]) continue;
+            if (gameBoard[nextX][nextY] != target) continue;
+
+            visited[nextX][nextY] = true;
+            dfs(gameBoard, visited, result, target, nextX, nextY, start);
+        }
     }
 }

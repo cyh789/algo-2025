@@ -1,4 +1,9 @@
-package com.algo.programmers.prog_dfsBfs_007_퍼즐_조각_채우기;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_007_퍼즐_조각_채우기;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Solution_bfs {
 
@@ -79,7 +84,110 @@ public class Solution_bfs {
     //입력은 다음과 같은 형태이며, 문제의 예시와 같습니다.
 
     public static int solution(int[][] game_board, int[][] table) {
-        int answer = -1;
+        ArrayList<ArrayList<int[]>> boardList = new ArrayList<>();
+        boolean[][] boardVisited = new boolean[game_board.length][game_board[0].length];
+        ArrayList<ArrayList<int[]>> tableList = new ArrayList<>();
+        boolean[][] tableVisited = new boolean[game_board.length][game_board[0].length];
+        for (int i = 0; i < game_board.length; i++) {
+            for (int j = 0; j < game_board[0].length; j++) {
+                int target = 0;
+                if (!boardVisited[i][j] && game_board[i][j] == target) {
+                    ArrayList<int[]> result = new ArrayList<>();
+                    bfs(game_board, boardVisited, boardList, result, i, j, target, new int[]{i, j});
+                    boardList.add(result);
+                }
+
+                target = 1;
+                if (!tableVisited[i][j] && table[i][j] == target) {
+                    ArrayList<int[]> result = new ArrayList<>();
+                    bfs(table, tableVisited, tableList, result, i, j, target, new int[]{i, j});
+                    tableList.add(result);
+                }
+            }
+        }
+
+        boolean[] visited = new boolean[boardList.size()];
+        int answer = 0;
+        for (ArrayList<int[]> tablePoints : tableList) {
+            for (int i = 0; i < boardList.size(); i++) {
+                ArrayList<int[]> boardPoints = boardList.get(i);
+
+                if (tablePoints.size() != boardPoints.size()) continue;
+                if (visited[i]) continue;
+                if (!match(tablePoints, boardPoints)) continue;
+
+                visited[i] = true;
+                answer += boardPoints.size();
+                break;
+            }
+        }
+
         return answer;
+    }
+
+    private static boolean match(ArrayList<int[]> tablePoints, ArrayList<int[]> boardPoints) {
+        Collections.sort(tablePoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+        for (int i = 0; i < 4; i++) {
+            Collections.sort(boardPoints, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0]);
+            boolean correct = true;
+
+            //x,y
+            int zeroX = boardPoints.get(0)[0];
+            int zeroY = boardPoints.get(0)[1];
+            for (int[] boardPoint : boardPoints) {
+                boardPoint[0] -= zeroX;
+                boardPoint[1] -= zeroY;
+            }
+
+            //match dff
+            for (int j = 0; j < boardPoints.size(); j++) {
+                int[] tablePoint = tablePoints.get(j);
+                int[] boardPoint = boardPoints.get(j);
+                if (tablePoint[0] != boardPoint[0] || tablePoint[1] != boardPoint[1]) {
+                    correct = false;
+                    break;
+                }
+            }
+
+            if (correct) return true;
+
+            //90 회전
+            for (int[] boardPoint : boardPoints) {
+                int temp = boardPoint[0];
+                boardPoint[0] = boardPoint[1];
+                boardPoint[1] = -temp;
+            }
+        }
+
+        return false;
+    }
+
+    private static void bfs(int[][] gameBoard, boolean[][] boardVisited, ArrayList<ArrayList<int[]>> boardList, ArrayList<int[]> result, int i, int j, int target, int[] start) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+        Queue<int[]> q = new LinkedList<>();
+        q.add(new int[]{i, j});
+        result.add(new int[]{i - start[0], j - start[1]});
+
+        boardVisited[i][j] = true;
+        while (!q.isEmpty()) {
+            int[] curr = q.poll();
+            int currX = curr[0];
+            int currY = curr[1];
+
+            for (int k = 0; k < 4; k++) {
+                int nextX = currX + dx[k];
+                int nextY = currY + dy[k];
+
+                if (nextX < 0 || nextX >= gameBoard.length) continue;
+                if (nextY < 0 || nextY >= gameBoard[0].length) continue;
+                if (boardVisited[nextX][nextY]) continue;
+                if (gameBoard[nextX][nextY] != target) continue;
+
+                boardVisited[nextX][nextY] = true;
+                q.add(new int[]{nextX, nextY});
+                result.add(new int[]{nextX - start[0], nextY - start[1]});
+            }
+        }
     }
 }
