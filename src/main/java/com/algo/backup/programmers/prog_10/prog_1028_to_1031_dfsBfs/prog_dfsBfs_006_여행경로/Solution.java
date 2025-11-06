@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_dfsBfs_006_여행경로;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_006_여행경로;
 
 import java.util.Arrays;
 

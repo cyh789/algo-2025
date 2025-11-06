@@ -1,5 +1,6 @@
-package com.algo.programmers.prog_dfsBfs_006_여행경로;
+package com.algo.backup.programmers.prog_10.prog_1028_to_1031_dfsBfs.prog_dfsBfs_006_여행경로;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Solution_dfs {
@@ -45,7 +46,40 @@ public class Solution_dfs {
     //["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
     public static String[] solution(String[][] tickets) {
-        String[] answer = {};
-        return answer;
+        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
+        ArrayList<String> result = new ArrayList<>();
+        result.add("ICN");
+        boolean[] visited = new boolean[tickets.length];
+        answer = new ArrayList<>();
+        dfs(tickets, visited, "ICN", 0, result);
+
+        return answer.toArray(new String[0]);
+    }
+    static ArrayList<String> answer;
+
+    private static void dfs(String[][] tickets, boolean[] visited, String now, int idx, ArrayList<String> result) {
+        if (idx == tickets.length) {
+            System.out.println("@@@ 도착");
+            answer = new ArrayList<>(result);
+            return;
+        }
+
+        for (int i = 0; i < tickets.length; i++) {
+            String v1 = tickets[i][0];
+            String v2 = tickets[i][1];
+
+            if (visited[i]) continue;
+            if (!now.equals(v1)) continue;
+
+            visited[i] = true;
+            result.add(v2);
+
+            dfs(tickets, visited, v2, idx + 1, result);
+
+            visited[i] = false;
+            result.remove(result.size() - 1);
+
+            if (!answer.isEmpty()) return;
+        }
     }
 }
