@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251103_real_2;
+package com.algo.backup.programmers.prog_11.prog_1103_real_002;
 
 public class Solution_1 {
 

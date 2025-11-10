@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251103_real_1;
+package com.algo.backup.programmers.prog_11.prog_1103_real_001;
 
 import java.util.Arrays;
 
@@ -21,7 +21,12 @@ public class Solution {
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
-        //
+        //5b, 5r, 7r, 8b, 8r
+        //5b, 5r, 8b, 8r
+        //1r, 2b
+        //8b
+        //lose
+        //1b, 2b, 2r, 3b, 3r, 4b, 4r, 5b, 5r, 6b, 6r, 7b, 7r, 8b, 8r
     }
 
     public static String[] solution(String[] cards) {

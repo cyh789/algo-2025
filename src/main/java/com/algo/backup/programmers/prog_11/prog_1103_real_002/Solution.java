@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251103_real_2;
+package com.algo.backup.programmers.prog_11.prog_1103_real_002;
 
 public class Solution {
 
@@ -15,10 +15,14 @@ public class Solution {
             System.out.println(answer);
             System.out.println("=============");
         }
-        //
+        //4
+        //0
     }
 
     public static int solution(int n) {
+        int[] sg = new int[]{6, 2, 5, 5, 4, 5, 6, 4, 7, 6};
+        //더하기, 빼기, 나누기, 곱하기
+        int[] msg = new int[]{2, 1, 1, 2};
 
         return 0;
     }

@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251102_real_1;
+package com.algo.backup.programmers.prog_11.prog_1102_real_001;
 
 import java.util.*;
 

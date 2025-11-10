@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1107_real_003;
+package com.algo.backup.programmers.prog_11.prog_1110_real_003;
 
 import java.util.ArrayList;
 
@@ -29,10 +29,10 @@ public class Solution {
         int cnt = 0;
         for (int i = 0; i < circles.length - 1; i++) {
             int start = circles[i][0];
-            int r = circles[i][1];
+            int r = circles[i][2];
             for (int j = i + 1; j < circles.length; j++) {
                 int startTemp = circles[j][0];
-                int rTemp = circles[j][1];
+                int rTemp = circles[j][2];
                 if (start - r >= startTemp - rTemp && start + r <= startTemp + rTemp) {
                     result.get(j).add(i);
                     cnt++;
@@ -44,25 +44,26 @@ public class Solution {
         if (cnt == 0) return 1;
 
         int maxCnt = 0;
-        for (int i = 0; i < result.size(); i++) {
+        for (int i = 0; i < circles.length; i++) {
             boolean[] visited = new boolean[circles.length];
-            int diff = dfs(visited, result, i);
-            maxCnt = Math.max(diff, maxCnt);
+            int diff = bfs(visited, result, i);
+            System.out.print(diff + " ");
+            maxCnt = Math.max(maxCnt, diff);
         }
+        System.out.println("-----");
 
         return maxCnt == 0 ? 1 : maxCnt;
     }
 
-    private static int dfs(boolean[] visited, ArrayList<ArrayList<Integer>> result, int i) {
-        visited[i] = true;
+    private static int bfs(boolean[] visited, ArrayList<ArrayList<Integer>> result, int idx) {
+        visited[idx] = true;
         int cnt = 1;
-        for (int nextIdx : result.get(i)) {
-            if (visited[nextIdx]) continue;
-            visited[nextIdx] = true;
-            cnt += dfs(visited, result, nextIdx);
+        for (int i = 0; i < result.get(idx).size(); i++) {
+            int nextIdx = result.get(idx).get(i);
+            if (visited[i]) continue;
+            cnt += bfs(visited, result, nextIdx);
         }
 
         return cnt;
     }
-
 }

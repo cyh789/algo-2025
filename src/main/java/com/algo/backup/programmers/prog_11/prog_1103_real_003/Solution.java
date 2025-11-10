@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251103_real_3;
+package com.algo.backup.programmers.prog_11.prog_1103_real_003;
 
 public class Solution {
 
@@ -15,7 +15,8 @@ public class Solution {
             System.out.println(answer);
             System.out.println("=============");
         }
-        //
+        //3
+        //1
     }
 
     public static int solution(int[][] circles) {

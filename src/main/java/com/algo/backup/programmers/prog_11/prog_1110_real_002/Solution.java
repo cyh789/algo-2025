@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1107_real_002;
+package com.algo.backup.programmers.prog_11.prog_1110_real_002;
 
 public class Solution {
 
@@ -24,33 +24,36 @@ public class Solution {
         int[] msg = new int[]{2, 1, 1, 2};
 
         int cnt = 0;
-        for (int m = 0; m < msg.length; m++) {
+        for (int m1 = 0; m1 < msg.length; m1++) {
             int total = n;
-            total -= msg[m];
+            total -= msg[m1];
             for (int s1 = 0; s1 < sg.length; s1++) {
                 total -= sg[s1];
                 for (int s2 = 0; s2 < sg.length; s2++) {
                     total -= sg[s2];
                     for (int s3 = 0; s3 < sg.length; s3++) {
                         if (total - sg[s3] != 0) continue;
-                        if (m == 2) {
+                        //나누기
+                        if (m1 == 2) {
                             if (s2 == 0) continue;
                         }
 
                         total -= sg[s3];
 
-                        //더하기, 빼기, 나누기, 곱하기
-                        if (m == 0 && s1 + s2 == s3) {
+                        //더하기
+                        if (m1 == 0 && s1 + s2 == s3) {
                             cnt++;
-                            System.out.println(s1 + "+" + s2 + "=" + s3);
-                        } else if (m == 1 && s1 - s2 == s3) {
-                            System.out.println(s1 + "-" + s2 + "=" + s3);
+                        }
+                        //빼기
+                        if (m1 == 1 && s1 - s2 == s3) {
                             cnt++;
-                        } else if (m == 2 && s1 / s2 == s3) {
-                            System.out.println(s1 + "/" + s2 + "=" + s3);
+                        }
+                        //나누기
+                        if (m1 == 2 && s1 / s2 == s3) {
                             cnt++;
-                        } else if (m == 3 && s1 * s2 == s3) {
-                            System.out.println(s1 + "*" + s2 + "=" + s3);
+                        }
+                        //곱하기
+                        if (m1 == 3 && s1 * s2 == s3) {
                             cnt++;
                         }
 

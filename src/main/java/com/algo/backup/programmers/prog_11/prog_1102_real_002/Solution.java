@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_11.prog_20251102_real_2;
+package com.algo.backup.programmers.prog_11.prog_1102_real_002;
 
 import java.util.HashMap;
 import java.util.Map;
