@@ -13,17 +13,17 @@ import org.json.JSONObject;
 public class ReadJsonFile {
     public static void main(String[] args) {
         try {
-            if (args.length < 4) {
-                System.err.println("사용법: java -jar TeamBuilder.jar <min> <max> <fixedUsers> <ignoreUsers>");
-                System.err.println("예시: java -jar TeamBuilder.jar 180.0 187.0 \"클리드1:정글,칸_김동하:탑\" \"김민교.:미드,이자리:미드,이라333:원딜\"");
-                return;
-            }
-
-            double min = Double.parseDouble(args[0]);
-            double max = Double.parseDouble(args[1]);
-
-            String[][] fixedUsers = parseUserArgs(args[2]);
-            String[][] ignoreUsers = parseUserArgs(args[3]);
+//            if (args.length < 4) {
+//                System.err.println("사용법: java -jar TeamBuilder.jar <min> <max> <fixedUsers> <ignoreUsers>");
+//                System.err.println("예시: java -jar TeamBuilder.jar 180.0 187.0 \"클리드1:정글,칸_김동하:탑\" \"김민교.:미드,이자리:미드,이라333:원딜\"");
+//                return;
+//            }
+//
+//            double min = Double.parseDouble(args[0]);
+//            double max = Double.parseDouble(args[1]);
+//
+//            String[][] fixedUsers = parseUserArgs(args[2]);
+//            String[][] ignoreUsers = parseUserArgs(args[3]);
 
 
             // 1. 파일 경로 지정
@@ -77,17 +77,20 @@ public class ReadJsonFile {
                 list.add(temp);
             }
 
-//            double max = 187.0;
-//            double min = 180.0;
-//            String[][] fixedUsers = new String[][]{
+            double max = 187.0;
+            double min = 180.0;
+            String[][] fixedUsers = new String[][]{
 //                    {"클리드1", "정글"},
 //                    {"칸_김동하", "탑"}
-//            };
-//            String[][] ignoreUsers = new String[][]{
+                    {"이상호", "정글"},
+                    {"깐숙", "미드"},
+                    {"나는상윤", "원딜"}
+            };
+            String[][] ignoreUsers = new String[][]{
 //                    {"김민교.", "미드"},
 //                    {"이자리", "미드"},
 //                    {"이라333", "원딜"}
-//            };
+            };
             dfs(fixedUsers, ignoreUsers, visited, list, max, min, team);
 
             saveTeamsToFile(team, list, "src/main/resources/team_result.txt");
