@@ -1,9 +1,11 @@
-package com.algo.programmers.prog_1121_queueNstack_006_주식가격_999999999;
+package com.algo.backup.programmers.prog_11.prog_1121_queueNstack_006_주식가격_999999999;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_1 {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -37,24 +39,6 @@ public class Solution_1 {
     //4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.
     //5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
     public static int[] solution(int[] prices) {
-        Queue<Integer> q = new LinkedList<>();
-        for (int i : prices) {
-            q.add(i);
-        }
-
-        List<Integer> answer = new ArrayList<>();
-        while (!q.isEmpty()) {
-            int curr = q.poll();
-
-            int cnt = 0;
-            for (int i : q) {
-                cnt++;
-                if (i < curr) break;
-            }
-
-            answer.add(cnt);
-        }
-
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        return null;
     }
 }
