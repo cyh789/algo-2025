@@ -1,9 +1,7 @@
-package com.algo.programmers.prog_1208_graph_001_최소직사각형;
-
-import java.util.Arrays;
+package com.algo.backup.programmers.prog_12.prog_1208_graph_001_최소직사각형;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_1 {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 3;
@@ -68,14 +66,7 @@ public class Solution_1 {
     //입출력 예 #3
     //명함들을 적절히 회전시켜 겹쳤을 때, 모든 명함을 포함하는 가장 작은 지갑의 크기는 133(=19 x 7)입니다.
     public static int solution(int[][] sizes) {
-        int left = 0, right = 0;
-        for (int[] size : sizes) {
-            Arrays.sort(size);
-            left = Math.max(left, size[0]);
-            right = Math.max(right, size[1]);
-        }
-
-        return left * right;
+        return 0;
     }
 
 }

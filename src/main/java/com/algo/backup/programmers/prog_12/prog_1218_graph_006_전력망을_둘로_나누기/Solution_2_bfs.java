@@ -1,7 +1,11 @@
-package com.algo.programmers.prog_1216_graph_006_전력망을_둘로_나누기;
+package com.algo.backup.programmers.prog_12.prog_1218_graph_006_전력망을_둘로_나누기;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_2_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 3;
@@ -67,7 +71,53 @@ public class Solution {
     //3번과 7번을 연결하는 전선을 끊으면
     // 두 전력망이 각각 4개와 3개의 송전탑을 가지게 되며, 이 방법이 최선입니다.
     public static int solution(int n, int[][] wires) {
-        return 0;
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i < n + 1; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int[] wire : wires) {
+            int v1 = wire[0];
+            int v2 = wire[1];
+            graph.get(v1).add(v2);
+            graph.get(v2).add(v1);
+        }
+
+        int min = Integer.MAX_VALUE;
+        for (int[] wire : wires) {
+            Integer v1 = wire[0];
+            Integer v2 = wire[1];
+            graph.get(v1).remove(v2);
+            graph.get(v2).remove(v1);
+
+            int start = v1;
+            int cntV1 = bfs(graph, n, start);
+            int cntV2 = n - cntV1;
+            min = Math.min(min, Math.abs(cntV1 - cntV2));
+
+            graph.get(v1).add(v2);
+            graph.get(v2).add(v1);
+        }
+
+        return min;
     }
 
+    private static int bfs(ArrayList<ArrayList<Integer>> graph, int n, int start) {
+        boolean[] visited = new boolean[n + 1];
+        Queue<Integer> q = new LinkedList<>();
+        q.add(start);
+        visited[start] = true;
+        int cnt = 0;
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+            cnt++;
+            for (int next : graph.get(curr)) {
+                if (!visited[next]) {
+                    visited[next] = true;
+                    q.add(next);
+                }
+            }
+        }
+        return cnt;
+    }
 }

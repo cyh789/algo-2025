@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1216_graph_003_소수_찾기;
+package com.algo.backup.programmers.prog_12.prog_1209_graph_003_소수_찾기;
 
 @SuppressWarnings("UnusedAssignment")
 public class Solution {

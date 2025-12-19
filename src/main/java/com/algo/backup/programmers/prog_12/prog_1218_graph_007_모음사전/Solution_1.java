@@ -1,7 +1,7 @@
-package com.algo.programmers.prog_1216_graph_007_모음사전;
+package com.algo.backup.programmers.prog_12.prog_1218_graph_007_모음사전;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_1 {
 
     public static void main(String[] args) {
         int arrIndex = 4;
@@ -58,7 +58,34 @@ public class Solution {
     //입출력 예 #4
     //"EIO"는 1189번째 단어입니다.
     public static int solution(String word) {
-        return 0;
+        String[] condition = {"A", "E", "I", "O", "U"};
+        String curr = "";
+        cnt = 0;
+        result = 0;
+        dfs(condition, curr, word);
+
+        return result;
+    }
+    static int cnt;
+    static int result;
+
+    private static void dfs(String[] condition, String curr, String word) {
+        //System.out.println("curr=" + curr + " / cnt=" + cnt);
+
+        if (curr.equals(word)) {
+            result = cnt;
+            return;
+        }
+
+        if (curr.length() == 5) return;
+
+        for (int i = 0; i < condition.length; i++) {
+            String next = curr + condition[i];
+            cnt++;
+            dfs(condition, next, word);
+
+            if (result > 0) return;
+        }
     }
 
 }

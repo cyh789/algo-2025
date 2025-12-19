@@ -1,7 +1,6 @@
-package com.algo.programmers.prog_1216_graph_003_소수_찾기;
+package com.algo.backup.programmers.prog_12.prog_1209_graph_003_소수_찾기;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("UnusedAssignment")
 public class Solution_1 {
@@ -48,41 +47,63 @@ public class Solution_1 {
     //
     //11과 011은 같은 숫자로 취급합니다.
     public static int solution(String numbers) {
-        boolean[] visited = new boolean[numbers.length()];
+        char[] numbersTemp = numbers.toCharArray();
         Set<Integer> result = new HashSet<>();
-        String curr = "";
-        int depth = 0;
-        dfs(numbers, visited, result, curr, depth);
+        for (int i = 0; i < numbersTemp.length; i++) {
+            boolean[] visited = new boolean[numbersTemp.length];
+            visited[i] = true;
+            Node node = new Node(Integer.parseInt(String.valueOf(numbersTemp[i])), visited);
+            Queue<Node> q = new LinkedList<>();
+            q.add(node);
+            dfs(numbersTemp, q, result);
+        }
+
+        System.out.println(result);
 
         int cnt = 0;
-        for (int n : result) {
-            if (chkFunc(n)) cnt++;
+        for (int i : result) {
+            if (chkFunc(i)) {
+                cnt++;
+            }
         }
+
         return cnt;
     }
 
     private static boolean chkFunc(int n) {
         if (n < 2) return false;
-        for (int i = 2; i*i <= n; i++) {
+        for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) return false;
         }
         return true;
     }
 
-    private static void dfs(String numbers, boolean[] visited, Set<Integer> result, String curr, int depth) {
-        if (depth == numbers.length()) {
-            return;
-        }
+    private static void dfs(char[] numbersTemp, Queue<Node> q, Set<Integer> result) {
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            int currNum = curr.num;
+            boolean[] currVisited = curr.visited;
 
-        char[] temp = numbers.toCharArray();
-        for (int i = 0; i < temp.length; i++) {
-            if (visited[i]) continue;
-            visited[i] = true;
-            String next = curr + String.valueOf(temp[i]);
-            result.add(Integer.parseInt(next));
-            dfs(numbers, visited, result, next, depth + 1);
-            visited[i] = false;
+            result.add(currNum);
+
+            for (int i = 0; i < numbersTemp.length; i++) {
+                if (currVisited[i]) continue;
+                String nextNum = String.valueOf(currNum) + numbersTemp[i];
+                boolean[] nextVisited = Arrays.copyOf(currVisited, currVisited.length);
+                nextVisited[i] = true;
+                Node next = new Node(Integer.parseInt(nextNum), nextVisited);
+                q.add(next);
+            }
         }
     }
 
+    private static final class Node {
+        private final int num;
+        private final boolean[] visited;
+
+        private Node(int num, boolean[] visited) {
+            this.num = num;
+            this.visited = visited;
+        }
+    }
 }

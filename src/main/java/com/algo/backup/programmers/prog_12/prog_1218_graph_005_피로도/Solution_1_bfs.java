@@ -1,7 +1,12 @@
-package com.algo.programmers.prog_1216_graph_005_피로도;
+package com.algo.backup.programmers.prog_12.prog_1218_graph_005_피로도;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_1_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -64,7 +69,87 @@ public class Solution {
     //남은 피로도는 50이며, 두 번째 던전을 돌기위해 필요한 "최소 필요 피로도"는 50이므로, 두 번째 던전을 탐험할 수 있습니다. 두 번째 던전의 "소모 피로도"는 40이므로, 던전을 탐험한 후 남은 피로도는 10입니다.
     //따라서 이 경우 세 던전을 모두 탐험할 수 있으며, 유저가 탐험할 수 있는 최대 던전 수는 3입니다.
     public static int solution(int k, int[][] dungeons) {
-        return 0;
+        return bfs(k, dungeons);
     }
 
+    private static int bfs(int k, int[][] dungeons) {
+        Queue<Node> q = new LinkedList<>();
+        int cnt = 0;
+        boolean[] visited = new boolean[dungeons.length];
+        int energy = k;
+        q.add(new Node(cnt, visited, energy));
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            int currCnt = curr.cnt;
+            boolean[] currVisited = curr.visited;
+            int currEnergy = curr.energy;
+
+            cnt = Math.max(cnt, currCnt);
+
+            for (int i = 0; i < dungeons.length; i++) {
+                if (currVisited[i]) continue;
+                boolean[] nextVisited = Arrays.copyOf(currVisited, currVisited.length);
+                nextVisited[i] = true;
+
+                int nextEnergy = currEnergy - dungeons[i][1];
+                if (nextEnergy < 0) continue;
+
+                if (currEnergy < dungeons[i][0]) continue;
+                int nextCnt = currCnt + 1;
+
+                //System.out.println("currEnergy=" + currEnergy + " / dungeons=" + Arrays.toString(dungeons[i]) + " / cnt=" + currCnt);
+                q.add(new Node(nextCnt, nextVisited, nextEnergy));
+            }
+        }
+
+        return cnt;
+    }
+
+    private static final class Node {
+        private final int cnt;
+        private final boolean[] visited;
+        private final int energy;
+
+        private Node(int cnt, boolean[] visited, int energy) {
+            this.cnt = cnt;
+            this.visited = visited;
+            this.energy = energy;
+        }
+
+        public int cnt() {
+            return cnt;
+        }
+
+        public boolean[] visited() {
+            return visited;
+        }
+
+        public int energy() {
+            return energy;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            var that = (Node) obj;
+            return this.cnt == that.cnt &&
+                    Objects.equals(this.visited, that.visited) &&
+                    this.energy == that.energy;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(cnt, visited, energy);
+        }
+
+        @Override
+        public String toString() {
+            return "Node[" +
+                    "cnt=" + cnt + ", " +
+                    "visited=" + visited + ", " +
+                    "energy=" + energy + ']';
+        }
+
+        }
 }

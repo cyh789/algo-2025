@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1208_graph_002_모의고사;
+package com.algo.backup.programmers.prog_12.prog_1208_graph_002_모의고사;
 
 import java.util.ArrayList;
 import java.util.Arrays;

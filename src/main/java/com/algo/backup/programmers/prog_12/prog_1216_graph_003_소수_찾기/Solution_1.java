@@ -1,7 +1,10 @@
-package com.algo.programmers.prog_1209_graph_003_소수_찾기;
+package com.algo.backup.programmers.prog_12.prog_1216_graph_003_소수_찾기;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_1 {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -45,7 +48,41 @@ public class Solution {
     //
     //11과 011은 같은 숫자로 취급합니다.
     public static int solution(String numbers) {
-        return 0;
+        boolean[] visited = new boolean[numbers.length()];
+        Set<Integer> result = new HashSet<>();
+        String curr = "";
+        int depth = 0;
+        dfs(numbers, visited, result, curr, depth);
+
+        int cnt = 0;
+        for (int n : result) {
+            if (chkFunc(n)) cnt++;
+        }
+        return cnt;
+    }
+
+    private static boolean chkFunc(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i*i <= n; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    private static void dfs(String numbers, boolean[] visited, Set<Integer> result, String curr, int depth) {
+        if (depth == numbers.length()) {
+            return;
+        }
+
+        char[] temp = numbers.toCharArray();
+        for (int i = 0; i < temp.length; i++) {
+            if (visited[i]) continue;
+            visited[i] = true;
+            String next = curr + String.valueOf(temp[i]);
+            result.add(Integer.parseInt(next));
+            dfs(numbers, visited, result, next, depth + 1);
+            visited[i] = false;
+        }
     }
 
 }
