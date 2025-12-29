@@ -1,6 +1,6 @@
-package com.algo.programmers.prog_1223_dfsBfs_005_아이템_줍기;
+package com.algo.programmers.prog_1226_dfsBfs_005_아이템_줍기;
 
-public class Solution_1_dfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 5;
@@ -113,69 +113,6 @@ public class Solution_1_dfs {
     //입출력 예 #4, #5
     //설명 생략
     public static int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
-        int[][] maps = new int[101][101];
-
-        //내부 : 2
-        for (int[] r : rectangle) {
-            int x1 = r[0] * 2;
-            int y1 = r[1] * 2;
-            int x2 = r[2] * 2;
-            int y2 = r[3] * 2;
-            for (int i = x1 + 1; i < x2; i++) {
-                for (int j = y1 + 1; j < y2; j++) {
-                    maps[i][j] = 2;
-                }
-            }
-        }
-
-        //테두리 : 1
-        for (int[] r : rectangle) {
-            int x1 = r[0] * 2;
-            int y1 = r[1] * 2;
-            int x2 = r[2] * 2;
-            int y2 = r[3] * 2;
-            for (int i = x1; i <= x2; i++) {
-                if (maps[i][y1] != 2) maps[i][y1] = 1;
-                if (maps[i][y2] != 2) maps[i][y2] = 1;
-            }
-            for (int j = y1; j <= y2; j++) {
-                if (maps[x1][j] != 2) maps[x1][j] = 1;
-                if (maps[x2][j] != 2) maps[x2][j] = 1;
-            }
-        }
-
-        int cnt = 0;
-        result = Integer.MAX_VALUE;
-        boolean[][] visited = new boolean[101][101];
-        dfs(maps, characterX * 2, characterY * 2, itemX * 2, itemY * 2, visited, cnt);
-
-        return result == Integer.MAX_VALUE ? -1 : result / 2;
+        return 0;
     }
-
-    private static void dfs(int[][] maps, int currX, int currY, int endX, int endY, boolean[][] visited, int cnt) {
-        int[] dx = {1, -1, 0, 0};
-        int[] dy = {0, 0, 1, -1};
-
-        if (currX == endX && currY == endY) {
-            result = Math.min(result, cnt);
-            return;
-        }
-
-        visited[currX][currY] = true;
-        for (int i = 0; i < dx.length; i++) {
-            int nextX = currX + dx[i];
-            int nextY = currY + dy[i];
-
-            if (nextX < 0 || nextX >= maps.length) continue;
-            if (nextY < 0 || nextY >= maps[0].length) continue;
-            if (visited[nextX][nextY]) continue;
-            if (maps[nextX][nextY] != 1) continue;
-
-//            visited[nextX][nextY] = true;
-            dfs(maps, nextX, nextY, endX, endY, visited, cnt + 1);
-//            visited[nextX][nextY] = false;
-        }
-    }
-
-    static int result;
 }

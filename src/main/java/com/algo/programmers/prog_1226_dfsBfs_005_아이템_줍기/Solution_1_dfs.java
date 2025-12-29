@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1223_dfsBfs_005_아이템_줍기;
+package com.algo.programmers.prog_1226_dfsBfs_005_아이템_줍기;
 
 public class Solution_1_dfs {
 
@@ -114,8 +114,7 @@ public class Solution_1_dfs {
     //설명 생략
     public static int solution(int[][] rectangle, int characterX, int characterY, int itemX, int itemY) {
         int[][] maps = new int[101][101];
-
-        //내부 : 2
+        // 내부 : 2
         for (int[] r : rectangle) {
             int x1 = r[0] * 2;
             int y1 = r[1] * 2;
@@ -127,8 +126,7 @@ public class Solution_1_dfs {
                 }
             }
         }
-
-        //테두리 : 1
+        // 테두리 : 1
         for (int[] r : rectangle) {
             int x1 = r[0] * 2;
             int y1 = r[1] * 2;
@@ -143,18 +141,20 @@ public class Solution_1_dfs {
                 if (maps[x2][j] != 2) maps[x2][j] = 1;
             }
         }
-
-        int cnt = 0;
-        result = Integer.MAX_VALUE;
         boolean[][] visited = new boolean[101][101];
+        result = Integer.MAX_VALUE;
+        int cnt = 0;
         dfs(maps, characterX * 2, characterY * 2, itemX * 2, itemY * 2, visited, cnt);
 
-        return result == Integer.MAX_VALUE ? -1 : result / 2;
+        return result == Integer.MAX_VALUE ? 0 : result / 2;
     }
+    static int result;
 
     private static void dfs(int[][] maps, int currX, int currY, int endX, int endY, boolean[][] visited, int cnt) {
-        int[] dx = {1, -1, 0, 0};
-        int[] dy = {0, 0, 1, -1};
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
+        if (result <= cnt) return;
 
         if (currX == endX && currY == endY) {
             result = Math.min(result, cnt);
@@ -165,7 +165,6 @@ public class Solution_1_dfs {
         for (int i = 0; i < dx.length; i++) {
             int nextX = currX + dx[i];
             int nextY = currY + dy[i];
-
             if (nextX < 0 || nextX >= maps.length) continue;
             if (nextY < 0 || nextY >= maps[0].length) continue;
             if (visited[nextX][nextY]) continue;
@@ -177,5 +176,5 @@ public class Solution_1_dfs {
         }
     }
 
-    static int result;
+
 }
