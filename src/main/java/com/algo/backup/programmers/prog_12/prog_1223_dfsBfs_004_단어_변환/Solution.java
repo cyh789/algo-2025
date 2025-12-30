@@ -1,10 +1,6 @@
-package com.algo.programmers.prog_1223_dfsBfs_004_단어_변환;
+package com.algo.backup.programmers.prog_12.prog_1223_dfsBfs_004_단어_변환;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
-
-public class Solution_1_bfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -59,88 +55,7 @@ public class Solution_1_bfs {
     //target인 "cog"는 words 안에 없기 때문에 변환할 수 없습니다.
 
     public static int solution(String begin, String target, String[] words) {
-        return bfs(begin, target, words);
-    }
-
-    private static int bfs(String begin, String target, String[] words) {
-        boolean[] visited = new boolean[words.length];
-        Queue<Node> q = new LinkedList<>();
-        int cnt = 0;
-        String str = begin;
-        q.add(new Node(str, cnt));
-
-        while (!q.isEmpty()) {
-            Node curr = q.poll();
-            String currStr = curr.str;
-            int currCnt = curr.cnt;
-
-            if (currStr.equals(target)) {
-                return currCnt;
-            }
-
-            for (int i = 0; i < words.length; i++) {
-                String nextStr = words[i];
-                if (visited[i]) continue;
-                if (!chkFunc(currStr, nextStr)) continue;
-
-                //System.out.println("currStr=" + currStr + " / nextStr=" + nextStr + " / cnt=" + currCnt);
-
-                visited[i] = true;
-                q.add(new Node(nextStr, currCnt + 1));
-            }
-        }
-
         return 0;
     }
 
-    private static boolean chkFunc(String currStr, String nextStr) {
-        char[] v1 = currStr.toCharArray();
-        char[] v2 = nextStr.toCharArray();
-        int diff = 0;
-        for (int i = 0; i < v1.length; i++) {
-            if (v1[i] != v2[i]) diff++;
-        }
-        if (diff == 1) return true;
-        return false;
-    }
-
-    private static final class Node {
-        private final String str;
-        private final int cnt;
-
-        private Node(String str, int cnt) {
-            this.str = str;
-            this.cnt = cnt;
-        }
-
-        public String str() {
-            return str;
-        }
-
-        public int cnt() {
-            return cnt;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (obj == this) return true;
-            if (obj == null || obj.getClass() != this.getClass()) return false;
-            var that = (Node) obj;
-            return Objects.equals(this.str, that.str) &&
-                    this.cnt == that.cnt;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(str, cnt);
-        }
-
-        @Override
-        public String toString() {
-            return "Node[" +
-                    "str=" + str + ", " +
-                    "cnt=" + cnt + ']';
-        }
-
-        }
 }

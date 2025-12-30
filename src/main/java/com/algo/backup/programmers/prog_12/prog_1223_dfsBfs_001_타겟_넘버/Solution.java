@@ -1,6 +1,6 @@
-package com.algo.programmers.prog_1223_dfsBfs_001_타겟_넘버;
+package com.algo.backup.programmers.prog_12.prog_1223_dfsBfs_001_타겟_넘버;
 
-public class Solution_1_dfs {
+public class Solution {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -58,24 +58,7 @@ public class Solution_1_dfs {
     //총 2가지 방법이 있으므로, 2를 return 합니다.
 
     public static int solution(int[] numbers, int target) {
-        int sum = 0;
-        int depth = 0;
-        cnt = 0;
-        dfs(numbers, target, sum, depth);
-
-        return cnt;
+        return 0;
     }
-
-    private static void dfs(int[] numbers, int target, int sum, int depth) {
-        if (depth == numbers.length) {
-            if (sum == target) cnt++;
-            return;
-        }
-
-        dfs(numbers, target, sum + numbers[depth], depth + 1);
-        dfs(numbers, target, sum - numbers[depth], depth + 1);
-    }
-
-    static int cnt;
 
 }

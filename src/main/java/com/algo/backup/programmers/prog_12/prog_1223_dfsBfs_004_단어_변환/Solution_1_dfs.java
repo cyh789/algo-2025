@@ -1,4 +1,4 @@
-package com.algo.programmers.prog_1223_dfsBfs_004_단어_변환;
+package com.algo.backup.programmers.prog_12.prog_1223_dfsBfs_004_단어_변환;
 
 public class Solution_1_dfs {
 

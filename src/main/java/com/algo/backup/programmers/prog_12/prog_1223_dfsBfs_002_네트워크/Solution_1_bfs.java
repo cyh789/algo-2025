@@ -1,6 +1,9 @@
-package com.algo.programmers.prog_1223_dfsBfs_002_네트워크;
+package com.algo.backup.programmers.prog_12.prog_1223_dfsBfs_002_네트워크;
 
-public class Solution {
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Solution_1_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 3;
@@ -58,6 +61,31 @@ public class Solution {
     //1-2-3
 
     public static int solution(int n, int[][] computers) {
-        return 0;
+        boolean[] visited = new boolean[n];
+        cnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (visited[i]) continue;
+            bfs(computers, visited, i);
+            cnt++;
+        }
+        return cnt;
+    }
+    static int cnt;
+
+    private static void bfs(int[][] computers, boolean[] visited, int depth) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(depth);
+        visited[depth] = true;
+        while (!q.isEmpty()) {
+            int currDepth = q.poll();
+            if (currDepth >= computers.length) continue;
+            for (int i = 0; i < computers.length; i++) {
+                if (visited[i]) continue;
+                if (computers[currDepth][i] == 0) continue;
+                visited[i] = true;
+                q.add(i);
+            }
+        }
+
     }
 }
