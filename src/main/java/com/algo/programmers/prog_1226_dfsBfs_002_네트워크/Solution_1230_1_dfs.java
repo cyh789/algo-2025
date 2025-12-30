@@ -1,9 +1,6 @@
 package com.algo.programmers.prog_1226_dfsBfs_002_네트워크;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-public class Solution_1230_1_bfs {
+public class Solution_1230_1_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 3;
@@ -64,32 +61,24 @@ public class Solution_1230_1_bfs {
         boolean[] visited = new boolean[n];
         int cnt = 0;
         for (int i = 0; i < computers.length; i++) {
+            if (visited[i]) continue;
             int v1 = i;
-            cnt += dfs(computers, visited, v1);
+            dfs(computers, visited, v1);
+            cnt++;
         }
 
         return cnt;
     }
 
-    private static int dfs(int[][] computers, boolean[] visited, int v1) {
-        if (visited[v1]) return 0;
-
-        Queue<Integer> q = new LinkedList<>();
-        q.add(v1);
-
+    private static void dfs(int[][] computers, boolean[] visited, int v1) {
         visited[v1] = true;
-        while (!q.isEmpty()) {
-            int currV1 = q.poll();
-            for (int i = 0; i < computers.length; i++) {
-                int v2 = i;
-                if (visited[v2]) continue;
-                if (computers[currV1][v2] != 1) continue;
+        for (int i = 0; i < computers.length; i++) {
+            int v2 = i;
+            if (visited[v2]) continue;
+            if (computers[v1][v2] != 1) continue;
 
-                visited[v2] = true;
-                q.add(v2);
-            }
+            visited[v2] = true;
+            dfs(computers, visited, v2);
         }
-
-        return 1;
     }
 }
