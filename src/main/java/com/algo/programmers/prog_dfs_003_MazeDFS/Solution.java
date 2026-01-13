@@ -1,4 +1,4 @@
-package com.algo.backup.programmers.prog_12.prog_1219_dfs_003_MazeDFS;
+package com.algo.programmers.prog_dfs_003_MazeDFS;
 
 //2. 미로 탐색 예제: 출구 찾기
 public class Solution {
@@ -20,11 +20,9 @@ public class Solution {
         int[] start = {1, 1}; // 시작점 (1,1)
         int[] end = {3, 3}; // 종료지점 (1,1)
         totalMove = 0;
-        System.out.println("출발점으로 복귀! result=" + result + " / totalMove=" + totalMove);
+        System.out.println("출발점으로 복귀! totalMove=" + totalMove);
     }
     static int totalMove;
-    static int result;
-    static int move;
 
 
     //이동: (1, 1)
