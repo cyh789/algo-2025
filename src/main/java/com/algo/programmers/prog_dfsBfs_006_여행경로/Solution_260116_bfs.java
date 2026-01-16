@@ -90,6 +90,59 @@ public class Solution_260116_bfs {
         return result.toArray(String[]::new);
     }
 
-    private record Node(List<String> result, String v2, int depth, boolean[] visited) {
-    }
+    private static final class Node {
+        private final List<String> result;
+        private final String v2;
+        private final int depth;
+        private final boolean[] visited;
+
+        private Node(List<String> result, String v2, int depth, boolean[] visited) {
+            this.result = result;
+            this.v2 = v2;
+            this.depth = depth;
+            this.visited = visited;
+        }
+
+        public List<String> result() {
+            return result;
+        }
+
+        public String v2() {
+            return v2;
+        }
+
+        public int depth() {
+            return depth;
+        }
+
+        public boolean[] visited() {
+            return visited;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            var that = (Node) obj;
+            return Objects.equals(this.result, that.result) &&
+                    Objects.equals(this.v2, that.v2) &&
+                    this.depth == that.depth &&
+                    Objects.equals(this.visited, that.visited);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(result, v2, depth, visited);
+        }
+
+        @Override
+        public String toString() {
+            return "Node[" +
+                    "result=" + result + ", " +
+                    "v2=" + v2 + ", " +
+                    "depth=" + depth + ", " +
+                    "visited=" + visited + ']';
+        }
+
+        }
 }

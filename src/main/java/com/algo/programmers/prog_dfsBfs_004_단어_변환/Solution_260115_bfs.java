@@ -1,6 +1,7 @@
 package com.algo.programmers.prog_dfsBfs_004_단어_변환;
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public class Solution_260115_bfs {
@@ -102,6 +103,43 @@ public class Solution_260115_bfs {
         return diff == 1;
     }
 
-    private record Node(int cnt, String str) {
-    }
+    private static final class Node {
+        private final int cnt;
+        private final String str;
+
+        private Node(int cnt, String str) {
+            this.cnt = cnt;
+            this.str = str;
+        }
+
+        public int cnt() {
+            return cnt;
+        }
+
+        public String str() {
+            return str;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            var that = (Node) obj;
+            return this.cnt == that.cnt &&
+                    Objects.equals(this.str, that.str);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(cnt, str);
+        }
+
+        @Override
+        public String toString() {
+            return "Node[" +
+                    "cnt=" + cnt + ", " +
+                    "str=" + str + ']';
+        }
+
+        }
 }

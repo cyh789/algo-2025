@@ -89,6 +89,8 @@ public class Solution_260115_bfs {
         Queue<int[]> q = new LinkedList<>();
         int cnt = 1;
         q.add(new int[]{cnt, start[0], start[1]});
+
+        visited[0][0] = true;
         while (!q.isEmpty()) {
             int[] curr = q.poll();
             int currCnt = curr[0];

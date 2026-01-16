@@ -1,7 +1,7 @@
 package com.algo.programmers.prog_dfsBfs_003_게임_맵_최단거리;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_260115_dfs {
+public class Solution_260115_dfs_timeover {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -78,6 +78,7 @@ public class Solution_260115_dfs {
         cnt = 1;
         int[] start = {0, 0};
         int[] end = {maps.length - 1, maps[0].length - 1};
+        visited[0][0] = true;
         dfs(maps, visited, start, end);
         return result == Integer.MAX_VALUE ? -1 : result;
     }
@@ -87,7 +88,7 @@ public class Solution_260115_dfs {
         int[] dy = {0, 0, -1, 1};
 
         if (result <= cnt) {
-            System.out.println("@@@ 가지치기");
+            //System.out.println("@@@ 가지치기");
             return;
         }
 
@@ -106,7 +107,10 @@ public class Solution_260115_dfs {
 
             visited[nextX][nextY] = true;
             cnt++;
-            dfs(maps, visited, new int[]{nextX, nextY}, end);
+
+            if (result > cnt)
+                dfs(maps, visited, new int[]{nextX, nextY}, end);
+
             cnt--;
             visited[nextX][nextY] = false;
         }
