@@ -1,8 +1,8 @@
 package com.algo.programmers.prog_dfsBfs_006_여행경로;
 
-import java.util.Arrays;
+import java.util.*;
 
-public class Solution {
+public class Solution_260116_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -17,8 +17,8 @@ public class Solution {
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
-        //[ICN, JFK, HND, IAD]
-        //[ICN, ATL, ICN, SFO, ATL, SFO]
+        //{"ICN", "JFK", "HND", "IAD"}
+        //{"ICN", "ATL", "ICN", "SFO", "ATL", "SFO"}
     }
     //주어진 항공권을 모두 이용하여 여행경로를 짜려고 합니다. 항상 "ICN" 공항에서 출발합니다.
     //
@@ -45,6 +45,51 @@ public class Solution {
     //["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
     public static String[] solution(String[][] tickets) {
-        return null;
+        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
+        String start = "ICN";
+        return bfs(tickets, start);
+    }
+
+    private static String[] bfs(String[][] tickets, String start) {
+        boolean[] visited = new boolean[tickets.length];
+        Queue<Node> q = new LinkedList<>();
+        String v2 = start;
+        List<String> result = new ArrayList<>();
+        result.add(v2);
+        int depth = 0;
+        q.add(new Node(result, v2, depth, visited));
+
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            List<String> currResult = curr.result;
+            String currV2 = curr.v2;
+            int currDepth = curr.depth;
+            boolean[] currVisited = curr.visited;
+
+            //System.out.println(curr);
+
+            if (currDepth == tickets.length) {
+                return currResult.toArray(String[]::new);
+            }
+
+            for (int i = 0; i < tickets.length; i++) {
+                String nextV1 = tickets[i][0];
+                String nextV2 = tickets[i][1];
+
+                if (!nextV1.equals(currV2)) continue;
+                if (currVisited[i]) continue;
+
+                List<String> nextResult = new ArrayList<>(currResult);
+                nextResult.add(nextV2);
+                boolean[] nextVisited = Arrays.copyOf(currVisited, currVisited.length);
+                nextVisited[i] = true;
+                q.add(new Node(nextResult, nextV2, currDepth + 1, nextVisited));
+            }
+        }
+
+        return result.toArray(String[]::new);
+    }
+
+    private record Node(List<String> result, String v2, int depth, boolean[] visited) {
     }
 }

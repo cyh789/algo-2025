@@ -1,8 +1,10 @@
 package com.algo.programmers.prog_dfsBfs_006_여행경로;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class Solution {
+public class Solution_260116_dfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -17,8 +19,8 @@ public class Solution {
             System.out.println(Arrays.toString(answer));
             System.out.println("=============");
         }
-        //[ICN, JFK, HND, IAD]
-        //[ICN, ATL, ICN, SFO, ATL, SFO]
+        //{"ICN", "JFK", "HND", "IAD"}
+        //{"ICN", "ATL", "ICN", "SFO", "ATL", "SFO"}
     }
     //주어진 항공권을 모두 이용하여 여행경로를 짜려고 합니다. 항상 "ICN" 공항에서 출발합니다.
     //
@@ -45,6 +47,44 @@ public class Solution {
     //["ICN", "SFO", "ATL", "ICN", "ATL", "SFO"] 순으로 방문할 수도 있지만 ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"] 가 알파벳 순으로 앞섭니다.
 
     public static String[] solution(String[][] tickets) {
-        return null;
+        //Arrays.sort(tickets, (o1, o2) -> o2[1].compareTo(o1[1]));
+        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
+        result = new ArrayList<>();
+        String currV2 = "ICN";
+        boolean[] visited = new boolean[tickets.length];
+        int depth = 0;
+        List<String> v2List = new ArrayList<>();
+        v2List.add(currV2);
+        dfs(tickets, currV2, visited, depth, v2List);
+        return result.toArray(String[]::new);
     }
+
+    private static void dfs(String[][] tickets, String currV2, boolean[] visited, int depth, List<String> v2List) {
+        if (depth == tickets.length) {
+            result = new ArrayList<>(v2List);
+            //System.out.println(result);
+            return;
+        }
+
+        for (int i = 0; i < tickets.length; i++) {
+            String nextV1 = tickets[i][0];
+            String nextV2 = tickets[i][1];
+
+            if (!nextV1.equals(currV2)) continue;
+            if (visited[i]) continue;
+
+            visited[i] = true;
+            v2List.add(nextV2);
+            dfs(tickets, nextV2, visited, depth + 1, v2List);
+            visited[i] = false;
+            v2List.remove(v2List.size() - 1);
+
+            if (!result.isEmpty()) {
+                //System.out.println("@@@ 가지치기");
+                return;
+            }
+        }
+    }
+
+    static List<String> result;
 }

@@ -15,11 +15,6 @@ public class Solution {
         m[index++] = new int[][]{{1,1,1},{1,0,0},{0,0,0}};
         index = 0;
 
-        String[][] l = new String[arrIndex][];
-        l[index++] = new String[]{"i", "want", "to", "drink", "water"};
-        l[index++] = new String[]{"i", "want", "to", "drink", "water"};
-        index = 0;
-
         for (int i = 0; i < n.length; i++) {
             int answer = solution(n[i], m[i]);
             System.out.println(answer);
