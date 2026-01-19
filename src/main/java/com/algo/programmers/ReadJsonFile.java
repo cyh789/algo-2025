@@ -80,16 +80,13 @@ public class ReadJsonFile {
             double max = 187.0;
             double min = 180.0;
             String[][] fixedUsers = new String[][]{
-//                    {"클리드1", "정글"},
-//                    {"칸_김동하", "탑"}
-                    {"이상호", "정글"},
-                    {"깐숙", "미드"},
-                    {"나는상윤", "원딜"}
+                    {"클리드1", "정글"},
+                    {"칸_김동하", "탑"}
             };
             String[][] ignoreUsers = new String[][]{
-//                    {"김민교.", "미드"},
-//                    {"이자리", "미드"},
-//                    {"이라333", "원딜"}
+                    {"김민교.", "미드"},
+                    {"이자리", "미드"},
+                    {"이라333", "원딜"}
             };
             dfs(fixedUsers, ignoreUsers, visited, list, max, min, team);
 
