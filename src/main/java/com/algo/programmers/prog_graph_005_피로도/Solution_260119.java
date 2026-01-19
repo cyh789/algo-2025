@@ -1,7 +1,7 @@
-package com.algo.backup.programmers.prog_12.prog_1218_graph_005_피로도;
+package com.algo.programmers.prog_graph_005_피로도;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_2_dfs {
+public class Solution_260119 {
 
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -66,32 +66,34 @@ public class Solution_2_dfs {
     public static int solution(int k, int[][] dungeons) {
         boolean[] visited = new boolean[dungeons.length];
         int curr = k;
-        int depth = 0;
-        int count = 0;
-        maxCnt = 0;
-        dfs(dungeons, curr, depth, visited, count);
-
-        return maxCnt;
+        result = Integer.MIN_VALUE;
+        int cnt = 0;
+        dfs(curr, dungeons, visited, cnt);
+        return result == Integer.MIN_VALUE ? 0 : result;
     }
+    static int result;
 
-    private static void dfs(int[][] dungeons, int curr, int depth, boolean[] visited, int count) {
-        maxCnt = Math.max(maxCnt, count);
+    private static void dfs(int curr, int[][] dungeons, boolean[] visited, int cnt) {
+        result = Math.max(result, cnt);
 
-        if (depth == dungeons.length) {
+        if (cnt == dungeons.length) {
+            //System.out.println("result=" + result + " / curr=" + curr + " / cnt=" + cnt);
             return;
         }
 
         for (int i = 0; i < dungeons.length; i++) {
+            int next = dungeons[i][0];
+            int energy = dungeons[i][1];
+
             if (visited[i]) continue;
-            int next = curr - dungeons[i][1];
-            if (next < 0) continue;
-            if (curr < dungeons[i][0]) continue;
+            if (next > curr) continue;
+            if (curr - energy < 0) continue;
+
+            //System.out.println(Arrays.toString(dungeons[cnt]));
             visited[i] = true;
-            dfs(dungeons, next, depth + 1, visited, count + 1);
+            dfs(curr - energy, dungeons, visited, cnt + 1);
             visited[i] = false;
         }
     }
-
-    static int maxCnt;
 
 }
