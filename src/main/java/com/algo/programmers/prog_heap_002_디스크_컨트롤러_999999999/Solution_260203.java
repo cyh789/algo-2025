@@ -1,7 +1,10 @@
 package com.algo.programmers.prog_heap_002_디스크_컨트롤러_999999999;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
 @SuppressWarnings("UnusedAssignment")
-public class Solution {
+public class Solution_260203 {
 
     public static void main(String[] args) {
         int arrIndex = 1;
@@ -58,6 +61,28 @@ public class Solution {
     //{0, 3}, {1, 9}, {3, 5}}
     //8
     public static int solution(int[][] jobs) {
-        return 0;
+        Arrays.sort(jobs, (o1, o2) -> o1[0] - o2[0]);
+        PriorityQueue<int[]> q = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]);
+        int pollCnt = 0;
+        int jobsIdx = 0;
+        int endTime = 0;
+        int sum = 0;
+        while (pollCnt < jobs.length) {
+            while (jobsIdx < jobs.length && endTime >= jobs[jobsIdx][0] ) {
+                q.add(jobs[jobsIdx++]);
+            }
+
+            if (q.isEmpty()) {
+                endTime = jobs[jobsIdx][0];
+            } else {
+                int[] curr = q.poll();
+                pollCnt++;
+
+                endTime += curr[1];
+                sum += endTime - curr[0];
+            }
+        }
+
+        return sum / jobs.length;
     }
 }
