@@ -1,7 +1,7 @@
 package com.algo.programmers.prog_dfsBfs_003_게임_맵_최단거리;
 
 @SuppressWarnings("UnusedAssignment")
-public class Solution_260304_timeout {
+public class Solution_260305_dfs_timeout {
 
     public static void main(String[] args) {
         int arrIndex = 2;

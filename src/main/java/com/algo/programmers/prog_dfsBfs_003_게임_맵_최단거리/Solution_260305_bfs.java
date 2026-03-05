@@ -1,7 +1,11 @@
 package com.algo.programmers.prog_dfsBfs_003_게임_맵_최단거리;
 
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
+
 @SuppressWarnings("UnusedAssignment")
-public class Solution_260304_bfs {
+public class Solution_260305_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -73,7 +77,86 @@ public class Solution_260304_bfs {
     //문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.
 
     public static int solution(int[][] maps) {
-        return 0;
+        return bfs(maps);
     }
 
+    private static int bfs(int[][] maps) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+        int[] start = {0, 0};
+        int[] end = {maps.length - 1, maps[0].length - 1};
+
+        Queue<Node> q = new LinkedList<>();
+        boolean[][] visited = new boolean[maps.length][maps[0].length];
+        int cnt = 1;
+        q.add(new Node(start, cnt));
+
+        //System.out.println("@@@@@ " + Arrays.toString(start) + " / cnt=" + cnt);
+        while (!q.isEmpty()) {
+            Node curr = q.poll();
+            int[] currDistance = curr.distance;
+            int currCnt = curr.cnt;
+
+            if (currDistance[0] == end[0] && currDistance[1] == end[1]) {
+                return currCnt;
+            }
+
+            for (int i = 0; i < dx.length; i++) {
+                int nextX = currDistance[0] + dx[i];
+                int nextY = currDistance[1] + dy[i];
+                if (nextX < 0 || nextX >= maps.length) continue;
+                if (nextY < 0 || nextY >= maps[0].length) continue;
+
+                if (maps[nextX][nextY] == 0) continue;
+                if (visited[nextX][nextY]) continue;
+                visited[nextX][nextY] = true;
+
+                int[] next = new int[]{nextX, nextY};
+                //System.out.println("@@@ " + Arrays.toString(next) + " / cnt=" + currCnt);
+                q.add(new Node(next, currCnt + 1));
+            }
+        }
+
+        return -1;
+    }
+
+    private static final class Node {
+        private final int[] distance;
+        private final int cnt;
+
+        private Node(int[] distance, int cnt) {
+            this.distance = distance;
+            this.cnt = cnt;
+        }
+
+        public int[] distance() {
+            return distance;
+        }
+
+        public int cnt() {
+            return cnt;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (obj == this) return true;
+            if (obj == null || obj.getClass() != this.getClass()) return false;
+            var that = (Node) obj;
+            return Objects.equals(this.distance, that.distance) &&
+                    this.cnt == that.cnt;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(distance, cnt);
+        }
+
+        @Override
+        public String toString() {
+            return "Node[" +
+                    "distance=" + distance + ", " +
+                    "cnt=" + cnt + ']';
+        }
+
+        }
 }
