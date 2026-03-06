@@ -1,7 +1,10 @@
 package com.algo.programmers.prog_dfsBfs_003_게임_맵_최단거리;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 @SuppressWarnings("UnusedAssignment")
-public class Solution_260305_dfs_timeout {
+public class Solution_260306_bfs {
 
     public static void main(String[] args) {
         int arrIndex = 2;
@@ -73,7 +76,42 @@ public class Solution_260305_dfs_timeout {
     //문제의 예시와 같으며, 상대 팀 진영에 도달할 방법이 없습니다. 따라서 -1을 return 합니다.
 
     public static int solution(int[][] maps) {
-        return 0;
+        return bfs(maps);
+    }
+
+    private static int bfs(int[][] maps) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+        int[] start = {0, 0};
+        int[] end = {maps.length - 1, maps[0].length - 1};
+        boolean[][] visited = new boolean[maps.length][maps[0].length];
+        visited[start[0]][start[1]] = true;
+        int cnt = 1;
+        Queue<int[]> q = new LinkedList<>();
+        q.add(new int[]{start[0], start[1], cnt});
+        while (!q.isEmpty()) {
+            int[] curr = q.poll();
+            //System.out.println("cnt=" + cnt + " / curr=" + Arrays.toString(curr));
+
+            if (curr[0] == end[0] && curr[1] == end[1]) {
+                return curr[2];
+            }
+
+            for (int i = 0; i < dx.length; i++) {
+                int nextx = curr[0] + dx[i];
+                int nexty = curr[1] + dy[i];
+                if (nextx < 0 || nextx >= maps.length) continue;
+                if (nexty < 0 || nexty >= maps[0].length) continue;
+
+                if (maps[nextx][nexty] != 1) continue;
+                if (visited[nextx][nexty]) continue;
+
+                visited[nextx][nexty] = true;
+                q.add(new int[]{nextx, nexty, curr[2] + 1});
+            }
+        }
+
+        return -1;
     }
 
 }
